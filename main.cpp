@@ -1,9 +1,7 @@
-#include "student.h"
+#include <format>
 #include <iostream>
 
-int main(){
-    Student x;
-    x.setName("TRAN NHAT DUONG");
-    std::cout << x.getName();
-    return 0;
+int main() {
+    std::string name = "ChatGPT";
+    std::cout << std::format("Hello, {}!\n", name);
 }
