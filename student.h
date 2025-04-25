@@ -13,5 +13,8 @@ public:
     void setCredit(const int& credit);
     float getGPA() const;
     int getCompletedCredit() const;
+    
+    Student();
+    ~Student();
 };
 #endif

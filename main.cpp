@@ -1,7 +1,16 @@
-#include <format>
+#include "student.h"
+#include "individual.h"
+#include "instructor.h"
+#include "studentDataReader.h"
 #include <iostream>
+#include <vector>
+using std::vector;
+using std::cout;
+
 
 int main() {
-    std::string name = "ChatGPT";
-    std::cout << std::format("Hello, {}!\n", name);
+    Read_Data dataReader;
+vector<Student> studentList;
+studentList = dataReader.readFromFile();
+    return 0;
 }

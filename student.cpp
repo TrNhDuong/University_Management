@@ -1,5 +1,16 @@
 #include "student.h"
 
+Student::Student(){
+    _name = "A";
+    _gpa = 0;
+    _id = "11111111";
+    _completedCredit = 0;
+}
+
+Student::~Student(){
+    
+}
+
 string Student::getType(){
     return "Student";
 }

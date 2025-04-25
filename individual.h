@@ -7,7 +7,10 @@ class Birth{
 private:
     int _d, _m, _y;
 public:
+    Birth();
+    ~Birth();
     void setBirth(const int& d, const int& m, const int& y);
+    void setBirth(const string&);
     int getDay() const;
     int getMonth() const;
     int getYear() const ;
@@ -25,5 +28,8 @@ public:
     void setName(const string& name);
     void setId(const string& id);
     void setBirth(const Birth& birthDay);
+    void setBirth(const string&);
+    Individual();
+    virtual ~Individual();
 };
 #endif
