@@ -2,6 +2,7 @@
 #define _BASE_ENTITY_H_
 #include <string>
 using std::string;
+using std::ostream;
 
 class Birth{
 private:

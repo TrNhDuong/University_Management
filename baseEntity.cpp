@@ -27,10 +27,19 @@ void Birth::setBirth(const string& str){
     int n = str.size();
     int d = 0, m = 0, y = 0;
     int i = 0;
+    while (str[i] != '/')
+        d = d*10 + str[i++] - '0';
+    i++;
+    while (str[i] != '/')
+        m = m*10 + str[i++] - '0';
+    i++;
+    while (i < n)
+        y = y*10 + str[i++] - '0';
     _day = d;
     _month = m;
     _year = y;
 }
+
 
 int Birth::getDay() const{
     return _day;
