@@ -9,8 +9,6 @@ using std::cout;
 
 
 int main() {
-    Read_Data dataReader;
-vector<Student> studentList;
-studentList = dataReader.readFromFile();
+    cout << "Hau dang cap";
     return 0;
 }

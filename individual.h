@@ -5,7 +5,7 @@ using std::string;
 
 class Birth{
 private:
-    int _d, _m, _y;
+    int _day, _month, _year;
 public:
     Birth();
     ~Birth();
