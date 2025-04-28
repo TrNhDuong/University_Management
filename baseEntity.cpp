@@ -1,4 +1,6 @@
 #include "baseEntity.h"
+#include <sstream>
+#include <iostream>
 
 Birth::Birth(){
     _day = _month = _year = 0;
@@ -23,13 +25,26 @@ void Birth::setBirth(const int& d, const int& m, const int& y){
     _year = y;
 }
 
-void Birth::setBirth(const string& str){
-    int n = str.size();
-    int d = 0, m = 0, y = 0;
-    int i = 0;
-    _day = d;
-    _month = m;
-    _year = y;
+void Birth::setBirth(const std::string& str) {
+    // Khai báo một stringstream từ chuỗi cần tách
+    std::stringstream ss(str);
+    
+    // Tách ngày, tháng, năm theo dấu '/'
+    std::string day, month, year;
+    
+    std::getline(ss, day, '/');
+    std::getline(ss, month, '/');
+    std::getline(ss, year);
+    
+    try {
+        // Chuyển các phần vừa tách sang kiểu int và gán vào các biến thành viên
+        _day = std::stoi(day);
+        _month = std::stoi(month);
+        _year = std::stoi(year);
+        
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Invalid input for date: " << str << std::endl;
+    }
 }
 
 int Birth::getDay() const{
