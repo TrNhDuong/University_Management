@@ -17,6 +17,18 @@ Student& StudentDatabase::getData(const int& index) const {
 void StudentDatabase::add(const Student& value){
     _dataBase.push_back(value);
 }
+void StudentDatabase::delete_obj(Student& value){
+    //find value and delete it by using vector.erase
+    int i = 0;
+    for (const Student& s : _dataBase){
+         if (s.getId() != value.getId()) {++i;}
+         else break;
+    }
+    if (i <_databBase.size())_dataBase.erase(_dataBase.begin()+i);
+    else {
+        cout <<"Student with ID: " << value.getId() << " not found!\n"; 
+    }
+}
 
 void StudentDatabaseDisplay::display(const StudentDatabase& studentDtb){
     int n = studentDtb.getSize();
