@@ -1,12 +1,16 @@
 #include "instructor.h"
 
 Instructor::Instructor(){
-    _name = "A";
-    _id = "11111111";
+    _name = "";
+    _id = "";
 }
 
 Instructor::~Instructor(){
     
+}
+
+string Instructor::getType(){
+    return "Instructor";
 }
 
 int Instructor::getInstructYear() const {

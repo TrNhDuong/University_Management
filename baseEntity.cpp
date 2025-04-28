@@ -1,73 +1,73 @@
-#include "individual.h"
+#include "baseEntity.h"
 
 Birth::Birth(){
-    _d = _m = _y = 0;
+    _day = _month = _year = 0;
 }
 
 Birth::~Birth(){
     
 }
 
-Individual::Individual(){
+BaseEntity::BaseEntity(){
     _name = "";
-    _id = "1111111";
+    _id = "";
 }
 
-Individual::~Individual(){
+BaseEntity::~BaseEntity(){
     
 }
 
 void Birth::setBirth(const int& d, const int& m, const int& y){
-    _d = d;
-    _m = m;
-    _y = y;
+    _day = d;
+    _month = m;
+    _year = y;
 }
 
 void Birth::setBirth(const string& str){
     int n = str.size();
     int d = 0, m = 0, y = 0;
     int i = 0;
-    _d = d;
-    _m = m;
-    _y = y;
+    _day = d;
+    _month = m;
+    _year = y;
 }
 
 int Birth::getDay() const{
-    return _d;
+    return _day;
 }
 
 int Birth::getMonth() const{
-    return _m;
+    return _month;
 }
 
 int Birth::getYear() const{
-    return _y;
+    return _year;
 }
 
-string Individual::getName() const{
+string BaseEntity::getName() const{
     return _name;
 }
 
-string Individual::getId() const{
+string BaseEntity::getId() const{
     return _id;
 }
 
-Birth Individual::getBirth() const{
+Birth BaseEntity::getBirth() const{
     return _birthDay;
 }
 
-void Individual::setName(const string& name){
+void BaseEntity::setName(const string& name){
     _name = name;
 }
 
-void Individual::setId(const string& id){
+void BaseEntity::setId(const string& id){
     _id = id;
 }
 
-void Individual::setBirth(const Birth& birthDay){
+void BaseEntity::setBirth(const Birth& birthDay){
     _birthDay.setBirth(birthDay.getDay(), birthDay.getMonth(), birthDay.getYear());
 }
 
-void Individual::setBirth(const string& s){
+void BaseEntity::setBirth(const string& s){
     _birthDay.setBirth(s);
 }

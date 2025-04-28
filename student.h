@@ -1,8 +1,8 @@
 #ifndef _STUDENT_H_
 #define _STUDENT_H_
-#include "individual.h"
+#include "baseEntity.h"
 
-class Student: public Individual{
+class Student: public BaseEntity{
 private:
     int _enrollYear;
     float _gpa;

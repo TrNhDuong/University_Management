@@ -1,5 +1,5 @@
-#ifndef _INDIVIDUAL_H_
-#define _INDIVIDUAL_H_
+#ifndef _BASE_ENTITY_H_
+#define _BASE_ENTITY_H_
 #include <string>
 using std::string;
 
@@ -16,7 +16,7 @@ public:
     int getYear() const ;
 };
 
-class Individual{
+class BaseEntity{
 protected:
     string _name;
     string _id;
@@ -29,7 +29,7 @@ public:
     void setId(const string& id);
     void setBirth(const Birth& birthDay);
     void setBirth(const string&);
-    Individual();
-    virtual ~Individual();
+    BaseEntity();
+    virtual ~BaseEntity();
 };
 #endif

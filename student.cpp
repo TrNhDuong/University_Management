@@ -1,9 +1,9 @@
 #include "student.h"
 
 Student::Student(){
-    _name = "A";
+    _name = "";
     _gpa = 0;
-    _id = "11111111";
+    _id = "";
     _completedCredit = 0;
 }
 
