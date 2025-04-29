@@ -24,7 +24,7 @@ void StudentDatabase::delete_obj(Student& value){
          if (s.getId() != value.getId()) {++i;}
          else break;
     }
-    if (i <_databBase.size())_dataBase.erase(_dataBase.begin()+i);
+    if (i <_dataBase.size()) { _dataBase.erase(_dataBase.begin()+i); }
     else {
         cout <<"Student with ID: " << value.getId() << " not found!\n"; 
     }
