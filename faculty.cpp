@@ -33,14 +33,25 @@ Instructor Faculty::getDean() const{
     return _dean;
 }
 
+// void FacultyInfo::printFacultyInfo(const Faculty& faculty){
+//     cout << format("Faculty Name: {}\n", faculty.getName());
+//     cout << format("Faclty ID: {}\n", faculty.getId());
+//     cout << format("Faculty Birth: {:02}/{:02}/{}\n"
+//         , faculty.getBirth().getDay()
+//         , faculty.getBirth().getMonth()
+//         , faculty.getBirth().getYear());
+//     cout << format("Faculty Dean: {}\n", faculty.getDean().getName());
+// }
+
 void FacultyInfo::printFacultyInfo(const Faculty& faculty){
-    cout << format("Faculty Name: {}\n", faculty.getName());
-    cout << format("Faclty ID: {}\n", faculty.getId());
-    cout << format("Faculty Birth: {:02}/{:02}/{}\n"
+    cout << format("{}\t{}\t{:02}/{:02}/{}\t{}\t{}\n"
+        ,faculty.getId()
+        , faculty.getName()
         , faculty.getBirth().getDay()
         , faculty.getBirth().getMonth()
-        , faculty.getBirth().getYear());
-    cout << format("Faculty Dean: {}\n", faculty.getDean().getName());
+        , faculty.getBirth().getYear()
+        , faculty.getMail()
+        , faculty.getDean().getName());
 }
 
 void FacultyData::addFaculty(Faculty& faculty){
