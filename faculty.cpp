@@ -1,5 +1,7 @@
 #include "faculty.h"
-using std::cout, std::endl;
+#include <format>
+
+using std::cout, std::endl, std::format;
 
 string Faculty::getType() const{
     return "Faculty";
@@ -22,18 +24,22 @@ Faculty::Faculty(){
 Faculty::~Faculty(){
 }
 
-void Faculty::prinInfo(){
-    cout << "Faculty Name: " << getName() << endl;
-    cout << "Faculty ID: " << getId() << endl;
-    cout << "Faculty Mail: " << getMail() << endl;
-    cout << "Dean Name: " << getDean().getName() << endl;
-    cout << "Dean ID: " << getDean().getId() << endl;
-}
 
 void Faculty::setDean(const Instructor& dean){
     _dean = dean;
 }
 
-Instructor Faculty::getDean(){
+Instructor Faculty::getDean() const{
     return _dean;
 }
+
+void FacultyInfo::printFacultyInfo(const Faculty& faculty){
+    cout << format("Faculty Name: {}\n", faculty.getName());
+    cout << format("Faclty ID: {}\n", faculty.getId());
+    cout << format("Faculty Birth: {:02}/{:02}/{}\n"
+        , faculty.getBirth().getDay()
+        , faculty.getBirth().getMonth()
+        , faculty.getBirth().getYear());
+    cout << format("Faculty Dean: {}\n", faculty.getDean().getName());
+}
+

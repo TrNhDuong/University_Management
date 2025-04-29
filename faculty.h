@@ -13,12 +13,18 @@ protected:
 public:
     string getType() const;
     string getMail() const;
-    Instructor getDean();
+    Instructor getDean() const;
     void setMail(const string& mail);
     void setDean(const Instructor& dean);
-    void prinInfo();
 
     Faculty();
     ~Faculty();
 };
+
+class FacultyInfo{
+    public:
+        static void printFacultyInfo(const Faculty& faculty);
+};
+
+
 #endif

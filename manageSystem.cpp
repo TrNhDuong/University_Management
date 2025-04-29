@@ -1,5 +1,6 @@
 #include "manageSystem.h"
 #include "faculty.h"
+#include "menu.h"
 
 void UniversitySystem::Run(){
     Instructor truongkhoa;
@@ -14,6 +15,10 @@ void UniversitySystem::Run(){
     cntt.setMail("fit@hcmus.edu.vn");
     cntt.setDean(truongkhoa);
     
-    cntt.prinInfo();
+    // FacultyInfo::printFacultyInfo(cntt);
+    Menu menu;
+    // menu.displayMenu();
+    string choice = menu.getChoice();
+    cout << "Lua chon cua may la: " << choice << endl;
 
 }
