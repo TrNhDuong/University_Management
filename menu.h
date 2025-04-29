@@ -14,10 +14,21 @@ class Menu{
         void addChoice(const string &newChoice);
         void removeChoice(const string& choice);
         void replaceChoice(const string& oldChoice, const string& newChoice);
-        bool checkChoice(const string& choice);
         Menu();
         ~Menu(); 
 };
 
+
+class System{
+    public:
+        static vector<string> _entity;
+        static void displaySystemName();
+        void runMenu(Menu& menu);
+        string getChoice();
+};
+
+
+void displayList(vector<string>&);
+bool checkValidChoice(vector<string>&, string&);
 
 #endif
