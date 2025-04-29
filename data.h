@@ -35,15 +35,13 @@ public:
 
 class FacultyDatabase: public IDatabase{
 private:
-    vector<Faculty> _data;
+    static vector<Faculty> _data;
 public:
-    string getDataType();
-    ~FacultyDatabase();
+    string getDataType() const;
+  //  ~FacultyDatabase(); needed ? -> doesn't need, cause it (_data) is singleton (object)
     
     friend class FacultyDatabaseDisplay;
 };
-
-
 
 
 #endif
