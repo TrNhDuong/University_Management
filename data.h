@@ -1,13 +1,13 @@
 #ifndef _DATA_H_
 #define _DATA_H_
-#include "baseEntity.h"
+#include <vector>
 #include "student.h"
 #include "lecturer.h"
-#include "faculty.h"
+#include"faculty.h"
 #include <string>
-#include <vector>
-using std::string;
 using std::vector;
+using std::string;
+
 
 class IDatabase{
 public:
@@ -17,31 +17,31 @@ public:
 
 class StudentDatabase: public IDatabase{
 private:
-    vector<Student> _data;
+    static vector<Student> _data;
 public:
-    string getDataType();
-    ~StudentDatabase();
-
+    string getDataType() const;
     friend class StudentDatabaseDisplay;
 };
 
+
 class LecturerDatabase: public IDatabase{
 private:
-    vector<Lecturer> _data;
+    static vector<Lecturer> _data;
 public:
-    string getDataType();
-    ~LecturerDatabase();
-
+    string getDataType() const;
     friend class LecturerDatabaseDisplay;
 };
 
+
 class FacultyDatabase: public IDatabase{
 private:
-    vector<Faculty> _data;
+    static vector<Faculty> _data;
 public:
-    string getDataType();
-    ~FacultyDatabase();
-
+    string getDataType() const;
+  //  ~FacultyDatabase(); needed ? -> doesn't need, cause it (_data) is singleton (object)
+    
     friend class FacultyDatabaseDisplay;
 };
+
+
 #endif
