@@ -13,8 +13,6 @@ public:
     string getDegree() const;
     Lecturer();
     ~Lecturer();
-
-    class LecturerUI;
 };
 
 class LecturerUI{

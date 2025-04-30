@@ -16,8 +16,6 @@ public:
     
     Student();
     ~Student();
-public:
-    friend class StudentUI;
 };
 
 class StudentUI{
