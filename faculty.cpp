@@ -1,5 +1,6 @@
 #include "faculty.h"
 #include <format>
+#include <iomanip>
 
 using std::cout, std::endl, std::format, std::cin;
 
@@ -25,11 +26,11 @@ Faculty::~Faculty(){
 }
 
 
-void Faculty::setDean(const Instructor& dean){
+void Faculty::setDean(const Lecturer& dean){
     _dean = dean;
 }
 
-Instructor Faculty::getDean() const{
+Lecturer Faculty::getDean() const{
     return _dean;
 }
 
@@ -44,14 +45,14 @@ Instructor Faculty::getDean() const{
 // }
 
 void FacultyInfo::printFacultyInfo(const Faculty& faculty){
-    cout << format("{}\t{}\t{:02}/{:02}/{}\t{}\t{}\n"
-        ,faculty.getId()
-        , faculty.getName()
-        , faculty.getBirth().getDay()
-        , faculty.getBirth().getMonth()
-        , faculty.getBirth().getYear()
-        , faculty.getMail()
-        , faculty.getDean().getName());
+    std::cout << std::left
+          << std::setw(10) << faculty.getId()
+          << std::setw(20) << faculty.getName()
+          << std::setw(12)
+          << (std::format("{:02}/{:02}/{}", faculty.getBirth().getDay(), faculty.getBirth().getMonth(), faculty.getBirth().getYear()))
+          << std::setw(30) << faculty.getMail()
+          << std::setw(25) << faculty.getDean().getName()
+          << "\n";
 }
 
 void FacultyData::addFaculty(Faculty& faculty){
@@ -91,8 +92,11 @@ Faculty FacultyInfo::getInfo(){
     getline(cin, tem);
     newData.setMail(tem);
 
-    // cout << "\nMã trưởng khoa: ";
-    // getline(cin, tem);
+    cout << "Tên trưởng khoa: ";
+    getline(cin, tem);
+    Lecturer dean;
+    dean.setName(tem);
+    newData.setDean(dean);
 
     cout << "Thằng ngu đã nhập dữ liệu thành công!\n";
     

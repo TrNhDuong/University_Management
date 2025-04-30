@@ -23,10 +23,13 @@ class System{
     public:
         static vector<string> _entity;
         static void displaySystemName();
-        void runMenu(Menu& menu);
-        string getChoice();
+        static string getChoiceEntity();
 };
 
+class RunSystem{
+    public:
+        static void runMenu(Menu& menu);
+};
 
 void displayList(vector<string>&);
 bool checkValidChoice(vector<string>&, string&);

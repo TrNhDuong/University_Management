@@ -1,6 +1,6 @@
 #include "menu.h"
 #include "faculty.h"
-
+#include <iomanip>
 Menu::Menu(){
     _option = {"Thêm", "Xóa", "Sửa", "Hiển Thị", "Thoát"};
 }
@@ -78,7 +78,7 @@ void System::displaySystemName(){
 }
 
 
-string System::getChoice(){
+string System::getChoiceEntity(){
     string choice;
     displaySystemName();
     while (true){
@@ -93,12 +93,12 @@ string System::getChoice(){
 }
 
 
-void System::runMenu(Menu& menu){
+void RunSystem::runMenu(Menu& menu){
     while (true){
         string choiceMode = menu.getChoice();
         
         if ("Thêm" == choiceMode){
-            string choiceEntity = getChoice();
+            string choiceEntity = System::getChoiceEntity();
             if (choiceEntity == "faculty"){
                 Faculty newData = FacultyInfo::getInfo();
                 addData(FacultyData::_data, newData);     
@@ -110,7 +110,7 @@ void System::runMenu(Menu& menu){
             
         }else if ("Xóa" == choiceMode){
 
-            string choiceEntity = getChoice();
+            string choiceEntity = System::getChoiceEntity();
             if (choiceEntity == "faculty"){
                 Faculty oldData;
                 string id;
@@ -124,7 +124,7 @@ void System::runMenu(Menu& menu){
     
             }
         }else if ("Sửa" == choiceMode){
-            string choiceEntity = getChoice();
+            string choiceEntity = System::getChoiceEntity();
 
             if (choiceEntity == "faculty"){
                 Faculty oldData;
@@ -140,17 +140,24 @@ void System::runMenu(Menu& menu){
     
             }
     
-        }else if ("Hiện Thị" == choiceMode){
-            string choiceEntity = getChoice();
+        }else if ("Hiển Thị" == choiceMode){
+            string choiceEntity = System::getChoiceEntity();
 
             if (choiceEntity == "faculty"){
                 //in danh sách khoa
-                cout << "====FACULTY INFOMATION====\n";
-                cout << "ID    Name    Birth    Mail    Dean\n";
+                cout << "==== FACULTY INFORMATION ====\n";
+                std::cout << std::left
+                        << std::setw(10) << "ID"
+                        << std::setw(20) << "Name"
+                        << std::setw(12) << "Birth"
+                        << std::setw(30) << "Mail"
+                        << std::setw(25) << "Dean"
+                        << "\n";
                 for (const Faculty& x: FacultyData::_data){
                     FacultyInfo::printFacultyInfo(x);
                 }
-                cout << "==========================\n";
+                cout << "=============================\n";
+
             }else if (choiceEntity == "student"){
                 
             }else if (choiceEntity == "lecturer"){
@@ -162,4 +169,4 @@ void System::runMenu(Menu& menu){
     }
     cout << "Mày đã bấm vào nút thoát chương trình!\n";
 
-}
+} 

@@ -4,7 +4,6 @@
 
 void UniversitySystem::Run(){
     Menu menu;
-    System cur;
-    cur.runMenu(menu);
+    RunSystem::runMenu(menu);
 
 }
