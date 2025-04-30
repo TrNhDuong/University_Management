@@ -42,7 +42,6 @@ IDisplay* DisplayFactory::createDisplay(IDatabase* database){
     } else if ("Lecturer" == database->getDataType()){
         return new LecturerDatabaseDisplay();
     } else if ("Faculty" == database->getDataType()){
-        FacultyDatabase* facultyDTB = dynamic_cast<FacultyDatabase*>(database);
         return new FacultyDatabaseDisplay();
     }
     return nullptr;

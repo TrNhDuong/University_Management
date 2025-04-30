@@ -7,7 +7,7 @@ using std::fstream;
 
 vector<Student> StudentDatabase::_data;
 vector<Lecturer> LecturerDatabase::_data;
-vector<Faculty> FacultyDatabase:: _data;
+vector<Faculty> FacultyDatabase::_data;
 
 string StudentDatabase::getDataType() const {
     return "Student";

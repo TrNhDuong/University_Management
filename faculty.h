@@ -14,4 +14,5 @@ public:
     Faculty();
     ~Faculty();
 };
+
 #endif
