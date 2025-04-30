@@ -1,8 +1,5 @@
 #include "faculty.h"
-#include <format>
-#include <iomanip>
-
-using std::cout, std::endl, std::format, std::cin;
+#include "utils.h"
 
 string Faculty::getType() const{
     return "Faculty";

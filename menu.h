@@ -31,7 +31,5 @@ class RunSystem{
         static void runMenu(Menu& menu);
 };
 
-void displayList(vector<string>&);
-bool checkValidChoice(vector<string>&, string&);
 
 #endif

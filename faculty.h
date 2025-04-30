@@ -2,9 +2,7 @@
 #define _FACULTY_H_
 #include "baseEntity.h"
 #include "lecturer.h"
-#include <string>
-#include <iostream>
-#include <vector>
+#include "utils.h"
 
 using std::string, std::vector;
 
@@ -38,33 +36,5 @@ class FacultyData{
         static void replaceFaculty(Faculty& oldFaculty, Faculty& newFaculty);
 };
 
-template <class T>
-void addData(vector<T>& data, T& newData){
-    data.push_back(newData);
-}
-
-template <class T>
-void removeData(vector<T>& data, T& remove){
-    vector<T> newList;
-    for (const T&x: data){
-        if (x.getId() != remove.getId()){
-            newList.push_back(x);
-        }
-    }
-    data = newList;
-}
-
-template <class T>
-void replaceData(vector<T>& data, T& oldData, T& newData){
-    vector<T> newList;
-    for (const T&x: data){
-        if (x.getId() != oldData.getId()){
-            newList.push_back(x);
-        }else{
-            newList.push_back(newData);
-        }
-    }
-    data = newList;
-}
 
 #endif

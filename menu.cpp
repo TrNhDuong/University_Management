@@ -1,29 +1,18 @@
 #include "menu.h"
 #include "faculty.h"
-#include <iomanip>
+#include "utils.h"
+
 Menu::Menu(){
     _option = {"Thêm", "Xóa", "Sửa", "Hiển Thị", "Thoát"};
 }
 
 Menu::~Menu(){}
 
-void displayList(vector<string>& list){
-    for (size_t i = 0; i < list.size(); ++i) {
-        cout << i + 1 << ". " << list[i] << endl;
-    }
-}
 
-bool checkValidChoice(vector<string>& checkList, string& choice){
-    for (const string &x: checkList){
-        if (choice == x) return true;
-    }
-
-    return false;
-}
 
 void Menu::displayMenu(){
     cout << "==== MENU ====" << endl;
-    displayList(_option);
+    displayAList::displayList(_option);
     cout << "===============" << endl;
 }
 
@@ -32,10 +21,10 @@ string Menu::getChoice(){
     string choice;
     displayMenu();
     while (true){
-        cout << "Moi ban chon: ";
+        cout << "Mời bạn chọn: ";
         getline(cin, choice);
         
-        if (checkValidChoice(_option,choice)) break;
+        if (ValidChoice::checkValidChoice(_option,choice)) break;
         cout << "Nhập sai rồi thằng ngu! \n";
     }
 
@@ -73,7 +62,7 @@ void Menu::replaceChoice(const string& oldChoice, const string& newChoice){
 vector<string> System::_entity = {"faculty", "student", "lecturer"};
 void System::displaySystemName(){
     cout << "==== ENTITY ====" << endl;
-    displayList(_entity);
+    displayAList::displayList(_entity);
     cout << "===============" << endl;
 }
 
@@ -85,7 +74,7 @@ string System::getChoiceEntity(){
         cout << "Mời bạn chọn: ";
         getline(cin, choice);
         
-        if (checkValidChoice(_entity, choice)) break;
+        if (ValidChoice::checkValidChoice(_entity, choice)) break;
         cout << "Nhập sai rồi thằng ngu! \n";
     }
 

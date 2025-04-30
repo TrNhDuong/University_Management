@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++23 -Wall
 TARGET = run
 
 # List of source files
-SRC = main.cpp manageSystem.cpp faculty.cpp lecturer.cpp baseEntity.cpp student.cpp menu.cpp
+SRC = main.cpp manageSystem.cpp faculty.cpp lecturer.cpp baseEntity.cpp student.cpp menu.cpp utils.cpp
 
 # Default command: compile everything
 all:
