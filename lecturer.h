@@ -13,5 +13,12 @@ public:
     string getDegree() const;
     Lecturer();
     ~Lecturer();
+
+    class LecturerUI;
+};
+
+class LecturerUI{
+public:
+    static void print(const Lecturer& lecturer);
 };
 #endif
