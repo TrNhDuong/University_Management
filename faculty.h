@@ -1,7 +1,7 @@
 #ifndef _FACULTY_H_
 #define _FACULTY_H_
 #include "baseEntity.h"
-#include "instructor.h"
+#include "lecturer.h"
 #include <string>
 #include <iostream>
 #include <vector>
@@ -11,13 +11,13 @@ using std::string, std::vector;
 class Faculty : public BaseEntity{
 protected:
     string _email;
-    Instructor _dean;
+    Lecturer _dean;
 public:
     string getType() const;
     string getMail() const;
-    Instructor getDean() const;
+    Lecturer getDean() const;
     void setMail(const string& mail);
-    void setDean(const Instructor& dean);
+    void setDean(const Lecturer& dean);
 
     Faculty();
     ~Faculty();

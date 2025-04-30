@@ -1,4 +1,8 @@
 #include "student.h"
+#include <format>
+#include <iostream>
+using std::cout;
+using std::format;
 
 Student::Student(){
     _name = "";
@@ -29,4 +33,13 @@ void Student::setGPA(const float& gpa){
 
 void Student::setCredit(const int& credit){
     _completedCredit = credit;
+}
+
+void StudentUI::print(const Student& st){
+    cout << format(
+        "{:10}|{:25}|{:2}/{:2}/{:4}|{:5}|{:4}\n",
+        st.getId(),st.getName(), 
+        st.getBirth().getDay(), st.getBirth().getMonth(), st.getBirth().getYear(), 
+        st.getGPA(), st.getCompletedCredit()
+        );
 }
