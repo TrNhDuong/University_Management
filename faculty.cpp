@@ -1,4 +1,8 @@
 #include "faculty.h"
+#include <iostream>
+#include <format>
+using std::cout;
+using std::format;
 
 string Faculty::getType(){
     return "Faculty";
@@ -19,4 +23,16 @@ Faculty::Faculty(){
 }
 
 Faculty::~Faculty(){
+}
+
+Lecturer Faculty::getDean(){
+    return _dean;
+}
+
+void Faculty::setDean(const Lecturer& dean){
+    _dean = dean;
+}
+
+void FacultyUI::print(const Faculty& faculty){
+    
 }
