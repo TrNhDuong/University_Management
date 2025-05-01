@@ -24,7 +24,7 @@ void FacultyReadData::readData(const string& filename){
     string line;
     while(getline(_fileIn,line)){
         stringstream ss(line);
-        string name, id, birth, email, deanID; //this wil be filled in by getline from stringstream
+        string name, id, birth, email, deanID; 
         //seperate - Lack of managing the invalid data 
         getline(ss, name,',');
         getline(ss, id,',');

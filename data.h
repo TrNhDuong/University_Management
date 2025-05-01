@@ -14,14 +14,16 @@ class IDatabase{
 public:
     virtual string getDataType() const = 0;
     virtual ~IDatabase() = default;
+    //virtual int find_obj(const string& id);
+
 };
 //Make all the subclass Database becomes singleton
 class StudentDatabase: public IDatabase{
 private:
     static vector<Student> _data;
 public:
-    string getDataType() const;
-    ~StudentDatabase() override = default; // may be doesn't needed, but this help more virtual
+    string getDataType() const override;
+    ~StudentDatabase() override = default; // may be "override" doesn't needed, but this help more virtual
     friend class StudentDatabaseDisplay;
 };
 
@@ -36,7 +38,7 @@ public:
         return instance;
     }
     
-    string getDataType() const;
+    string getDataType() const override;
     Lecturer& getData(const int& index) const;
     int find_obj(const string& id) const; //return the index in vector _data, it is necessary (can't use friend to lecturer => invalid action harm to capsulation)
     friend class LecturerDatabaseDisplay;
@@ -48,7 +50,7 @@ class FacultyDatabase: public IDatabase{
 private:
     static vector<Faculty> _data;
 public:
-    string getDataType() const;
+    string getDataType() const override;
     friend class FacultyReadData; //it is "getData" from file 
     friend class FacultyDatabaseDisplay;
 };

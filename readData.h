@@ -8,12 +8,12 @@
 using std::ifstream, std::ofstream;
 using std::string, std::stringstream;
 
-class IGetData{
+class IReadData{
 public:
-    virtual ~IGetData() = default;
+    virtual ~IReadData() = default;
 };
 
-class FacultyReadData: public IGetData {
+class FacultyReadData: public IReadData {
 private://singleton, create only 1 object
     FacultyReadData() = default; 
     FacultyReadData(const FacultyReadData&) = delete; //for singleton
@@ -27,11 +27,11 @@ public:
 
 
 
-class StudentGetData : public IGetData {
+class StudentGetData : public IReadData {
 
 };
 
-class InstructorGetData : public IGetData{
+class InstructorGetData : public IReadData{
 
 };
 
