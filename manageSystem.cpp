@@ -1,5 +1,9 @@
 #include "manageSystem.h"
+#include "faculty.h"
+#include "menu.h"
 
 void UniversitySystem::Run(){
-    cout << "University system is running\n";
+    Menu menu;
+    RunSystem::runMenu(menu);
+
 }

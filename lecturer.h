@@ -11,7 +11,11 @@ public:
     string getType();
     int getInstructYear() const;
     string getDegree() const;
+    void setInstructYear(const int& year);
+    void setDeg(const string& deg);
     Lecturer();
     ~Lecturer();
+    friend class LecturerBuilder;
 };
+class LecturerBuilder;
 #endif

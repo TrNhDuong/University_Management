@@ -16,5 +16,11 @@ public:
     
     Student();
     ~Student();
+public:
+    friend class StudentUI;
+};
+
+class StudentUI{
+    static void print(const Student& student);
 };
 #endif

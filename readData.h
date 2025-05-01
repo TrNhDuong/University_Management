@@ -8,31 +8,45 @@
 using std::ifstream, std::ofstream;
 using std::string, std::stringstream;
 
-class IGetData{
+class IReadData{
 public:
-    virtual ~IGetData() = default;
+    virtual ~IReadData() = default;
 };
 
-class FacultyReadData: public IGetData {
+class FacultyReadData: public IReadData {
 private://singleton, create only 1 object
     FacultyReadData() = default; 
     FacultyReadData(const FacultyReadData&) = delete; //for singleton
     FacultyReadData& operator= (const FacultyReadData&) = delete; //for singleton
-    ifstream _fileIn;
+    ifstream _fileIn; //There is a possibility that programm read multiple of files, so i wont create a class to singleton the ifstream. 
 
 public:
     static FacultyReadData& getInstance();
     void readData(const string& filename);
 };
 
-
-
-class StudentGetData : public IGetData {
-
+class LecturerReadData : public IReadData{
+private: //singleton
+    LecturerReadData() = default;
+    LecturerReadData(const LecturerReadData&) = delete; //for singleton -> No copy constructor
+    LecturerReadData& operator= (const LecturerReadData&) = delete; //for singleton -> No obj assignment ~ no copy constructor
+    ifstream _fileIn;
+public:
+    static LecturerReadData& getInstance();
+    void readData(const string& filename); 
 };
 
-class InstructorGetData : public IGetData{
 
+class StudentReadData : public IReadData {
+private:
+    StudentReadData() = default;
+    StudentReadData(const StudentReadData&) = delete;
+    StudentReadData& operator= (const StudentReadData&) = delete;
+    ifstream _fileIn;
+public:
+    static StudentReadData& getInstance();
+    void readData(const string& filename);
 };
+
 
 #endif

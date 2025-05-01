@@ -23,6 +23,7 @@ public:
     string getDataType() const;
     ~StudentDatabase() override = default; // may be doesn't needed, but this help more virtual
     friend class StudentDatabaseDisplay;
+    friend class StudentReadData;
 };
 
 
