@@ -25,6 +25,7 @@ public:
     void readData(const string& filename);
 };
 
+<<<<<<< HEAD
 class LecturerReadData : public IReadData{
 private: //singleton
     LecturerReadData() = default;
@@ -35,7 +36,6 @@ public:
     static LecturerReadData& getInstance();
     void readData(const string& filename); 
 };
-
 
 class StudentReadData : public IReadData {
 private:
