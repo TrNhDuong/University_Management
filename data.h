@@ -1,6 +1,7 @@
 #ifndef _DATA_H_
 #define _DATA_H_
 #include <vector>
+#include<memory>
 #include "student.h"
 #include "lecturer.h"
 #include"faculty.h"
@@ -8,6 +9,7 @@
 #include <string>
 using std::vector;
 using std::string;
+using std::unique_ptr; 
 
 
 class IDatabase{

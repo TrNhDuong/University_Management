@@ -4,14 +4,63 @@
 
 using std::getline;
 
-//For Faculty
+//For Lecturer: need to read comments carefully since the content of using smart pointer
+unique_ptr<LecturerReadData> LecturerReadData::_instance = nullptr; //LecturerReadData::getInstance(); //declare the smart pointer
+ LecturerReadData* LecturerReadData:: getInstance() {
+    if (!_instance) {
+        _instance = unique_ptr<LecturerReadData>(new LecturerReadData());
+    }
+    return _instance.get(); //return the base pointer: LecturerReadData*
+}
 
-FacultyReadData& FacultyReadData:: getInstance(){ //return the single obj
-    static FacultyReadData instance;
-    return instance;
-    /* How to use 
-    FacultyReadData& f = FacultyReadData::getInstance(); 
-    f.readData("faculty.txt");*/
+/*                  HOW TO USE
+    auto* reader1 = LecturerReadData::getInstance(); //to "create" an object base on smart pointer
+    auto* reader2 = LecturerReadData::getInstance();
+    
+    //to read file
+    reader1->readData("data.txt");
+*/
+
+void LecturerReadData::readData(const string& filename){
+    _fileIn.open(filename);
+    if (_fileIn.is_open() == false){
+        std::cout <<"Can't open file " << filename <<"\n";
+        return;
+    }
+    //read file: name|id|birth|year_instruct|degree
+    string line;
+    while(getline(_fileIn,line)){
+        stringstream ss(line); //builder pattern
+        string name, id, birth, year_instruct, deg;
+        //seperate - Lack of managing the invalid data
+        getline(ss,name,'|');
+        getline(ss,id,'|'); 
+        getline(ss,birth,'|'); 
+        getline(ss,year_instruct,'|'); 
+        getline(ss,deg); 
+        //managing the invalid data ?
+
+        //builder pattern
+        Lecturer new_person ;
+        new_person.setName(name);
+        new_person.setId(id);
+        new_person.setBirth(birth);
+        new_person.setInstructYear(year_instruct);
+        new_person.setDeg(deg);
+        //push into vector
+        LecturerDatabase::_data.push_back(new_person);
+    }
+    _fileIn.close();
+}
+
+
+//For Faculty
+unique_ptr<FacultyReadData> FacultyReadData::_instance = nullptr; //declare the smart pointer 
+FacultyReadData* FacultyReadData:: getInstance(){ //return the single obj
+    if (!_instance) {
+        _instance = unique_ptr<FacultyReadData>(new FacultyReadData());
+    }
+    return _instance.get(); 
 }
 
 void FacultyReadData::readData(const string& filename){
@@ -56,48 +105,16 @@ void FacultyReadData::readData(const string& filename){
     _fileIn.close(); //close file
 }
 
-//For Lecturer
-LecturerReadData& LecturerReadData::getInstance(){
-    static LecturerReadData instance;
-    return instance;
-}
 
-void LecturerReadData::readData(const string& filename){
-    _fileIn.open(filename);
-    if (_fileIn.is_open() == false){
-        std::cout <<"Can't open file " << filename <<"\n";
-        return;
-    }
-    //read file: name|id|birth|year_instruct|degree
-    string line;
-    while(getline(_fileIn,line)){
-        stringstream ss(line); //builder pattern
-        string name, id, birth, year_instruct, deg;
-        //seperate - Lack of managing the invalid data
-        getline(ss,name,'|');
-        getline(ss,id,'|'); 
-        getline(ss,birth,'|'); 
-        getline(ss,year_instruct,'|'); 
-        getline(ss,deg,'|'); 
-        //managing the invalid data ?
 
-        //builder pattern
-        Lecturer new_person = LecturerBuilder()
-                                .setName(name)
-                                .setID(id)
-                                .setInstructYear(year_instruct)
-                                .setDegree(deg)
-                                .build();
-        //push into vector
-        LecturerDatabase::_data.push_back(new_person);
-    }
-    _fileIn.close();
-}
 
 //For Student
-StudentReadData& StudentReadData::getInstance(){
-    static StudentReadData instance;
-    return instance;
+unique_ptr<StudentReadData> StudentReadData::_instance = nullptr; //declare the smart pointer 
+StudentReadData* StudentReadData:: getInstance(){ 
+    if (!_instance) {
+        _instance = unique_ptr<StudentReadData>(new StudentReadData());
+    }
+    return _instance.get(); 
 }
 
 void StudentReadData::readData(const string& filename){
@@ -117,7 +134,7 @@ void StudentReadData::readData(const string& filename){
         getline(ss,birth,'|'); 
         getline(ss,year,'|');
         getline(ss,gpa,'|');  
-        getline(ss,credit,'|'); 
+        getline(ss,credit); 
         //managing the invalid data ?
 
         //push into vector

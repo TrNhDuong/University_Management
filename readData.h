@@ -14,37 +14,39 @@ public:
 };
 
 class FacultyReadData: public IReadData {
-private://singleton, create only 1 object
+private://singleton
+    static unique_ptr<FacultyReadData> _instance;  //using smart pointer -> auto free memory
     FacultyReadData() = default; 
-    FacultyReadData(const FacultyReadData&) = delete; //for singleton
-    FacultyReadData& operator= (const FacultyReadData&) = delete; //for singleton
-    ifstream _fileIn; //There is a possibility that programm read multiple of files, so i wont create a class to singleton the ifstream. 
+    FacultyReadData(const FacultyReadData&) = delete; //for singleton -> No copy constructor
+    FacultyReadData& operator= (const FacultyReadData&) = delete; //for singleton -> No obj assignment ~ no copy constructor
+    ifstream _fileIn; 
 
 public:
-    static FacultyReadData& getInstance();
+    static FacultyReadData* getInstance();
     void readData(const string& filename);
 };
 
-<<<<<<< HEAD
 class LecturerReadData : public IReadData{
 private: //singleton
+    static unique_ptr<LecturerReadData> _instance;
     LecturerReadData() = default;
-    LecturerReadData(const LecturerReadData&) = delete; //for singleton -> No copy constructor
-    LecturerReadData& operator= (const LecturerReadData&) = delete; //for singleton -> No obj assignment ~ no copy constructor
+    LecturerReadData(const LecturerReadData&) = delete; 
+    LecturerReadData& operator= (const LecturerReadData&) = delete; 
     ifstream _fileIn;
 public:
-    static LecturerReadData& getInstance();
+    static LecturerReadData* getInstance();
     void readData(const string& filename); 
 };
 
 class StudentReadData : public IReadData {
 private:
+    static unique_ptr<StudentReadData> _instance;
     StudentReadData() = default;
     StudentReadData(const StudentReadData&) = delete;
     StudentReadData& operator= (const StudentReadData&) = delete;
     ifstream _fileIn;
 public:
-    static StudentReadData& getInstance();
+    static StudentReadData* getInstance();
     void readData(const string& filename);
 };
 
