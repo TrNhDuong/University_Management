@@ -1,4 +1,8 @@
 #include "lecturer.h"
+#include <iostream>
+#include <format>
+using std::format;
+using std::cout;
 
 Lecturer::Lecturer(){
     _name = "";
@@ -7,9 +11,6 @@ Lecturer::Lecturer(){
 
 void Lecturer::setInstructYear(const int& year){
     _instructYear = year;
-}
-void Lecturer::setInstructYear(const string& year){
-    _instructYear = stoi(year);
 }
 void Lecturer::setDeg(const string& deg){
     _academicDegree = deg;
@@ -29,4 +30,13 @@ int Lecturer::getInstructYear() const {
 
 string Lecturer::getDegree() const {
     return _academicDegree;
+}
+
+void LecturerUI::print(const Lecturer& lecturer){
+    cout << format(
+        "{}|{}|{}|{}|{}|{}|{}\n",
+        lecturer.getId(), lecturer.getName(), 
+        lecturer.getBirth().getDay(), lecturer.getBirth().getMonth(), lecturer.getBirth().getYear(),
+        lecturer.getInstructYear(), lecturer.getDegree()
+    );
 }

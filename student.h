@@ -16,11 +16,10 @@ public:
     
     Student();
     ~Student();
-public:
-    friend class StudentUI;
 };
 
 class StudentUI{
+public:
     static void print(const Student& student);
 };
 #endif

@@ -1,7 +1,6 @@
 #ifndef _DATA_H_
 #define _DATA_H_
 #include <vector>
-#include<memory>
 #include "student.h"
 #include "lecturer.h"
 #include"faculty.h"
@@ -9,23 +8,27 @@
 #include <string>
 using std::vector;
 using std::string;
-using std::unique_ptr; 
 
 
 class IDatabase{
 public:
     virtual string getDataType() const = 0;
     virtual ~IDatabase() = default;
-    //virtual int find_obj(const string& id);
-
 };
-//Make all the subclass Database becomes singleton
+
 class StudentDatabase: public IDatabase{
 private:
-    static vector<Student> _data;
+    vector<Student> _data;
+    StudentDatabase() = default;
+    ~StudentDatabase() override = default;
+    StudentDatabase(const StudentDatabase&) = delete;
+    Student& operator = (const StudentDatabase&) = delete;
 public:
     string getDataType() const override;
-    ~StudentDatabase() override = default; // may be "override" doesn't needed, but this help more virtual
+    static StudentDatabase& getInstance(){
+        static StudentDatabase instance;
+        return instance;
+    }
     friend class StudentDatabaseDisplay;
     friend class StudentReadData;
 };
@@ -33,16 +36,18 @@ public:
 
 class LecturerDatabase: public IDatabase{
 private:
-    static vector<Lecturer> _data;
+    vector<Lecturer> _data;
     LecturerDatabase() = default; 
+    ~LecturerDatabase() = default;
+    LecturerDatabase(const LecturerDatabase&) = delete;
+    LecturerDatabase& operator = (const LecturerDatabase&) = delete;
 public:
     static LecturerDatabase& getInstance(){
         static LecturerDatabase instance;
         return instance;
     }
-    
     string getDataType() const override;
-    Lecturer& getData(const int& index) const;
+    Lecturer& getData(const int& index);
     int find_obj(const string& id) const; //return the index in vector _data, it is necessary (can't use friend to lecturer => invalid action harm to capsulation)
     friend class LecturerDatabaseDisplay;
     friend class LecturerReadData;
@@ -51,10 +56,19 @@ public:
 
 class FacultyDatabase: public IDatabase{
 private:
-    static vector<Faculty> _data;
+    vector<Faculty> _data;
+    FacultyDatabase() = default;
+    ~FacultyDatabase() = default;
+    FacultyDatabase(const FacultyDatabase&) = delete;
+    FacultyDatabase& operator = (const FacultyDatabase&) = delete;
 public:
+    static FacultyDatabase& getInstance(){
+        static FacultyDatabase instance;
+        return instance;
+    };
     string getDataType() const override;
-    friend class FacultyReadData; //it is "getData" from file 
+
+    friend class FacultyReadData;
     friend class FacultyDatabaseDisplay;
 };
 
