@@ -21,7 +21,6 @@ private:
     static vector<Student> _data;
     StudentDatabase() = default;
 public:
-    static 
     string getDataType() const;
     friend class StudentDatabaseDisplay;
 };
