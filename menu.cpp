@@ -1,6 +1,8 @@
 #include "menu.h"
 #include "faculty.h"
 #include "utils.h"
+#include "display.h"
+#include "manageSystem.h"
 
 Menu::Menu(){
     _option = {"Thêm", "Xóa", "Sửa", "Hiển Thị", "Thoát"};
@@ -83,75 +85,55 @@ string System::getChoiceEntity(){
 
 
 void RunSystem::runMenu(Menu& menu){
+    DisplayFactory display;
     while (true){
         string choiceMode = menu.getChoice();
         
-        if ("Thêm" == choiceMode){
-            string choiceEntity = System::getChoiceEntity();
-            if (choiceEntity == "faculty"){
-                Faculty newData = FacultyInfo::getInfo();
-                addData(FacultyData::_data, newData);     
-            }else if (choiceEntity == "student"){
+        // if ("Thêm" == choiceMode){
+        //     string choiceEntity = System::getChoiceEntity();
+        //     if (choiceEntity == "faculty"){
+        //         Faculty newData = FacultyInfo::getInfo();
+        //         addData(FacultyData::_data, newData);     
+        //     }else if (choiceEntity == "student"){
                 
-            }else if (choiceEntity == "lecturer"){
+        //     }else if (choiceEntity == "lecturer"){
     
-            }
+        //     }
             
-        }else if ("Xóa" == choiceMode){
+        // }else if ("Xóa" == choiceMode){
 
-            string choiceEntity = System::getChoiceEntity();
-            if (choiceEntity == "faculty"){
-                Faculty oldData;
-                string id;
-                cout << "Nhập ID của khoa mày muốn xóa: ";
-                getline(cin, id);
-                oldData.setId(id);
-                removeData(FacultyData::_data, oldData);     
-            }else if (choiceEntity == "student"){
+        //     string choiceEntity = System::getChoiceEntity();
+        //     if (choiceEntity == "faculty"){
+        //         Faculty oldData;
+        //         string id;
+        //         cout << "Nhập ID của khoa mày muốn xóa: ";
+        //         getline(cin, id);
+        //         oldData.setId(id);
+        //         removeData(FacultyData::_data, oldData);     
+        //     }else if (choiceEntity == "student"){
                 
-            }else if (choiceEntity == "lecturer"){
+        //     }else if (choiceEntity == "lecturer"){
     
-            }
-        }else if ("Sửa" == choiceMode){
-            string choiceEntity = System::getChoiceEntity();
+        //     }
+        // }else if ("Sửa" == choiceMode){
+        //     string choiceEntity = System::getChoiceEntity();
 
-            if (choiceEntity == "faculty"){
-                Faculty oldData;
-                string id;
-                cout << "Nhập ID của khoa mày muốn thay thế: ";
-                getline(cin, id);
-                oldData.setId(id);
-                Faculty newData = FacultyInfo::getInfo();
-                replaceData(FacultyData::_data, oldData, newData);     
-            }else if (choiceEntity == "student"){
+        //     if (choiceEntity == "faculty"){
+        //         Faculty oldData;
+        //         string id;
+        //         cout << "Nhập ID của khoa mày muốn thay thế: ";
+        //         getline(cin, id);
+        //         oldData.setId(id);
+        //         Faculty newData = FacultyInfo::getInfo();
+        //         replaceData(FacultyData::_data, oldData, newData);     
+        //     }else if (choiceEntity == "student"){
                 
-            }else if (choiceEntity == "lecturer"){
+        //     }else if (choiceEntity == "lecturer"){
     
-            }
+        //     }
     
-        }else if ("Hiển Thị" == choiceMode){
-            string choiceEntity = System::getChoiceEntity();
-
-            if (choiceEntity == "faculty"){
-                //in danh sách khoa
-                cout << "==== FACULTY INFORMATION ====\n";
-                std::cout << std::left
-                        << std::setw(10) << "ID"
-                        << std::setw(20) << "Name"
-                        << std::setw(12) << "Birth"
-                        << std::setw(30) << "Mail"
-                        << std::setw(25) << "Dean"
-                        << "\n";
-                for (const Faculty& x: FacultyData::_data){
-                    FacultyInfo::printFacultyInfo(x);
-                }
-                cout << "=============================\n";
-
-            }else if (choiceEntity == "student"){
-                
-            }else if (choiceEntity == "lecturer"){
-    
-            }
+        // }else 
+        if ("Hiển Thị" == choiceMode){
         }else if ("Thoát" == choiceMode){
             break;
         }

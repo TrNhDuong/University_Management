@@ -21,20 +21,9 @@ public:
     ~Faculty();
 };
 
-class FacultyInfo{
-    public:
-        static void printFacultyInfo(const Faculty& faculty);
-        static Faculty getInfo();
+class FacultyUI{
+public:
+    static void print(Faculty& faculty);
 };
-
-class FacultyData{
-    public:
-        static vector<Faculty> _data;
-    public:
-        static void addFaculty(Faculty& faculty);
-        static void removeFaculty(Faculty& faculty);
-        static void replaceFaculty(Faculty& oldFaculty, Faculty& newFaculty);
-};
-
 
 #endif

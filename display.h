@@ -4,29 +4,30 @@
 
 class IDisplay{
 public:
+    virtual void display(IDatabase* data) = 0;
     virtual ~IDisplay() = default;
 };
 
 class StudentDatabaseDisplay: public IDisplay{
 public:
-    static void display(StudentDatabase* studentDTB);
+    void display(IDatabase* studentDTB);
     ~StudentDatabaseDisplay();
 };
 
 class LecturerDatabaseDisplay: public IDisplay{
 public:
-    static void display(LecturerDatabase* lecturerDTB);
+    void display(IDatabase* lecturerDTB);
     ~LecturerDatabaseDisplay();
 };
 
 class FacultyDatabaseDisplay: public IDisplay{
 public:
-    static void display(FacultyDatabase* facultyDTB);
+    void display(IDatabase* facultyDTB);
     ~FacultyDatabaseDisplay();
 };
 
 class DisplayFactory{
 public:
-    void display(IDatabase* database);
+    static IDisplay* createDisplay(IDatabase* database);
 };
 #endif

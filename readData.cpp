@@ -22,13 +22,12 @@ void FacultyReadData::readData(const string& filename){
         getline(ss, birth,'|');
         getline(ss, email,'|');
         getline(ss, deanID);
-
         //find the Lectuer base on the deanID above
           // dùng singleton
         int index = lecDB.LecturerDatabase::find_obj(deanID); //finding base on ID
         Lecturer* deanPtr = nullptr;
         Faculty f; 
-        cout << index << "___________________________";
+   
         if (index >= 0){
             deanPtr = &lecDB.getData(index); 
             f.setDean(*deanPtr);

@@ -35,6 +35,10 @@ void Student::setCredit(const int& credit){
     _completedCredit = credit;
 }
 
+void Student::setEnrollYear(const int& year){
+    _enrollYear = year;
+}
+
 void StudentUI::print(const Student& st){
     cout << format(
         "{:10}|{:25}|{:2}/{:2}/{:4}|{:5}|{:4}\n",

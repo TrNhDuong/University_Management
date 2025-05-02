@@ -11,6 +11,7 @@ public:
     string getType();
     void setGPA(const float& gpa);
     void setCredit(const int& credit);
+    void setEnrollYear(const int& year);
     float getGPA() const;
     int getCompletedCredit() const;
     
