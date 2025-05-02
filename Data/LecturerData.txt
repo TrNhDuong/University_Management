@@ -1,0 +1,3 @@
+Đinh Bá Tiến|12000001|01/01/1988|3|Professor
+Lương Vĩ Minh|12000002|02/02/1989|4|PHD
+Nguyễn Phúc Hậu|12000003|01/01/2001|5|Professor

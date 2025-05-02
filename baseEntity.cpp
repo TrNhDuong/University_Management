@@ -1,4 +1,6 @@
 #include "baseEntity.h"
+#include <sstream>
+#include <iostream>
 
 Birth::Birth(){
     _day = _month = _year = 0;

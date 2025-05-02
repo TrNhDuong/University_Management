@@ -11,6 +11,8 @@ public:
     string getType();
     int getInstructYear() const;
     string getDegree() const;
+    void setInstructYear(const int& year);
+    void setDeg(const string& deg);
     Lecturer();
     ~Lecturer();
 };
@@ -19,4 +21,6 @@ class LecturerUI{
 public:
     static void print(const Lecturer& lecturer);
 };
+
+
 #endif

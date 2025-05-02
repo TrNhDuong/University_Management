@@ -29,7 +29,8 @@ LecturerDatabaseDisplay::~LecturerDatabaseDisplay(){
 void FacultyDatabaseDisplay::display(IDatabase* database){
     FacultyDatabase* facultyDTB = dynamic_cast<FacultyDatabase*>(database);
     int size = facultyDTB->_data.size();
-
+    for (int i = 0; i < size; i++)
+        FacultyUI::print(facultyDTB->_data[i]);
 }
 
 FacultyDatabaseDisplay::~FacultyDatabaseDisplay(){

@@ -9,6 +9,13 @@ Lecturer::Lecturer(){
     _id = "";
 }
 
+void Lecturer::setInstructYear(const int& year){
+    _instructYear = year;
+}
+void Lecturer::setDeg(const string& deg){
+    _academicDegree = deg;
+}
+
 Lecturer::~Lecturer(){
     
 }
@@ -25,11 +32,11 @@ string Lecturer::getDegree() const {
     return _academicDegree;
 }
 
-void LecturerUI::print(const Lecturer& lt){
+void LecturerUI::print(const Lecturer& lecturer){
     cout << format(
-        "{:10}|{:25}|{:2}/{:2}/{:4}|{:5}|{:4}\n",
-        lt.getId(),lt.getName(), 
-        lt.getBirth().getDay(), lt.getBirth().getMonth(), lt.getBirth().getYear(), 
-        lt.getInstructYear(), lt.getDegree()
+        "{}|{}|{}|{}|{}|{}|{}\n",
+        lecturer.getId(), lecturer.getName(), 
+        lecturer.getBirth().getDay(), lecturer.getBirth().getMonth(), lecturer.getBirth().getYear(),
+        lecturer.getInstructYear(), lecturer.getDegree()
     );
 }

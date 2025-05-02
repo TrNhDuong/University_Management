@@ -1,14 +1,11 @@
 #include "faculty.h"
-#include <iostream>
-#include <format>
-using std::cout;
-using std::format;
+#include "utils.h"
 
-string Faculty::getType(){
+string Faculty::getType() const{
     return "Faculty";
 }
 
-string Faculty::getMail(){
+string Faculty::getMail() const{
     return _email;
 }
 
@@ -25,14 +22,17 @@ Faculty::Faculty(){
 Faculty::~Faculty(){
 }
 
-Lecturer Faculty::getDean(){
-    return _dean;
-}
 
 void Faculty::setDean(const Lecturer& dean){
     _dean = dean;
 }
 
-void FacultyUI::print(const Faculty& faculty){
-    
+Lecturer Faculty::getDean() const{
+    return _dean;
+}
+
+void FacultyUI::print(Faculty& faculty){
+    cout << faculty.getId() << "|" << faculty.getName() << "|"
+     << faculty.getBirth().getDay() << "/" << faculty.getBirth().getMonth() << "/" << faculty.getBirth().getYear() << "|"
+    << faculty.getMail() << "|" << faculty.getDean().getId() << '\n';
 }
