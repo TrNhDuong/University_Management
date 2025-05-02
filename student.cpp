@@ -26,6 +26,9 @@ float Student::getGPA() const{
 int Student::getCompletedCredit() const{
     return _completedCredit;
 }
+int Student:: getEnrollYear() const{
+    return _enrollYear;
+}
 
 void Student::setGPA(const float& gpa){
     _gpa = gpa;

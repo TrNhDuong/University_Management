@@ -24,7 +24,7 @@ void FacultyReadData::readData(const string& filename){
         getline(ss, deanID);
         //find the Lectuer base on the deanID above
           // dùng singleton
-        int index = lecDB.LecturerDatabase::find_obj(deanID); //finding base on ID
+        int index = lecDB.LecturerDatabase::find(deanID); //finding base on ID
         Lecturer* deanPtr = nullptr;
         Faculty f; 
    
