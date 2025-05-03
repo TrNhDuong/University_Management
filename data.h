@@ -3,12 +3,16 @@
 #include <vector>
 #include "student.h"
 #include "lecturer.h"
-#include"faculty.h"
-//#include"readData.h" ////getdata from database
+#include "faculty.h"
+#include "baseEntity.h"
+#include <exception>
 #include <string>
+#include <fstream>
+#include <iostream>
 using std::vector;
 using std::string;
-
+using std::cout;
+using std::fstream;
 
 class IDatabase{
 public:
@@ -29,10 +33,11 @@ public:
         static StudentDatabase instance;
         return instance;
     }
+    int getSize() const;
+    Student* getData(const int&);
     friend class StudentDatabaseDisplay;
     friend class StudentReadData;
 };
-
 
 class LecturerDatabase: public IDatabase{
 private:
@@ -48,7 +53,7 @@ public:
     }
     string getDataType() const override;
     Lecturer& getData(const int& index);
-    int find_obj(const string& id) const; //return the index in vector _data, it is necessary (can't use friend to lecturer => invalid action harm to capsulation)
+    int find_obj(const string& id) const;
     friend class LecturerDatabaseDisplay;
     friend class LecturerReadData;
 };
