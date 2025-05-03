@@ -1,10 +1,4 @@
 #include "data.h"
-#include "baseEntity.h"
-#include <fstream>
-#include <iostream>
-#include<exception>
-using std::cout;
-using std::fstream;
 
 
 string StudentDatabase::getDataType() const {
@@ -17,6 +11,16 @@ string LecturerDatabase::getDataType() const {
 
 string FacultyDatabase::getDataType() const {
     return "Faculty";
+}
+
+int StudentDatabase::getSize() const {
+    return _data.size();
+}
+
+Student* StudentDatabase::getData(const int& index){
+    if (index < 0 || index >= _data.size())
+        return nullptr;
+    return &_data[index];
 }
 
 int LecturerDatabase::find_obj(const string& id) const{ //return the index

@@ -2,8 +2,11 @@
 #define _FACULTY_H_
 #include "baseEntity.h"
 #include "lecturer.h"
-#include "utils.h"
-
+#include <vector>
+#include <iostream>
+#include <format>
+using std::format;
+using std::cout;
 using std::string, std::vector;
 
 class Faculty : public BaseEntity{

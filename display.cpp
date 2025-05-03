@@ -1,8 +1,4 @@
 #include "display.h"
-#include <iostream>
-#include <format>
-using std::format;
-using std::cout;
 
 void StudentDatabaseDisplay::display(IDatabase* database){
     StudentDatabase* studentDTB = dynamic_cast<StudentDatabase*>(database);
@@ -37,12 +33,12 @@ FacultyDatabaseDisplay::~FacultyDatabaseDisplay(){
 
 }
 
-IDisplay* DisplayFactory::createDisplay(IDatabase* database){
-    if ("Student" == database->getDataType()){
+IDisplay* DisplayFactory::createDisplay(const string& type){
+    if ("Student" == type){
         return new StudentDatabaseDisplay();
-    } else if ("Lecturer" == database->getDataType()){
+    } else if ("Lecturer" == type){
         return new LecturerDatabaseDisplay();
-    } else if ("Faculty" == database->getDataType()){
+    } else if ("Faculty" == type){
         return new FacultyDatabaseDisplay();
     }
     return nullptr;
