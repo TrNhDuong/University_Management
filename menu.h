@@ -1,35 +1,44 @@
-#ifndef _MENU_H_
-#define _MENU_H_
-#include <vector>
+#ifndef MENU_H
+#define MENU_H
+
 #include <string>
+#include <vector>
+#include <memory>
 #include <iostream>
-using namespace std;
+using std::string;
+using std::vector;
+using std::unique_ptr;
+using std::make_unique;
 
-class Menu{
-private:
-    vector<string> _option;
+// Abstract base class for Menu
+class Menu {
+protected:
+    vector<string> _options;
 public:
-    string getChoice();
-    void displayMenu();
-    void addChoice(const string &newChoice);
-    void removeChoice(const string& choice);
-    void replaceChoice(const string& oldChoice, const string& newChoice);
-    Menu();
-    ~Menu(); 
+    virtual ~Menu() = default;
+    virtual void display() const = 0;
+    string getChoice() const;
 };
 
-
-class System{
-    public:
-        static vector<string> _entity;
-        static void displaySystemName();
-        static string getChoiceEntity();
+// Concrete class for Main Menu
+class MainMenu : public Menu {
+public:
+    MainMenu();
+    void display() const override;
 };
 
-class RunSystem{
-    public:
-        static void runMenu(Menu& menu);
+// Concrete class for Entity Menu
+class EntityMenu : public Menu {
+public:
+    EntityMenu();
+    void display() const override;
+
 };
 
+// Factory class to create menus
+class MenuFactory {
+public:
+    static unique_ptr<Menu> createMenu(const string& type);
+};
 
-#endif
+#endif // MENU_H

@@ -21,7 +21,7 @@ string FacultyDatabase::getDataType() const {
 
 int LecturerDatabase::find_obj(const string& id) const{ //return the index
     int i = 0;
-    for (i ; i < _data.size(); ++i){
+    for ( ; i < _data.size(); ++i){
         if (_data[i].getId() == id) break;
     }
     if (i == _data.size()) return -1; //return -1 if it not find out
