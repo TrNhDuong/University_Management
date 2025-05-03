@@ -8,7 +8,7 @@ using std::format;
 
 // Implementation of MainMenu
 MainMenu::MainMenu() {
-    _options = {"Thêm", "Xóa", "Sửa", "Thay Thế", "Hiển Thị", "Thoát"};
+    _options = {"Thêm", "Xóa", "Thay Thế", "Hiển Thị", "Thoát"};
 }
 
 void MainMenu::display() const {
