@@ -28,7 +28,7 @@ string Menu::getChoice() const {
 
 // Implementation of EntityMenu
 EntityMenu::EntityMenu() {
-    _options = {"Student", "Lecturer", "Faculty", "Back", "Exit"};
+    _options = {"Student", "Lecturer", "Faculty", "Exit"};
 }
 
 void EntityMenu::display() const {
