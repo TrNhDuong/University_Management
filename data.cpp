@@ -167,3 +167,91 @@ bool LecturerDatabase::Replace(Lecturer& des, Lecturer& src){
         return false; //if des obj not found
     }
 }
+
+void StudentGetData::InputData(Student& student){
+    cout << "Nhập tên sinh viên: ";
+    string name;
+    cin.ignore();
+    getline(cin, name);
+    student.setName(name);
+    cout << "Nhập mã sinh viên: ";
+    string id;
+    cin >> id;
+    student.setId(id);
+    cout << "Nhập ngày sinh sinh viên (dd/mm/yyyy): ";
+    string birth;
+    cin >> birth;
+    student.setBirth(birth);
+
+    cout << "Nhập điểm trung bình sinh viên: ";
+    float gpa;
+    cin >> gpa;
+    student.setGPA(gpa);
+
+    cout << "Nhập số tín chỉ đã hoàn thành: ";
+    int completedCredit;
+    cin >> completedCredit;
+    student.setCredit(completedCredit);
+}
+
+void LecturerGetData::InputData(Lecturer& lecturer){
+    cout << "Nhập tên giảng viên: ";
+    string name;
+    cin.ignore();
+    getline(cin, name);
+    lecturer.setName(name);
+    cout << "Nhập mã giảng viên: ";
+    string id;
+    cin >> id;
+    lecturer.setId(id);
+    cout << "Nhập ngày sinh giảng viên (dd/mm/yyyy): ";
+    string birth;
+    cin >> birth;
+    lecturer.setBirth(birth);
+
+    cout << "Nhập năm giảng dạy: ";
+    int instructYear;
+    cin >> instructYear;
+    lecturer.setInstructYear(instructYear);
+
+    cout << "Nhập học vị: ";
+    string degree;
+    cin.ignore();
+    getline(cin, degree);
+    lecturer.setDeg(degree);
+}
+
+void FacultyGetData::InputData(Faculty& faculty){
+    cout << "Nhập tên khoa: ";
+    string name;
+    cin.ignore();
+    getline(cin, name);
+    faculty.setName(name);
+    cout << "Nhập mã khoa: ";
+    string id;
+    cin >> id;
+    faculty.setId(id);
+    cout << "Nhập ngày thành lập khoa (dd/mm/yyyy): ";
+    string birth;
+    cin >> birth;
+    faculty.setBirth(birth);
+
+    cout << "Nhập email khoa: ";
+    string email;
+    cin.ignore();
+    getline(cin, email);
+    faculty.setMail(email);
+
+    cout << "Nhập mã giảng viên trưởng khoa: ";
+    string deanId;
+    cin >> deanId;
+    LecturerDatabase& lecturerDB = LecturerDatabase::getInstance();
+    int index = lecturerDB.find(deanId);
+    if (index != -1) {
+        faculty.setDean(lecturerDB.getData(index));
+    } else {
+        cout << "Giảng viên không tồn tại trong hệ thống.\n";
+        return;
+    }
+      
+}

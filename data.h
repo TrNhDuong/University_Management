@@ -105,4 +105,20 @@ public:
 };
 
 
+class StudentGetData{
+    public:
+        static void InputData(Student& student);
+    };
+    
+class LecturerGetData{
+    public:
+        static void InputData(Lecturer& lecturer);
+    };
+
+class FacultyGetData{
+    public:
+        static void InputData(Faculty& faculty);
+};    
+
+
 #endif

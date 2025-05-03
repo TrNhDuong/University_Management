@@ -1,7 +1,7 @@
 #include "student.h"
 #include <format>
 #include <iostream>
-using std::cout;
+using std::cout, std::cin;
 using std::format;
 
 Student::Student(){
@@ -50,3 +50,4 @@ void StudentUI::print(const Student& st){
         st.getGPA(), st.getCompletedCredit()
         );
 }
+
