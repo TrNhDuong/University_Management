@@ -35,10 +35,11 @@ public:
 
 };
 
-// Factory class to create menus
+// Factory class to create Menu objects
 class MenuFactory {
-public:
-    static unique_ptr<Menu> createMenu(const string& type);
-};
+    public:
+        static unique_ptr<Menu> createMenu(const string& type);
+    };
+    
 
 #endif // MENU_H

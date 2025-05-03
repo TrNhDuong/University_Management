@@ -29,7 +29,7 @@ void UniversitySystem::Run(){
             while (true){
                 if (entityChoice == "1") {
                     display = DisplayFactory::createDisplay(studentDB);
-                    display->display(studentDB);
+                    display->display(studentDB);     
                 } else if (entityChoice == "2") {
                     display = DisplayFactory::createDisplay(lecturerDB);
                     display->display(lecturerDB);   
@@ -49,6 +49,53 @@ void UniversitySystem::Run(){
             }
         }  else if (choice == "6") {
             break;
+        } else if (choice == "1") {
+            entityMenu->display();
+            string entityChoice = entityMenu->getChoice();
+            while (true){
+                if (entityChoice == "1") {
+                    Student student;
+                    cout << "Nhập tên sinh viên: ";
+                    string name;
+                    cin.ignore();
+                    getline(cin, name);
+                    student.setName(name);
+                    cout << "Nhập mã sinh viên: ";
+                    string id;
+                    cin >> id;
+                    student.setId(id);
+                    cout << "Nhập ngày sinh sinh viên (dd/mm/yyyy): ";
+                    string birth;
+                    cin >> birth;
+                    student.setBirth(birth);
+                   
+                    cout << "Nhập điểm trung bình sinh viên: ";
+                    float gpa;
+                    cin >> gpa;
+                    student.setGPA(gpa);
+
+                    cout << "Nhập số tín chỉ đã hoàn thành: ";
+                    int completedCredit;
+                    cin >> completedCredit;
+                    student.setCredit(completedCredit);
+                    
+                    static_cast<StudentDatabase*>(studentDB)->Add(student);  //ép kiểu nếu nó là factory
+                    
+                } else if (entityChoice == "2") {
+                    
+                } else if (entityChoice == "3") {
+                    
+                } else if (entityChoice == "4") {
+                    mainMenu->display();
+                    break;
+                } else if (entityChoice == "5") {
+                    return;
+                } else {
+                    cout << "Bạn yêu đã nhập sai, mời nhập lại!\n";
+                }
+
+                entityChoice = entityMenu->getChoice();
+            }
         }else{
             cout << "Bạn yêu đã nhập sai, mời nhập lại!\n";
         }
