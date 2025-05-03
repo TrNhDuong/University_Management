@@ -1,5 +1,7 @@
 #include "menu.h"
-#include "faculty.h"
+#include "Entity/faculty.h"
+#include "Entity/student.h"
+#include "Entity/lecturer.h"
 #include "utils.h"
 #include "display.h"
 #include "manageSystem.h"

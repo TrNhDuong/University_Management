@@ -44,7 +44,7 @@ void Student::setEnrollYear(const int& year){
 
 void StudentUI::print(const Student& st){
     cout << format(
-        "{:10}|{:25}|{:2}/{:2}/{:4}|{:5}|{:4}\n",
+        "{:10}|{:25}|{:02}/{:02}/{:04}|{:5}|{:4}\n",
         st.getId(),st.getName(), 
         st.getBirth().getDay(), st.getBirth().getMonth(), st.getBirth().getYear(), 
         st.getGPA(), st.getCompletedCredit()

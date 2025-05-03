@@ -1,14 +1,18 @@
 #ifndef _DATA_H_
 #define _DATA_H_
 #include <vector>
-#include "student.h"
-#include "lecturer.h"
-#include"faculty.h"
-//#include"readData.h" ////getdata from database
+#include "Entity/student.h"
+#include "Entity/lecturer.h"
+#include "Entity/faculty.h"
+#include "Entity/baseEntity.h"
+#include <exception>
 #include <string>
+#include <fstream>
+#include <iostream>
 using std::vector;
 using std::string;
-
+using std::cout;
+using std::fstream;
 
 class IDatabase{
 public:
@@ -31,6 +35,7 @@ public:
         static StudentDatabase instance;
         return instance;
     }
+
     
     Student& getData(const int& index);
     //need CRTL
@@ -40,10 +45,11 @@ public:
     bool Remove(Student& obj); ///return true if remove succesfully, return false if ID not found
     bool Replace(Student& des, Student& src); //return true if remove succesfully, return false if des not found
 
+    int getSize() const;
+    Student* getData(const int&);
     friend class StudentDatabaseDisplay;
     friend class StudentReadData;
 };
-
 
 class LecturerDatabase: public IDatabase{
 private:

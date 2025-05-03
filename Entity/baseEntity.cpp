@@ -1,5 +1,4 @@
 #include "baseEntity.h"
-#include <sstream>
 #include <iostream>
 
 Birth::Birth(){

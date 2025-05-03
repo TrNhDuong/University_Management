@@ -1,8 +1,4 @@
-#include"readData.h"
-#include"faculty.h"
-#include"lecturer.h"
-#include<iostream>
-using std::getline;
+#include "readData.h"
 
 void FacultyReadData::readData(const string& filename){
     _fileIn.open(filename);
@@ -40,9 +36,9 @@ void FacultyReadData::readData(const string& filename){
             zombie.setBirth("01/01/01");
             f.setDean(zombie);
         }
-        f.setName(name); 
-        f.setId(id); 
-        f.setBirth(birth); 
+        f.setName(name);
+        f.setId(id);
+        f.setBirth(birth);       
         f.setMail(email);
         FacultyDatabase& facultyDB = FacultyDatabase::getInstance();
         facultyDB._data.push_back(f);

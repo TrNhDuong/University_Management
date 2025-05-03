@@ -1,5 +1,4 @@
 #include "faculty.h"
-#include "utils.h"
 
 string Faculty::getType() const{
     return "Faculty";
@@ -32,7 +31,10 @@ Lecturer Faculty::getDean() const{
 }
 
 void FacultyUI::print(Faculty& faculty){
-    cout << faculty.getId() << "|" << faculty.getName() << "|"
-     << faculty.getBirth().getDay() << "/" << faculty.getBirth().getMonth() << "/" << faculty.getBirth().getYear() << "|"
-    << faculty.getMail() << "|" << faculty.getDean().getId() << '\n';
+    cout << format(
+        "{:10}|{:25}|{:02}/{:02}/{:4}|{:30}|{:25}\n",
+        faculty.getId(), faculty.getName(),
+        faculty.getBirth().getDay(), faculty.getBirth().getMonth(), faculty.getBirth().getYear(), 
+        faculty.getMail(), faculty.getDean().getName()
+    );
 }

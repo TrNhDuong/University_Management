@@ -34,7 +34,11 @@ string Lecturer::getDegree() const {
 
 void LecturerUI::print(const Lecturer& lecturer){
     cout << format(
+<<<<<<< HEAD:lecturer.cpp
         "{}|{}|{}/{}/{}|{}|{}\n",
+=======
+        "{:10}|{:25}|{:02}/{:02}/{:4}|{:5}|{:4}\n",
+>>>>>>> origin/NDuong_branch:Entity/lecturer.cpp
         lecturer.getId(), lecturer.getName(), 
         lecturer.getBirth().getDay(), lecturer.getBirth().getMonth(), lecturer.getBirth().getYear(),
         lecturer.getInstructYear(), lecturer.getDegree()

@@ -1,10 +1,4 @@
 #include "data.h"
-#include "baseEntity.h"
-#include <fstream>
-#include <iostream>
-#include<exception>
-using std::cout;
-using std::fstream;
 
 
 string StudentDatabase::getDataType() const {
@@ -18,10 +12,20 @@ string LecturerDatabase::getDataType() const {
 string FacultyDatabase::getDataType() const {
     return "Faculty";
 }
+
+int StudentDatabase::getSize() const {
+    return _data.size();
+}
 //since the singleton in each student, faculty and lecturer database 
 //=> Can not use virtual for find_obj() and getData() method 
 //find_obj()
-int FacultyDatabase::find(const string& id) const {
+Student* StudentDatabase::getData(const int& index){
+    if (index < 0 || index >= _data.size())
+        return nullptr;
+    return &_data[index];
+}
+
+int LecturerDatabase::find(const string& id) const{ //return the index
     int i = 0;
     for (i ; i < _data.size(); ++i){
         if (_data[i].getId() == id) break;
