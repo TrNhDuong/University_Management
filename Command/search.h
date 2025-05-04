@@ -1,13 +1,13 @@
-#ifndef _SEARCH_H_
-#define _SEARCH_H_
-#include "Entity/baseEntity.h"
-#include "data.h"
+#ifndef SEARCH_H
+#define SEARCH_H
+#include "../Entity/baseEntity.h"
+#include "../data.h"
 #include "../manageSystem.h"
 #include <vector>
-#include <unordered_map>
 #include <memory>
-using std::unordered_map;
+#include <string>
 using std::vector;
+using std::string;
 
 class ISearch{
 public:

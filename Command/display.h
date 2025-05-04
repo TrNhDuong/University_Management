@@ -1,12 +1,14 @@
 #ifndef _DISPLAY_H_
 #define _DISPLAY_H_
-#include "data.h"
-#include "Entity/student.h"
-#include "Entity/lecturer.h"
-#include "Entity/faculty.h"
-#include "Entity/baseEntity.h"
+#include "../data.h"
+#include "../Entity/student.h"
+#include "../Entity/lecturer.h"
+#include "../Entity/faculty.h"
+#include "../Entity/baseEntity.h"
 #include <iostream>
 #include <format>
+#include <string>
+using std::string;
 using std::format;
 using std::cout;
 

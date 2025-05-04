@@ -1,16 +1,20 @@
 #ifndef _MANAGE_SYSTEM_H_
 #define _MANAGE_SYSTEM_H_
 #include <iostream>
+#include <unordered_map>
+
 #include "data.h"
 #include "readData.h"
-#include "menu.h"
-#include "display.h"
+
+#include "Command/display.h"
+#include "Command/search.h"
+#include "Command/command.h"
+
 #include "Entity/student.h"
 #include "Entity/lecturer.h"
 #include "Entity/faculty.h"
 #include "Entity/baseEntity.h"
-#include "search.h"
-#include <unordered_map>
+
 using std::unordered_map;
 using std::cout;
 using std::cin;
@@ -24,6 +28,5 @@ private:
 public:
     void SetUp();
     void Run();
-    friend class SearchCommand;
 };
 #endif

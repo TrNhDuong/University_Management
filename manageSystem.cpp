@@ -20,8 +20,8 @@ void UniversitySystem::SetUp(){
 
 void UniversitySystem::Run(){
     SetUp();
-    DisplayFactory dpF;
-    IDisplay* f;
-    f = dpF.createDisplay(studentDB->getDataType());
-    f->display(studentDB);
+    SearchCommand searching;
+    DisplayCommand displaying;
+    displaying.displayDatabase(studentDB);
+    searching.searchObject(studentDB, "23120243");
 }

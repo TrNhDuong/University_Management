@@ -1,31 +1,20 @@
-#ifndef _COMMAND_H_
-#define _COMMAND_H_
+#ifndef COMMAND_H
+#define COMMAND_H
 #include "search.h"
 #include "display.h"
+#include <memory>
+#include <string>
+using std::string;
 
 class SearchCommand{
 public:
     SearchCommand() = default;
-    void SearchObject(IDatabase* database, const string& id){
-        string type = database->getDataType();
-        std::unique_ptr<ISearch> searchMachine(SearchFactory::createSearch(type));
-        std::unique_ptr<IUI> printer(UIFactory::createUI(type));
-
-        if (!searchMachine || !printer) return;
-
-        BaseEntity* object = searchMachine->search(database, id);
-        if (object)
-            printer->print(object);
-    }
+    void searchObject(IDatabase* database, const string& id);
 };
 
 class DisplayCommand{
 public:
     DisplayCommand() = default;
-    void displayDatabase(IDatabase* database){
-        string type = database->getDataType();
-        std::unique_ptr<IDisplay> displayMachine(DisplayFactory::createDisplay(type));
-        displayMachine->display(database);
-    }
+    void displayDatabase(IDatabase* database);
 };
 #endif
