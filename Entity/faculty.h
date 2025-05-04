@@ -24,9 +24,5 @@ public:
     ~Faculty();
 };
 
-class FacultyUI{
-public:
-    static void print(Faculty& faculty);
-};
 
 #endif

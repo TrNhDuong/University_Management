@@ -20,11 +20,16 @@ void FacultyReadData::readData(const string& filename){
         getline(ss, deanID);
         //find the Lectuer base on the deanID above
           // dùng singleton
-        int index = lecDB.LecturerDatabase::find_obj(deanID); //finding base on ID
+        int index = -1; //finding base on ID
+        for (int i = 0; i < lecDB.getSize(); i++)
+            if (deanID == lecDB.getData(i)->getId()){
+                index = i;
+                break;
+            }
         Lecturer* deanPtr = nullptr;
         Faculty f; 
         if (index >= 0){
-            deanPtr = &lecDB.getData(index); 
+            deanPtr = lecDB.getData(index); 
             f.setDean(*deanPtr);
         }
         else {

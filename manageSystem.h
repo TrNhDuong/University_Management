@@ -24,6 +24,6 @@ private:
 public:
     void SetUp();
     void Run();
-    friend class Command;
+    friend class SearchCommand;
 };
 #endif

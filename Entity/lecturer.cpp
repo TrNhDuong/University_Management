@@ -31,12 +31,3 @@ int Lecturer::getInstructYear() const {
 string Lecturer::getDegree() const {
     return _academicDegree;
 }
-
-void LecturerUI::print(const Lecturer& lecturer){
-    cout << format(
-        "{:10}|{:25}|{:02}/{:02}/{:4}|{:5}|{:4}\n",
-        lecturer.getId(), lecturer.getName(), 
-        lecturer.getBirth().getDay(), lecturer.getBirth().getMonth(), lecturer.getBirth().getYear(),
-        lecturer.getInstructYear(), lecturer.getDegree()
-    );
-}

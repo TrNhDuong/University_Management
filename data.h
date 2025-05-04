@@ -35,7 +35,6 @@ public:
     }
     int getSize() const;
     Student* getData(const int&);
-    friend class StudentDatabaseDisplay;
     friend class StudentReadData;
 };
 
@@ -52,9 +51,8 @@ public:
         return instance;
     }
     string getDataType() const override;
-    Lecturer& getData(const int& index);
-    int find_obj(const string& id) const;
-    friend class LecturerDatabaseDisplay;
+    Lecturer* getData(const int& index);
+    int getSize() const;
     friend class LecturerReadData;
 };
 
@@ -72,9 +70,9 @@ public:
         return instance;
     };
     string getDataType() const override;
-
+    int getSize() const;
+    Faculty* getData(const int& index);
     friend class FacultyReadData;
-    friend class FacultyDatabaseDisplay;
 };
 
 

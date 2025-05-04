@@ -10,6 +10,39 @@
 using std::format;
 using std::cout;
 
+class IUI{
+public:
+    virtual void print(BaseEntity*) = 0;
+    virtual ~IUI() = default;
+};
+
+class LecturerUI: public IUI{
+public:
+    void print(BaseEntity* lecturer) override;
+};
+
+class StudentUI: public IUI{
+public:
+    void print(BaseEntity* student) override;
+};
+
+class FacultyUI: public IUI{
+public:
+    void print(BaseEntity* student) override;
+};
+
+class UIFactory {
+public:
+    static IUI* createUI(const string& type) {
+        if (type == "Student")
+            return new StudentUI();
+        else if (type == "Lecturer")
+            return new LecturerUI();
+
+        return nullptr;
+    }
+};
+
 class IDisplay{
 public:
     virtual void display(IDatabase* data) = 0;

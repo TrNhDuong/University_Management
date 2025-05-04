@@ -29,12 +29,3 @@ void Faculty::setDean(const Lecturer& dean){
 Lecturer Faculty::getDean() const{
     return _dean;
 }
-
-void FacultyUI::print(Faculty& faculty){
-    cout << format(
-        "{:10}|{:25}|{:02}/{:02}/{:4}|{:30}|{:25}\n",
-        faculty.getId(), faculty.getName(),
-        faculty.getBirth().getDay(), faculty.getBirth().getMonth(), faculty.getBirth().getYear(), 
-        faculty.getMail(), faculty.getDean().getName()
-    );
-}
