@@ -1,0 +1,67 @@
+\hypertarget{classIDisplay}{}\doxysection{I\+Display Class Reference}
+\label{classIDisplay}\index{IDisplay@{IDisplay}}
+
+
+Lớp cơ sở cho các lớp hiển thị.  
+
+
+
+
+{\ttfamily \#include $<$display.\+h$>$}
+
+
+
+Inheritance diagram for I\+Display\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classIDisplay_a3ca2e2aa12adc56a96f1f5dac9eb52a5}{display}} (\mbox{\hyperlink{classIDatabase}{I\+Database}} $\ast$data)=0
+\begin{DoxyCompactList}\small\item\em Hiển thị thông tin của cơ sở dữ liệu. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classIDisplay_a3f639a4bdb0ab42276fee151c99ea2d8}{$\sim$\+I\+Display}} ()=default
+\begin{DoxyCompactList}\small\item\em Hàm hủy ảo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lớp cơ sở cho các lớp hiển thị. 
+
+Các lớp này cung cấp các phương thức để hiển thị thông tin của sinh viên, giảng viên và khoa. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIDisplay_a3f639a4bdb0ab42276fee151c99ea2d8}\label{classIDisplay_a3f639a4bdb0ab42276fee151c99ea2d8}} 
+\index{IDisplay@{IDisplay}!````~IDisplay@{$\sim$IDisplay}}
+\index{````~IDisplay@{$\sim$IDisplay}!IDisplay@{IDisplay}}
+\doxysubsubsection{\texorpdfstring{$\sim$IDisplay()}{~IDisplay()}}
+{\footnotesize\ttfamily virtual I\+Display\+::$\sim$\+I\+Display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Hàm hủy ảo. 
+
+Hàm này được gọi khi đối tượng \mbox{\hyperlink{classIDisplay}{I\+Display}} bị hủy. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIDisplay_a3ca2e2aa12adc56a96f1f5dac9eb52a5}\label{classIDisplay_a3ca2e2aa12adc56a96f1f5dac9eb52a5}} 
+\index{IDisplay@{IDisplay}!display@{display}}
+\index{display@{display}!IDisplay@{IDisplay}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily virtual void I\+Display\+::display (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIDatabase}{I\+Database}} $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Hiển thị thông tin của cơ sở dữ liệu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Con trỏ đến cơ sở dữ liệu cần hiển thị.\\
+\hline
+\end{DoxyParams}
+Hàm này sẽ được triển khai trong các lớp con để hiển thị thông tin cụ thể. 
+
+Implemented in \mbox{\hyperlink{classStudentDatabaseDisplay_ac19b641ee4ab98323a984b9f95dc2593}{Student\+Database\+Display}}, \mbox{\hyperlink{classLecturerDatabaseDisplay_a5c8f5998b7daae8af5d05d7a31079584}{Lecturer\+Database\+Display}}, and \mbox{\hyperlink{classFacultyDatabaseDisplay_ac1e0007834b0f53670d70e1f3840cc0d}{Faculty\+Database\+Display}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{display_8h}{display.\+h}}\end{DoxyCompactItemize}

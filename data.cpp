@@ -1,25 +1,54 @@
+/**
+ * @file data.cpp
+ * @brief Triển khai các lớp cơ sở dữ liệu cho sinh viên, giảng viên và khoa.
+ * @details Các lớp này quản lý danh sách sinh viên, giảng viên và khoa trong hệ thống.
+ */
+
 #include "data.h"
 
-
+/**
+ * @brief Lấy kiểu dữ liệu của cơ sở dữ liệu.
+ * @return Kiểu dữ liệu của cơ sở dữ liệu.
+ * @details Hàm này trả về một chuỗi mô tả kiểu dữ liệu của cơ sở dữ liệu.
+ */
 string StudentDatabase::getDataType() const {
     return "Student";
 }
 
+/**
+ * @brief Lấy kiểu dữ liệu của cơ sở dữ liệu.
+ * @return Kiểu dữ liệu của cơ sở dữ liệu.
+ * @details Hàm này trả về một chuỗi mô tả kiểu dữ liệu của cơ sở dữ liệu.
+ */
 string LecturerDatabase::getDataType() const {
     return "Lecturer";
 }
 
+/**
+ * @brief Lấy kiểu dữ liệu của cơ sở dữ liệu.
+ * @return Kiểu dữ liệu của cơ sở dữ liệu.
+ * @details Hàm này trả về một chuỗi mô tả kiểu dữ liệu của cơ sở dữ liệu.
+ */
 string FacultyDatabase::getDataType() const {
     return "Faculty";
 }
 
 
+/**
+ * @brief Lấy kích thước của cơ sở dữ liệu.
+ * @return Kích thước của cơ sở dữ liệu.
+ * @details Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu.
+ */
 int StudentDatabase::getSize() const {
     return _data.size();
 }
 
-//return the index
-
+/**
+ * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
+ * @param id Mã định danh của đối tượng cần tìm.
+ * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
+ * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
+ */
 int FacultyDatabase::find(const string& id) const {
 
     int i = 0;
@@ -30,6 +59,12 @@ int FacultyDatabase::find(const string& id) const {
     return i;
 }
 
+/**
+ * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
+ * @param id Mã định danh của đối tượng cần tìm.
+ * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
+ * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
+ */
 int StudentDatabase::find(const string& id) const {
     int i = 0;
     for (i ; i < _data.size(); ++i){
@@ -39,6 +74,12 @@ int StudentDatabase::find(const string& id) const {
     return i;
 }
 
+/**
+ * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
+ * @param id Mã định danh của đối tượng cần tìm.
+ * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
+ * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
+ */
 int LecturerDatabase::find(const string& id) const{ //return the index
     int i = 0;
     for (i ; i < _data.size(); ++i){
@@ -48,7 +89,12 @@ int LecturerDatabase::find(const string& id) const{ //return the index
     return i;
 }
 
-//Get data()
+/**
+ * @brief Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số.
+ * @param index Chỉ số của đối tượng cần lấy.
+ * @return Tham chiếu đến đối tượng trong cơ sở dữ liệu.
+ * @details Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số.
+ */
 Faculty& FacultyDatabase::getData(const int& index){
     if (index < 0 || index >= _data.size()){
         throw std::out_of_range ("Index Faculty out of bound\n");
@@ -56,12 +102,25 @@ Faculty& FacultyDatabase::getData(const int& index){
     return _data[index];
 }
 
+/**
+ * @brief Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số.
+ * @param index Chỉ số của đối tượng cần lấy.
+ * @return Tham chiếu đến đối tượng trong cơ sở dữ liệu.
+ * @details Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số.
+ */
 Student& StudentDatabase::getData(const int& index){
     if (index < 0 || index >= _data.size()){
         throw std::out_of_range ("Index Student out of bound\n");
     }
     return _data[index];
 }
+
+/**
+ * @brief Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số.
+ * @param index Chỉ số của đối tượng cần lấy.
+ * @return Tham chiếu đến đối tượng trong cơ sở dữ liệu.
+ * @details Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số.
+ */
 Lecturer& LecturerDatabase::getData(const int& index){ //return the instance 
     if (index < 0 || index >= _data.size()){
         throw std::out_of_range ("Index Lecturer out of bound\n");
@@ -70,11 +129,15 @@ Lecturer& LecturerDatabase::getData(const int& index){ //return the instance
 }
 
 
-//Add, Remove, Replace method
-//Student
+/**
+ * @brief Thêm một đối tượng vào cơ sở dữ liệu.
+ * @param obj Đối tượng cần thêm vào cơ sở dữ liệu.
+ * @details Hàm này thêm một đối tượng vào cơ sở dữ liệu.
+ */
 void StudentDatabase:: Add(const Student& obj){
     _data.push_back(obj);
 }
+
 bool StudentDatabase::Remove(const string& ID){
     for (int i = 0; i < _data.size(); ++i){
         if (ID == _data[i].getId()){
@@ -85,9 +148,24 @@ bool StudentDatabase::Remove(const string& ID){
     }
     return false; //if delete failed
 }
+
+/**
+ * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
+ * @param obj Đối tượng cần xóa khỏi cơ sở dữ liệu.
+ * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
+ * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
+ */
 bool StudentDatabase::Remove(Student& obj){
     return Remove(obj.getId());
 }
+
+/**
+ * @brief Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
+ * @param des Đối tượng cần thay thế.
+ * @param src Đối tượng mới thay thế.
+ * @return true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
+ * @details Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
+ */
 bool StudentDatabase::Replace(Student& des, Student& src){
     int index = find(des.getId());
     if(index >= 0){
@@ -104,7 +182,11 @@ bool StudentDatabase::Replace(Student& des, Student& src){
 }
 
 
-//Faculty
+/**
+ * @brief Thêm một đối tượng vào cơ sở dữ liệu.
+ * @param obj Đối tượng cần thêm vào cơ sở dữ liệu.
+ * @details Hàm này thêm một đối tượng vào cơ sở dữ liệu.
+ */
 void FacultyDatabase:: Add(const Faculty& obj){
     _data.push_back(obj);
 }
@@ -118,6 +200,13 @@ bool FacultyDatabase::Remove(const string& ID){
     }
     return false; //if delete failed
 }
+
+/**
+ * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
+ * @param obj Đối tượng cần xóa khỏi cơ sở dữ liệu.
+ * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
+ * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
+ */
 bool FacultyDatabase::Remove(Faculty& obj){
     return Remove(obj.getId());
 }
@@ -137,7 +226,11 @@ bool FacultyDatabase::Replace(Faculty& des, Faculty& src){
 
 
 
-//Lecturer
+/**
+ * @brief Thêm một đối tượng vào cơ sở dữ liệu.
+ * @param obj Đối tượng cần thêm vào cơ sở dữ liệu.
+ * @details Hàm này thêm một đối tượng vào cơ sở dữ liệu.
+ */
 void LecturerDatabase:: Add(const Lecturer& obj){
     _data.push_back(obj);
 }
@@ -151,9 +244,24 @@ bool LecturerDatabase::Remove(const string& ID){
     }
     return false; //if delete failed
 }
+
+/**
+ * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
+ * @param obj Đối tượng cần xóa khỏi cơ sở dữ liệu.
+ * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
+ * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
+ */
 bool LecturerDatabase::Remove(Lecturer& obj){
     return Remove(obj.getId());
 }
+
+/**
+ * @brief Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
+ * @param des Đối tượng cần thay thế.
+ * @param src Đối tượng mới thay thế.
+ * @return true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
+ * @details Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
+ */
 bool LecturerDatabase::Replace(Lecturer& des, Lecturer& src){
     int index = find(des.getId());
     if(index >= 0){
@@ -168,6 +276,11 @@ bool LecturerDatabase::Replace(Lecturer& des, Lecturer& src){
     }
 }
 
+/**
+ * @brief Nhập dữ liệu cho sinh viên từ bàn phím.
+ * @param student Đối tượng sinh viên cần nhập dữ liệu.
+ * @details Hàm này yêu cầu người dùng nhập thông tin cho sinh viên và lưu vào đối tượng sinh viên.
+ */
 void StudentGetData::InputData(Student& student){
     cout << "Nhập tên sinh viên: ";
     string name;
@@ -194,6 +307,11 @@ void StudentGetData::InputData(Student& student){
     student.setCredit(completedCredit);
 }
 
+/**
+ * @brief Nhập dữ liệu cho giảng viên từ bàn phím.
+ * @param lecturer Đối tượng giảng viên cần nhập dữ liệu.
+ * @details Hàm này yêu cầu người dùng nhập thông tin cho giảng viên và lưu vào đối tượng giảng viên.
+ */
 void LecturerGetData::InputData(Lecturer& lecturer){
     cout << "Nhập tên giảng viên: ";
     string name;
@@ -221,6 +339,11 @@ void LecturerGetData::InputData(Lecturer& lecturer){
     lecturer.setDeg(degree);
 }
 
+/**
+ * @brief Nhập dữ liệu cho khoa từ bàn phím.
+ * @param faculty Đối tượng khoa cần nhập dữ liệu.
+ * @details Hàm này yêu cầu người dùng nhập thông tin cho khoa và lưu vào đối tượng khoa.
+ */
 void FacultyGetData::InputData(Faculty& faculty){
     cout << "Nhập tên khoa: ";
     string name;

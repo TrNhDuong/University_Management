@@ -1,0 +1,220 @@
+\hypertarget{classLecturerDatabase}{}\doxysection{Lecturer\+Database Class Reference}
+\label{classLecturerDatabase}\index{LecturerDatabase@{LecturerDatabase}}
+
+
+Lớp cơ sở dữ liệu cho giảng viên.  
+
+
+
+
+{\ttfamily \#include $<$data.\+h$>$}
+
+
+
+Inheritance diagram for Lecturer\+Database\+:
+% FIG 0
+
+
+Collaboration diagram for Lecturer\+Database\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classLecturerDatabase_ae46eca298f9605e3753ba4c5efd79c9f}{get\+Data\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Lấy kiểu dữ liệu của cơ sở dữ liệu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLecturer}{Lecturer}} \& \mbox{\hyperlink{classLecturerDatabase_a8f83d45d05e6f593b2639cf64c54b406}{get\+Data}} (const int \&index)
+\begin{DoxyCompactList}\small\item\em Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLecturerDatabase_a7a83ab49b281a100fa421c5bb6dbb873}{find}} (const string \&id) const
+\begin{DoxyCompactList}\small\item\em Lấy kích thước của cơ sở dữ liệu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLecturerDatabase_a79f2e25a3fb00becff9612bca1c36017}{Add}} (const \mbox{\hyperlink{classLecturer}{Lecturer}} \&obj)
+\begin{DoxyCompactList}\small\item\em Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLecturerDatabase_a727310399e3189ce00208ae61c782658}{Remove}} (const string \&ID)
+\begin{DoxyCompactList}\small\item\em Xóa một đối tượng khỏi cơ sở dữ liệu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLecturerDatabase_abbd03a86e67a1281be93eebee554577e}{Remove}} (\mbox{\hyperlink{classLecturer}{Lecturer}} \&obj)
+\begin{DoxyCompactList}\small\item\em Xóa một đối tượng khỏi cơ sở dữ liệu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLecturerDatabase_ae5333ac3ecb401fbd78a2f6f42713af4}{Replace}} (\mbox{\hyperlink{classLecturer}{Lecturer}} \&des, \mbox{\hyperlink{classLecturer}{Lecturer}} \&src)
+\begin{DoxyCompactList}\small\item\em Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classLecturerDatabase}{Lecturer\+Database}} \& \mbox{\hyperlink{classLecturerDatabase_a50b8ef6d521bc3318300933ac6930068}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Lấy thể hiện duy nhất của lớp \mbox{\hyperlink{classLecturerDatabase}{Lecturer\+Database}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLecturerDatabase_a53981a827e1b9e012a48488ce37312e9}\label{classLecturerDatabase_a53981a827e1b9e012a48488ce37312e9}} 
+class {\bfseries Lecturer\+Database\+Display}
+\item 
+\mbox{\Hypertarget{classLecturerDatabase_a2028737de7ce5e3a321f9d136d128895}\label{classLecturerDatabase_a2028737de7ce5e3a321f9d136d128895}} 
+class {\bfseries Lecturer\+Read\+Data}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lớp cơ sở dữ liệu cho giảng viên. 
+
+Lớp này quản lý danh sách giảng viên trong hệ thống. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLecturerDatabase_a79f2e25a3fb00becff9612bca1c36017}\label{classLecturerDatabase_a79f2e25a3fb00becff9612bca1c36017}} 
+\index{LecturerDatabase@{LecturerDatabase}!Add@{Add}}
+\index{Add@{Add}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Lecturer\+Database\+::\+Add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLecturer}{Lecturer}} \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh. 
+
+Thêm một đối tượng vào cơ sở dữ liệu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Mã định danh của đối tượng cần tìm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -\/1 nếu không tìm thấy.
+\end{DoxyReturn}
+Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Đối tượng cần thêm vào cơ sở dữ liệu.\\
+\hline
+\end{DoxyParams}
+Hàm này thêm một đối tượng vào cơ sở dữ liệu. \mbox{\Hypertarget{classLecturerDatabase_a7a83ab49b281a100fa421c5bb6dbb873}\label{classLecturerDatabase_a7a83ab49b281a100fa421c5bb6dbb873}} 
+\index{LecturerDatabase@{LecturerDatabase}!find@{find}}
+\index{find@{find}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily int Lecturer\+Database\+::find (\begin{DoxyParamCaption}\item[{const string \&}]{id }\end{DoxyParamCaption}) const}
+
+
+
+Lấy kích thước của cơ sở dữ liệu. 
+
+Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
+
+\begin{DoxyReturn}{Returns}
+Kích thước của cơ sở dữ liệu.
+\end{DoxyReturn}
+Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Mã định danh của đối tượng cần tìm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -\/1 nếu không tìm thấy.
+\end{DoxyReturn}
+Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó. \mbox{\Hypertarget{classLecturerDatabase_a8f83d45d05e6f593b2639cf64c54b406}\label{classLecturerDatabase_a8f83d45d05e6f593b2639cf64c54b406}} 
+\index{LecturerDatabase@{LecturerDatabase}!getData@{getData}}
+\index{getData@{getData}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLecturer}{Lecturer}} \& Lecturer\+Database\+::get\+Data (\begin{DoxyParamCaption}\item[{const int \&}]{index }\end{DoxyParamCaption})}
+
+
+
+Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Chỉ số của đối tượng cần lấy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tham chiếu đến đối tượng trong cơ sở dữ liệu.
+\end{DoxyReturn}
+Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số. \mbox{\Hypertarget{classLecturerDatabase_ae46eca298f9605e3753ba4c5efd79c9f}\label{classLecturerDatabase_ae46eca298f9605e3753ba4c5efd79c9f}} 
+\index{LecturerDatabase@{LecturerDatabase}!getDataType@{getDataType}}
+\index{getDataType@{getDataType}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{getDataType()}{getDataType()}}
+{\footnotesize\ttfamily string Lecturer\+Database\+::get\+Data\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Lấy kiểu dữ liệu của cơ sở dữ liệu. 
+
+\begin{DoxyReturn}{Returns}
+Kiểu dữ liệu của cơ sở dữ liệu.
+\end{DoxyReturn}
+Hàm này trả về một chuỗi mô tả kiểu dữ liệu của cơ sở dữ liệu. 
+
+Implements \mbox{\hyperlink{classIDatabase_a5daf6f2e76e012ed70168b12232f85f1}{I\+Database}}.
+
+\mbox{\Hypertarget{classLecturerDatabase_a50b8ef6d521bc3318300933ac6930068}\label{classLecturerDatabase_a50b8ef6d521bc3318300933ac6930068}} 
+\index{LecturerDatabase@{LecturerDatabase}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classLecturerDatabase}{Lecturer\+Database}}\& Lecturer\+Database\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Lấy thể hiện duy nhất của lớp \mbox{\hyperlink{classLecturerDatabase}{Lecturer\+Database}}. 
+
+\begin{DoxyReturn}{Returns}
+Tham chiếu đến thể hiện duy nhất của lớp \mbox{\hyperlink{classLecturerDatabase}{Lecturer\+Database}}. 
+\end{DoxyReturn}
+Thể hiện duy nhất của lớp \mbox{\hyperlink{classLecturerDatabase}{Lecturer\+Database}}.\mbox{\Hypertarget{classLecturerDatabase_a727310399e3189ce00208ae61c782658}\label{classLecturerDatabase_a727310399e3189ce00208ae61c782658}} 
+\index{LecturerDatabase@{LecturerDatabase}!Remove@{Remove}}
+\index{Remove@{Remove}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Lecturer\+Database\+::\+Remove (\begin{DoxyParamCaption}\item[{const string \&}]{ID }\end{DoxyParamCaption})}
+
+
+
+Xóa một đối tượng khỏi cơ sở dữ liệu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & Mã định danh của đối tượng cần xóa. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true nếu xóa thành công, false nếu không tìm thấy đối tượng.
+\end{DoxyReturn}
+Hàm này xóa một đối tượng khỏi cơ sở dữ liệu. \mbox{\Hypertarget{classLecturerDatabase_abbd03a86e67a1281be93eebee554577e}\label{classLecturerDatabase_abbd03a86e67a1281be93eebee554577e}} 
+\index{LecturerDatabase@{LecturerDatabase}!Remove@{Remove}}
+\index{Remove@{Remove}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Lecturer\+Database\+::\+Remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLecturer}{Lecturer}} \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+Xóa một đối tượng khỏi cơ sở dữ liệu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Đối tượng cần xóa khỏi cơ sở dữ liệu. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true nếu xóa thành công, false nếu không tìm thấy đối tượng.
+\end{DoxyReturn}
+Hàm này xóa một đối tượng khỏi cơ sở dữ liệu. \mbox{\Hypertarget{classLecturerDatabase_ae5333ac3ecb401fbd78a2f6f42713af4}\label{classLecturerDatabase_ae5333ac3ecb401fbd78a2f6f42713af4}} 
+\index{LecturerDatabase@{LecturerDatabase}!Replace@{Replace}}
+\index{Replace@{Replace}!LecturerDatabase@{LecturerDatabase}}
+\doxysubsubsection{\texorpdfstring{Replace()}{Replace()}}
+{\footnotesize\ttfamily bool Lecturer\+Database\+::\+Replace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLecturer}{Lecturer}} \&}]{des,  }\item[{\mbox{\hyperlink{classLecturer}{Lecturer}} \&}]{src }\end{DoxyParamCaption})}
+
+
+
+Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em des} & Đối tượng cần thay thế. \\
+\hline
+{\em src} & Đối tượng mới thay thế. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
+\end{DoxyReturn}
+Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{data_8h}{data.\+h}}\item 
+\mbox{\hyperlink{data_8cpp}{data.\+cpp}}\end{DoxyCompactItemize}

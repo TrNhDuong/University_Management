@@ -1,0 +1,230 @@
+\hypertarget{classStudentDatabase}{}\doxysection{Student\+Database Class Reference}
+\label{classStudentDatabase}\index{StudentDatabase@{StudentDatabase}}
+
+
+Lớp cơ sở dữ liệu cho sinh viên.  
+
+
+
+
+{\ttfamily \#include $<$data.\+h$>$}
+
+
+
+Inheritance diagram for Student\+Database\+:
+% FIG 0
+
+
+Collaboration diagram for Student\+Database\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classStudentDatabase_a875f4583c63660a714b7d269476e8656}{get\+Data\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Lấy kiểu dữ liệu của cơ sở dữ liệu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classStudentDatabase_a736a386c11ebb628c7a8714540cf4b94}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Lấy kích thước của cơ sở dữ liệu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classStudent}{Student}} \& \mbox{\hyperlink{classStudentDatabase_ae90bdd7cb96a042d973112aae5b50099}{get\+Data}} (const int \&index)
+\begin{DoxyCompactList}\small\item\em Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classStudentDatabase_a1a56178cfd6fd8b210616d348c72a818}{find}} (const string \&id) const
+\begin{DoxyCompactList}\small\item\em Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classStudentDatabase_ab26f72837631c9feaa2846a888501de0}{Add}} (const \mbox{\hyperlink{classStudent}{Student}} \&obj)
+\begin{DoxyCompactList}\small\item\em Thêm một đối tượng vào cơ sở dữ liệu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classStudentDatabase_a7b7da2a401e5e5f3ba207d8549eee3d1}{Remove}} (const string \&ID)
+\begin{DoxyCompactList}\small\item\em Xóa một đối tượng khỏi cơ sở dữ liệu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classStudentDatabase_afea92f9d8b1e40c28f09b1fad6caf3ed}{Remove}} (\mbox{\hyperlink{classStudent}{Student}} \&obj)
+\begin{DoxyCompactList}\small\item\em Xóa một đối tượng khỏi cơ sở dữ liệu. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classStudentDatabase_a536b7332df94db0092b68f79371a24bd}{Replace}} (\mbox{\hyperlink{classStudent}{Student}} \&des, \mbox{\hyperlink{classStudent}{Student}} \&src)
+\begin{DoxyCompactList}\small\item\em return true if remove succesfully, return false if ID not found \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classStudentDatabase}{Student\+Database}} \& \mbox{\hyperlink{classStudentDatabase_ad3a914688b7399d98299c31babf5a4ad}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Lấy thể hiện duy nhất của lớp \mbox{\hyperlink{classStudentDatabase}{Student\+Database}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classStudentDatabase_a3b30a19c942d4aa2bbb8ddaaf4fb3bdc}\label{classStudentDatabase_a3b30a19c942d4aa2bbb8ddaaf4fb3bdc}} 
+class {\bfseries Student\+Database\+Display}
+\item 
+\mbox{\Hypertarget{classStudentDatabase_a73495b7fabf93f02a0b9ac81c4dc2877}\label{classStudentDatabase_a73495b7fabf93f02a0b9ac81c4dc2877}} 
+class {\bfseries Student\+Read\+Data}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lớp cơ sở dữ liệu cho sinh viên. 
+
+Lớp này quản lý danh sách sinh viên trong hệ thống. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classStudentDatabase_ab26f72837631c9feaa2846a888501de0}\label{classStudentDatabase_ab26f72837631c9feaa2846a888501de0}} 
+\index{StudentDatabase@{StudentDatabase}!Add@{Add}}
+\index{Add@{Add}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily void Student\+Database\+::\+Add (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classStudent}{Student}} \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+Thêm một đối tượng vào cơ sở dữ liệu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Đối tượng cần thêm vào cơ sở dữ liệu.\\
+\hline
+\end{DoxyParams}
+Hàm này thêm một đối tượng vào cơ sở dữ liệu. \mbox{\Hypertarget{classStudentDatabase_a1a56178cfd6fd8b210616d348c72a818}\label{classStudentDatabase_a1a56178cfd6fd8b210616d348c72a818}} 
+\index{StudentDatabase@{StudentDatabase}!find@{find}}
+\index{find@{find}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily int Student\+Database\+::find (\begin{DoxyParamCaption}\item[{const string \&}]{id }\end{DoxyParamCaption}) const}
+
+
+
+Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Mã định danh của đối tượng cần tìm. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -\/1 nếu không tìm thấy.
+\end{DoxyReturn}
+Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó. \mbox{\Hypertarget{classStudentDatabase_ae90bdd7cb96a042d973112aae5b50099}\label{classStudentDatabase_ae90bdd7cb96a042d973112aae5b50099}} 
+\index{StudentDatabase@{StudentDatabase}!getData@{getData}}
+\index{getData@{getData}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classStudent}{Student}} \& Student\+Database\+::get\+Data (\begin{DoxyParamCaption}\item[{const int \&}]{index }\end{DoxyParamCaption})}
+
+
+
+Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Chỉ số của đối tượng cần lấy. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tham chiếu đến đối tượng trong cơ sở dữ liệu.
+\end{DoxyReturn}
+Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số. \mbox{\Hypertarget{classStudentDatabase_a875f4583c63660a714b7d269476e8656}\label{classStudentDatabase_a875f4583c63660a714b7d269476e8656}} 
+\index{StudentDatabase@{StudentDatabase}!getDataType@{getDataType}}
+\index{getDataType@{getDataType}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{getDataType()}{getDataType()}}
+{\footnotesize\ttfamily string Student\+Database\+::get\+Data\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Lấy kiểu dữ liệu của cơ sở dữ liệu. 
+
+\begin{DoxyReturn}{Returns}
+Kiểu dữ liệu của cơ sở dữ liệu.
+\end{DoxyReturn}
+Hàm này trả về một chuỗi mô tả kiểu dữ liệu của cơ sở dữ liệu. 
+
+Implements \mbox{\hyperlink{classIDatabase_a5daf6f2e76e012ed70168b12232f85f1}{I\+Database}}.
+
+\mbox{\Hypertarget{classStudentDatabase_ad3a914688b7399d98299c31babf5a4ad}\label{classStudentDatabase_ad3a914688b7399d98299c31babf5a4ad}} 
+\index{StudentDatabase@{StudentDatabase}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classStudentDatabase}{Student\+Database}}\& Student\+Database\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Lấy thể hiện duy nhất của lớp \mbox{\hyperlink{classStudentDatabase}{Student\+Database}}. 
+
+\begin{DoxyReturn}{Returns}
+Tham chiếu đến thể hiện duy nhất của lớp \mbox{\hyperlink{classStudentDatabase}{Student\+Database}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStudentDatabase_a736a386c11ebb628c7a8714540cf4b94}\label{classStudentDatabase_a736a386c11ebb628c7a8714540cf4b94}} 
+\index{StudentDatabase@{StudentDatabase}!getSize@{getSize}}
+\index{getSize@{getSize}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Student\+Database\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Lấy kích thước của cơ sở dữ liệu. 
+
+\begin{DoxyReturn}{Returns}
+Kích thước của cơ sở dữ liệu.
+\end{DoxyReturn}
+Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu. \mbox{\Hypertarget{classStudentDatabase_a7b7da2a401e5e5f3ba207d8549eee3d1}\label{classStudentDatabase_a7b7da2a401e5e5f3ba207d8549eee3d1}} 
+\index{StudentDatabase@{StudentDatabase}!Remove@{Remove}}
+\index{Remove@{Remove}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Student\+Database\+::\+Remove (\begin{DoxyParamCaption}\item[{const string \&}]{ID }\end{DoxyParamCaption})}
+
+
+
+Xóa một đối tượng khỏi cơ sở dữ liệu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ID} & Mã định danh của đối tượng cần xóa. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true nếu xóa thành công, false nếu không tìm thấy đối tượng.
+\end{DoxyReturn}
+Hàm này xóa một đối tượng khỏi cơ sở dữ liệu. \mbox{\Hypertarget{classStudentDatabase_afea92f9d8b1e40c28f09b1fad6caf3ed}\label{classStudentDatabase_afea92f9d8b1e40c28f09b1fad6caf3ed}} 
+\index{StudentDatabase@{StudentDatabase}!Remove@{Remove}}
+\index{Remove@{Remove}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Student\+Database\+::\+Remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+Xóa một đối tượng khỏi cơ sở dữ liệu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & Đối tượng cần xóa khỏi cơ sở dữ liệu. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true nếu xóa thành công, false nếu không tìm thấy đối tượng.
+\end{DoxyReturn}
+Hàm này xóa một đối tượng khỏi cơ sở dữ liệu. \mbox{\Hypertarget{classStudentDatabase_a536b7332df94db0092b68f79371a24bd}\label{classStudentDatabase_a536b7332df94db0092b68f79371a24bd}} 
+\index{StudentDatabase@{StudentDatabase}!Replace@{Replace}}
+\index{Replace@{Replace}!StudentDatabase@{StudentDatabase}}
+\doxysubsubsection{\texorpdfstring{Replace()}{Replace()}}
+{\footnotesize\ttfamily bool Student\+Database\+::\+Replace (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classStudent}{Student}} \&}]{des,  }\item[{\mbox{\hyperlink{classStudent}{Student}} \&}]{src }\end{DoxyParamCaption})}
+
+
+
+return true if remove succesfully, return false if ID not found 
+
+Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
+
+Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác. 
+\begin{DoxyParams}{Parameters}
+{\em des} & Đối tượng cần thay thế. \\
+\hline
+{\em src} & Đối tượng mới thay thế. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
+\end{DoxyReturn}
+Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
+
+
+\begin{DoxyParams}{Parameters}
+{\em des} & Đối tượng cần thay thế. \\
+\hline
+{\em src} & Đối tượng mới thay thế. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
+\end{DoxyReturn}
+Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{data_8h}{data.\+h}}\item 
+\mbox{\hyperlink{data_8cpp}{data.\+cpp}}\end{DoxyCompactItemize}

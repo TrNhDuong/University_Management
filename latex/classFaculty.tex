@@ -1,0 +1,176 @@
+\hypertarget{classFaculty}{}\doxysection{Faculty Class Reference}
+\label{classFaculty}\index{Faculty@{Faculty}}
+
+
+Lớp đại diện cho khoa.  
+
+
+
+
+{\ttfamily \#include $<$faculty.\+h$>$}
+
+
+
+Inheritance diagram for Faculty\+:
+% FIG 0
+
+
+Collaboration diagram for Faculty\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classFaculty_a059b1a8599c3136c96c6ec38ff053fa8}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Hàm lấy kiểu dữ liệu của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classFaculty_a1f9a961e2af25a8a470715e86007dfbe}{get\+Mail}} () const
+\begin{DoxyCompactList}\small\item\em Hàm lấy mã email của khoa. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLecturer}{Lecturer}} \mbox{\hyperlink{classFaculty_a0f7e8dd6c213dc161e84ad1c2940c910}{get\+Dean}} () const
+\begin{DoxyCompactList}\small\item\em Hàm lấy trưởng khoa của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFaculty_aae83e94c6bd7d726e05c59d847867a0e}{set\+Mail}} (const string \&mail)
+\begin{DoxyCompactList}\small\item\em Hàm đặt mã email của khoa. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFaculty_a6337807039460a94f212a5050cbcff12}{set\+Dean}} (const \mbox{\hyperlink{classLecturer}{Lecturer}} \&dean)
+\begin{DoxyCompactList}\small\item\em Hàm đặt trưởng khoa cho lớp \mbox{\hyperlink{classFaculty}{Faculty}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFaculty_a1c3f6a0eefcd4aee451e8c1db8e658fc}{Faculty}} ()
+\begin{DoxyCompactList}\small\item\em Hàm khởi tạo mặc định cho lớp \mbox{\hyperlink{classFaculty}{Faculty}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFaculty_ace9ed6a960bd1e1a07a4344ed63bdaf3}{$\sim$\+Faculty}} ()
+\begin{DoxyCompactList}\small\item\em Hàm hủy của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classFaculty_a3622d085d642b62167acb04087d79ea7}{\+\_\+email}}
+\begin{DoxyCompactList}\small\item\em Địa chỉ email của khoa. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLecturer}{Lecturer}} \mbox{\hyperlink{classFaculty_a5ee63fd89fb8043226814a2683e17212}{\+\_\+dean}}
+\begin{DoxyCompactList}\small\item\em Trưởng khoa. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lớp đại diện cho khoa. 
+
+Lớp này bao gồm các thuộc tính và phương thức để quản lý thông tin của khoa. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFaculty_a1c3f6a0eefcd4aee451e8c1db8e658fc}\label{classFaculty_a1c3f6a0eefcd4aee451e8c1db8e658fc}} 
+\index{Faculty@{Faculty}!Faculty@{Faculty}}
+\index{Faculty@{Faculty}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{Faculty()}{Faculty()}}
+{\footnotesize\ttfamily Faculty\+::\+Faculty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Hàm khởi tạo mặc định cho lớp \mbox{\hyperlink{classFaculty}{Faculty}}. 
+
+Hàm này khởi tạo các thuộc tính của lớp \mbox{\hyperlink{classFaculty}{Faculty}} với giá trị mặc định. \mbox{\Hypertarget{classFaculty_ace9ed6a960bd1e1a07a4344ed63bdaf3}\label{classFaculty_ace9ed6a960bd1e1a07a4344ed63bdaf3}} 
+\index{Faculty@{Faculty}!````~Faculty@{$\sim$Faculty}}
+\index{````~Faculty@{$\sim$Faculty}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{$\sim$Faculty()}{~Faculty()}}
+{\footnotesize\ttfamily Faculty\+::$\sim$\+Faculty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Hàm hủy của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. 
+
+Hàm này được gọi khi đối tượng \mbox{\hyperlink{classFaculty}{Faculty}} bị hủy. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFaculty_a0f7e8dd6c213dc161e84ad1c2940c910}\label{classFaculty_a0f7e8dd6c213dc161e84ad1c2940c910}} 
+\index{Faculty@{Faculty}!getDean@{getDean}}
+\index{getDean@{getDean}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{getDean()}{getDean()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLecturer}{Lecturer}} Faculty\+::get\+Dean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Hàm lấy trưởng khoa của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. 
+
+\begin{DoxyReturn}{Returns}
+Trưởng khoa của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFaculty_a1f9a961e2af25a8a470715e86007dfbe}\label{classFaculty_a1f9a961e2af25a8a470715e86007dfbe}} 
+\index{Faculty@{Faculty}!getMail@{getMail}}
+\index{getMail@{getMail}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{getMail()}{getMail()}}
+{\footnotesize\ttfamily string Faculty\+::get\+Mail (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Hàm lấy mã email của khoa. 
+
+\begin{DoxyReturn}{Returns}
+email của khoa. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFaculty_a059b1a8599c3136c96c6ec38ff053fa8}\label{classFaculty_a059b1a8599c3136c96c6ec38ff053fa8}} 
+\index{Faculty@{Faculty}!getType@{getType}}
+\index{getType@{getType}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily string Faculty\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Hàm lấy kiểu dữ liệu của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. 
+
+Hamh lấy kiểu dữ liệu của lớp \mbox{\hyperlink{classFaculty}{Faculty}}.
+
+\begin{DoxyReturn}{Returns}
+Kiểu dữ liệu của lớp \mbox{\hyperlink{classFaculty}{Faculty}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFaculty_a6337807039460a94f212a5050cbcff12}\label{classFaculty_a6337807039460a94f212a5050cbcff12}} 
+\index{Faculty@{Faculty}!setDean@{setDean}}
+\index{setDean@{setDean}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{setDean()}{setDean()}}
+{\footnotesize\ttfamily void Faculty\+::set\+Dean (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLecturer}{Lecturer}} \&}]{dean }\end{DoxyParamCaption})}
+
+
+
+Hàm đặt trưởng khoa cho lớp \mbox{\hyperlink{classFaculty}{Faculty}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dean} & Trưởng khoa mới. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classFaculty_aae83e94c6bd7d726e05c59d847867a0e}\label{classFaculty_aae83e94c6bd7d726e05c59d847867a0e}} 
+\index{Faculty@{Faculty}!setMail@{setMail}}
+\index{setMail@{setMail}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{setMail()}{setMail()}}
+{\footnotesize\ttfamily void Faculty\+::set\+Mail (\begin{DoxyParamCaption}\item[{const string \&}]{mail }\end{DoxyParamCaption})}
+
+
+
+Hàm đặt mã email của khoa. 
+
+Hàm đặt email của khoa.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mail} & email mới của khoa. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classFaculty_a5ee63fd89fb8043226814a2683e17212}\label{classFaculty_a5ee63fd89fb8043226814a2683e17212}} 
+\index{Faculty@{Faculty}!\_dean@{\_dean}}
+\index{\_dean@{\_dean}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{\_dean}{\_dean}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLecturer}{Lecturer}} Faculty\+::\+\_\+dean\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Trưởng khoa. 
+
+Trưởng khoa là người quản lý và điều hành các hoạt động của khoa. \mbox{\Hypertarget{classFaculty_a3622d085d642b62167acb04087d79ea7}\label{classFaculty_a3622d085d642b62167acb04087d79ea7}} 
+\index{Faculty@{Faculty}!\_email@{\_email}}
+\index{\_email@{\_email}!Faculty@{Faculty}}
+\doxysubsubsection{\texorpdfstring{\_email}{\_email}}
+{\footnotesize\ttfamily string Faculty\+::\+\_\+email\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Địa chỉ email của khoa. 
+
+Địa chỉ email này được sử dụng để liên lạc với khoa. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{faculty_8h}{faculty.\+h}}\item 
+\mbox{\hyperlink{faculty_8cpp}{faculty.\+cpp}}\end{DoxyCompactItemize}

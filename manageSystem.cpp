@@ -1,3 +1,11 @@
+/**
+ * @file manageSystem.cpp
+ * @brief Triển khai lớp UniversitySystem cho hệ thống quản lý sinh viên.
+ * @details
+ * Lớp này chứa các phương thức để khởi động hệ thống quản lý sinh viên, bao gồm việc đọc dữ liệu từ file,
+ * tạo các menu và thực hiện các lệnh tương ứng với lựa chọn của người dùng.
+ */
+
 #include "menu.h"
 #include "manageSystem.h"
 #include "faculty.h"
@@ -6,6 +14,12 @@
 #include "command.h"
 #include <map>
 
+/**
+ * @brief Hàm khởi động hệ thống quản lý sinh viên.
+ * @details Hàm này sẽ đọc dữ liệu từ các file, tạo các menu và thực hiện các lệnh tương ứng với lựa chọn của người dùng.
+ * @return Không có giá trị trả về.
+ * @note Hàm này sử dụng các đối tượng MenuFactory, StudentReadData, LecturerReadData và FacultyReadData để thực hiện các tác vụ.
+ */
 void UniversitySystem::Run() {
     studentDB = &StudentDatabase::getInstance();
     lecturerDB = &LecturerDatabase::getInstance();

@@ -1,0 +1,24 @@
+\hypertarget{classAddCommand}{}\doxysection{Add\+Command Class Reference}
+\label{classAddCommand}\index{AddCommand@{AddCommand}}
+
+
+Inheritance diagram for Add\+Command\+:
+% FIG 0
+
+
+Collaboration diagram for Add\+Command\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAddCommand_ac27890289c194ca880ebb43d1c00d5dd}\label{classAddCommand_ac27890289c194ca880ebb43d1c00d5dd}} 
+{\bfseries Add\+Command} (\mbox{\hyperlink{classMenu}{Menu}} $\ast$m, \mbox{\hyperlink{classIDatabase}{I\+Database}} $\ast$s\+DB, \mbox{\hyperlink{classIDatabase}{I\+Database}} $\ast$l\+DB, \mbox{\hyperlink{classIDatabase}{I\+Database}} $\ast$f\+DB)
+\item 
+\mbox{\Hypertarget{classAddCommand_af0f96727b0eaa639ac5ee5f605bc2fe7}\label{classAddCommand_af0f96727b0eaa639ac5ee5f605bc2fe7}} 
+void {\bfseries execute} () override
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+command.\+h\end{DoxyCompactItemize}

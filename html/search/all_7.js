@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['getbirth_36',['getBirth',['../classBaseEntity.html#a5939bf586f53b65078837c77b7e964b7',1,'BaseEntity']]],
+  ['getchoice_37',['getChoice',['../classMenu.html#a1fca3a38ec9d812f580f6c43d1f3c67f',1,'Menu']]],
+  ['getcompletedcredit_38',['getCompletedCredit',['../classStudent.html#af5cb40a3948251677ea1f10926eb0373',1,'Student']]],
+  ['getdata_39',['getData',['../classStudentDatabase.html#ae90bdd7cb96a042d973112aae5b50099',1,'StudentDatabase::getData()'],['../classLecturerDatabase.html#a8f83d45d05e6f593b2639cf64c54b406',1,'LecturerDatabase::getData()'],['../classFacultyDatabase.html#a8868b22141355e8d971e066143579988',1,'FacultyDatabase::getData()']]],
+  ['getdatatype_40',['getDataType',['../classIDatabase.html#a5daf6f2e76e012ed70168b12232f85f1',1,'IDatabase::getDataType()'],['../classStudentDatabase.html#a875f4583c63660a714b7d269476e8656',1,'StudentDatabase::getDataType()'],['../classLecturerDatabase.html#ae46eca298f9605e3753ba4c5efd79c9f',1,'LecturerDatabase::getDataType()'],['../classFacultyDatabase.html#ab34e451b6d1f74bb016768eebaa9b01b',1,'FacultyDatabase::getDataType()']]],
+  ['getday_41',['getDay',['../classBirth.html#a3d5bc2f3af381d1dd51e9fa2caac234d',1,'Birth']]],
+  ['getdean_42',['getDean',['../classFaculty.html#a0f7e8dd6c213dc161e84ad1c2940c910',1,'Faculty']]],
+  ['getdegree_43',['getDegree',['../classLecturer.html#a105fb6052dadd36eda6fe8a86d9861a2',1,'Lecturer']]],
+  ['getenrollyear_44',['getEnrollYear',['../classStudent.html#a22459b3aa8b73c041f47d42f6399d455',1,'Student']]],
+  ['getgpa_45',['getGPA',['../classStudent.html#a10d05432dc06a7f8ed0ce3814f30a9ef',1,'Student']]],
+  ['getid_46',['getId',['../classBaseEntity.html#a3481c04e98a843c8d319b5e5acc84c99',1,'BaseEntity']]],
+  ['getinstance_47',['getInstance',['../classStudentDatabase.html#ad3a914688b7399d98299c31babf5a4ad',1,'StudentDatabase::getInstance()'],['../classLecturerDatabase.html#a50b8ef6d521bc3318300933ac6930068',1,'LecturerDatabase::getInstance()'],['../classFacultyDatabase.html#acd9b72cf5e6843cdcd250feaea405c32',1,'FacultyDatabase::getInstance()'],['../classFacultyReadData.html#a5ab62dbcdf4964b4e401207463e49542',1,'FacultyReadData::getInstance()'],['../classLecturerReadData.html#a45c897a6594625bd2617f00a6fa1638a',1,'LecturerReadData::getInstance()'],['../classStudentReadData.html#acb9299ce6f475db2520e3b9127ced688',1,'StudentReadData::getInstance()']]],
+  ['getinstructyear_48',['getInstructYear',['../classLecturer.html#a7f9f3959f5ccded14f250cb7774d024c',1,'Lecturer']]],
+  ['getmail_49',['getMail',['../classFaculty.html#a1f9a961e2af25a8a470715e86007dfbe',1,'Faculty']]],
+  ['getmonth_50',['getMonth',['../classBirth.html#a38323a1d6f3f366e97bf0c97faece515',1,'Birth']]],
+  ['getname_51',['getName',['../classBaseEntity.html#aa33045a6f22a5b4f71de65f99c23dbc2',1,'BaseEntity']]],
+  ['getsize_52',['getSize',['../classStudentDatabase.html#a736a386c11ebb628c7a8714540cf4b94',1,'StudentDatabase']]],
+  ['gettype_53',['getType',['../classFaculty.html#a059b1a8599c3136c96c6ec38ff053fa8',1,'Faculty::getType()'],['../classLecturer.html#af8de7f7d49458222a29b95ce85fbc9f8',1,'Lecturer::getType()'],['../classStudent.html#a5853456ba02e1641f8ea043667340e4d',1,'Student::getType()']]],
+  ['getyear_54',['getYear',['../classBirth.html#a9a5863575dc0ac18ec8835edfd1810a1',1,'Birth']]]
+];

@@ -1,9 +1,20 @@
+/**
+ * @file readData.cpp
+ * @brief thực hiện các hàm đọc dữ liệu từ file cho các lớp Faculty, Lecturer và Student.
+ * @details Lớp này sử dụng Singleton design pattern để đảm bảo chỉ có một thể hiện duy nhất của lớp.
+ */
+
 #include"readData.h"
 #include"faculty.h"
 #include"lecturer.h"
 #include<iostream>
 using std::getline;
 
+/**
+ * @brief Đọc dữ liệu từ file cho lớp Faculty.
+ * @details Lớp này sử dụng Singleton design pattern để đảm bảo chỉ có một thể hiện duy nhất của lớp.
+ * @param filename Tên file cần đọc dữ liệu.
+ */
 void FacultyReadData::readData(const string& filename){
     _fileIn.open(filename);
     if (_fileIn.is_open() == false){
@@ -51,6 +62,11 @@ void FacultyReadData::readData(const string& filename){
     _fileIn.close(); //close file
 }
 
+/**
+ * @brief Đọc dữ liệu từ file cho lớp Lecturer.
+ * @details Lớp này sử dụng Singleton design pattern để đảm bảo chỉ có một thể hiện duy nhất của lớp.
+ * @param filename Tên file cần đọc dữ liệu.
+ */
 
 void LecturerReadData::readData(const string& filename){
     _fileIn.open(filename);
@@ -84,6 +100,12 @@ void LecturerReadData::readData(const string& filename){
     }
     _fileIn.close();
 }
+
+/**
+ * @brief Đọc dữ liệu từ file cho lớp Student.
+ * @details Lớp này sử dụng Singleton design pattern để đảm bảo chỉ có một thể hiện duy nhất của lớp.
+ * @param filename Tên file cần đọc dữ liệu.
+ */
 
 void StudentReadData::readData(const string& filename){
     _fileIn.open(filename);

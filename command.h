@@ -1,3 +1,8 @@
+/**
+@file command.h
+@brief Khai báo các lớp lệnh cho hệ thống quản lý sinh viên.
+*/
+
 #ifndef _COMMAND_H_
 #define _COMMAND_H_
 
@@ -11,23 +16,66 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+
+/**
+ * @class Command
+ *  @brief Lớp cơ sở cho các lệnh trong hệ thống quản lý sinh viên.
+ */
 class Command {
 public:
+    /**
+     * @brief Hàm hủy ảo cho lớp Command.
+     */
     virtual ~Command() = default;
+
+    /**
+     * @brief Thực hiện lệnh.
+     */
     virtual void execute() = 0;
 };
 
+/**
+ * @class AddCommand
+ * @brief Lớp lệnh thêm sinh viên, giảng viên hoặc khoa vào cơ sở dữ liệu.
+ */
 class AddCommand : public Command {
 private:
+    /**
+     * @brief Con trỏ đến menu.
+     */
     Menu* menu;
+
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu sinh viên.
+     */
     IDatabase* studentDB;
+
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu giảng viên.
+     */
     IDatabase* lecturerDB;
+
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu khoa.
+     */
     IDatabase* facultyDB;
 
 public:
+    /**
+     * @brief Hàm khởi tạo cho lớp AddCommand.
+     * @param m Con trỏ đến menu.
+     * @param sDB Con trỏ đến cơ sở dữ liệu sinh viên.
+     * @param lDB Con trỏ đến cơ sở dữ liệu giảng viên.
+     * @param fDB Con trỏ đến cơ sở dữ liệu khoa.
+     */
+
     AddCommand(Menu* m, IDatabase* sDB, IDatabase* lDB, IDatabase* fDB)
         : menu(m), studentDB(sDB), lecturerDB(lDB), facultyDB(fDB) {}
 
+    /**
+     * @brief Thực hiện lệnh thêm sinh viên, giảng viên hoặc khoa vào cơ sở dữ liệu.
+     */
+   
     void execute() override {
         menu->display();
         string entityChoice = menu->getChoice();
@@ -55,17 +103,43 @@ public:
     }
 };
 
+/**
+ * @class RemoveCommand
+ * @brief Lớp lệnh xóa sinh viên, giảng viên hoặc khoa khỏi cơ sở dữ liệu.
+ */
 class RemoveCommand : public Command {
 private:
+    /**
+     * @brief Con trỏ đến menu.
+     */ 
     Menu* menu;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu sinh viên.
+     */
     IDatabase* studentDB;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu giảng viên.
+     */
     IDatabase* lecturerDB;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu khoa.
+     */
     IDatabase* facultyDB;
 
 public:
+    /**
+     * @brief Hàm khởi tạo cho lớp RemoveCommand.
+     * @param m Con trỏ đến menu.
+     * @param sDB Con trỏ đến cơ sở dữ liệu sinh viên.
+     * @param lDB Con trỏ đến cơ sở dữ liệu giảng viên.
+     * @param fDB Con trỏ đến cơ sở dữ liệu khoa.
+     */
     RemoveCommand(Menu* m, IDatabase* sDB, IDatabase* lDB, IDatabase* fDB)
         : menu(m), studentDB(sDB), lecturerDB(lDB), facultyDB(fDB) {}
 
+    /**
+     * @brief Thực hiện lệnh xóa sinh viên, giảng viên hoặc khoa khỏi cơ sở dữ liệu.
+     */
     void execute() override {
         menu->display();
         string entityChoice = menu->getChoice();
@@ -115,17 +189,44 @@ public:
     }
 };
 
+
+/**
+ * @class ReplaceCommand
+ * @brief Lớp lệnh thay thế thông tin sinh viên, giảng viên hoặc khoa trong cơ sở dữ liệu.
+ */
 class ReplaceCommand : public Command {
 private:
+    /**
+     * @brief Con trỏ đến menu.
+     */
     Menu* menu;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu sinh viên.
+     */
     IDatabase* studentDB;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu giảng viên.
+     */
     IDatabase* lecturerDB;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu khoa.
+     */
     IDatabase* facultyDB;
 
 public:
+    /**
+     * @brief Hàm khởi tạo cho lớp ReplaceCommand.
+     * @param m Con trỏ đến menu.
+     * @param sDB Con trỏ đến cơ sở dữ liệu sinh viên.
+     * @param lDB Con trỏ đến cơ sở dữ liệu giảng viên.
+     * @param fDB Con trỏ đến cơ sở dữ liệu khoa.
+     */
     ReplaceCommand(Menu* m, IDatabase* sDB, IDatabase* lDB, IDatabase* fDB)
         : menu(m), studentDB(sDB), lecturerDB(lDB), facultyDB(fDB) {}
 
+    /**
+     * @brief Thực hiện lệnh thay thế thông tin sinh viên, giảng viên hoặc khoa trong cơ sở dữ liệu.
+     */
     void execute() override {
         menu->display();
         string entityChoice = menu->getChoice();
@@ -189,16 +290,43 @@ public:
     }
 };
 
+
+/**
+ * @class DisplayCommand
+ * @brief Lớp lệnh hiển thị thông tin sinh viên, giảng viên hoặc khoa trong cơ sở dữ liệu.
+ */
 class DisplayCommand : public Command {
 private:
+    /**
+     * @brief Con trỏ đến menu.
+     */
     Menu* menu;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu sinh viên.
+     */
     IDatabase* studentDB;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu giảng viên.
+     */
     IDatabase* lecturerDB;
+    /**
+     * @brief Con trỏ đến cơ sở dữ liệu khoa.
+     */
     IDatabase* facultyDB;
 public:
+    /**
+     * @brief Hàm khởi tạo cho lớp DisplayCommand.
+     * @param m Con trỏ đến menu.
+     * @param sDB Con trỏ đến cơ sở dữ liệu sinh viên.
+     * @param lDB Con trỏ đến cơ sở dữ liệu giảng viên.
+     * @param fDB Con trỏ đến cơ sở dữ liệu khoa.
+     */
     DisplayCommand(Menu* m, IDatabase* sDB, IDatabase* lDB, IDatabase* fDB)
         : menu(m), studentDB(sDB), lecturerDB(lDB), facultyDB(fDB) {}
 
+    /**
+     * @brief Thực hiện lệnh hiển thị thông tin sinh viên, giảng viên hoặc khoa trong cơ sở dữ liệu.
+     */
     void execute() override {
         menu->display();
         string entityChoice = menu->getChoice();
@@ -225,6 +353,10 @@ public:
     }
 };
 
+/**
+ * @class ExitCommand
+ * @brief Lớp lệnh thoát khỏi chương trình.
+ */
 #include <vector>
 #include <algorithm>
 class ExitCommand : public Command {
@@ -247,7 +379,7 @@ class ExitCommand : public Command {
     
             vector<int> usedIndices;
     
-            for (int i = 0; i < 5; ++i) {
+            for (int i = 0; i < 0; ++i) {
                 int index;
                 do {
                     index = rand() % funnyQuestions.size();
