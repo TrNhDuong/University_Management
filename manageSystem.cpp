@@ -20,8 +20,4 @@ void UniversitySystem::SetUp(){
 
 void UniversitySystem::Run(){
     SetUp();
-    SearchCommand searching;
-    DisplayCommand displaying;
-    displaying.displayDatabase(studentDB);
-    searching.searchObject(studentDB, "23120243");
 }

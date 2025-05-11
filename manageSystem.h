@@ -1,7 +1,7 @@
 #ifndef _MANAGE_SYSTEM_H_
 #define _MANAGE_SYSTEM_H_
 #include <iostream>
-#include <unordered_map>
+#include <map>
 
 #include "data.h"
 #include "readData.h"
@@ -15,16 +15,17 @@
 #include "Entity/faculty.h"
 #include "Entity/baseEntity.h"
 
-using std::unordered_map;
+using std::map;
 using std::cout;
 using std::cin;
+
 
 class UniversitySystem{
 private:
     IDatabase* studentDB;
     IDatabase* lecturerDB;
     IDatabase* facultyDB;
-    unordered_map<string, IDatabase*> mappingDatabase;
+    map<string, IDatabase*> mappingDatabase;
 public:
     void SetUp();
     void Run();
