@@ -20,10 +20,12 @@ public:
     virtual ~IDatabase() = default;
 };
 
+//CRTP (Curiously Recurring Template Pattern) + IDatabase + Template ->Need Optimization
+
 class StudentDatabase: public IDatabase{
 private:
     vector<Student> _data;
-    StudentDatabase() = default;
+    StudentDatabase() = default; 
     ~StudentDatabase() override = default;
     StudentDatabase(const StudentDatabase&) = delete;
     Student& operator = (const StudentDatabase&) = delete;
@@ -33,8 +35,19 @@ public:
         static StudentDatabase instance;
         return instance;
     }
+
+    
+
+    //need CRTL
+    int find(const string& id) const;
+    void Add(const Student& obj);
+    bool Remove(const string& ID); //return true if remove succesfully, return false if ID not found
+    bool Remove(Student& obj); ///return true if remove succesfully, return false if ID not found
+    bool Replace(Student& des, Student& src); //return true if remove succesfully, return false if des not found
+
     int getSize() const;
-    Student* getData(const int&);
+    Student* getData(const int& index);
+    
     friend class StudentReadData;
 };
 
@@ -51,8 +64,16 @@ public:
         return instance;
     }
     string getDataType() const override;
+    
     Lecturer* getData(const int& index);
+    int find(const string& id) const; //return the index in vector _data, it is necessary (can't use friend to lecturer => invalid action harm to capsulation)
+    
+    void Add(const Lecturer& obj);
+    bool Remove(const string& ID);
+    bool Remove(Lecturer& obj);
+    bool Replace(Lecturer& des, Lecturer& src);
     int getSize() const;
+
     friend class LecturerReadData;
 };
 
@@ -68,10 +89,17 @@ public:
     static FacultyDatabase& getInstance(){
         static FacultyDatabase instance;
         return instance;
-    };
+    }
     string getDataType() const override;
-    int getSize() const;
+
     Faculty* getData(const int& index);
+    int find(const string& id) const;
+    int getSize() const;
+    void Add(const Faculty& obj);
+    bool Remove(const string& ID);
+    bool Remove(Faculty& obj);
+    bool Replace(Faculty& des, Faculty& src);
+    
     friend class FacultyReadData;
 };
 

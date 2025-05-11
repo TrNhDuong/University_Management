@@ -14,6 +14,7 @@ public:
     void setEnrollYear(const int& year);
     float getGPA() const;
     int getCompletedCredit() const;
+    int getEnrollYear() const;
     
     Student();
     ~Student();

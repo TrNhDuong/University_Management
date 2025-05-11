@@ -28,6 +28,7 @@ void FacultyReadData::readData(const string& filename){
             }
         Lecturer* deanPtr = nullptr;
         Faculty f; 
+   
         if (index >= 0){
             deanPtr = lecDB.getData(index); 
             f.setDean(*deanPtr);
@@ -117,6 +118,5 @@ void StudentReadData::readData(const string& filename){
     }
     _fileIn.close();
 }
-
 
 

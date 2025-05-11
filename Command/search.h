@@ -9,36 +9,26 @@
 using std::vector;
 using std::string;
 
-class ISearch{
+class SearchStrategy{
 public:
-    virtual BaseEntity* search(IDatabase* database, const string& id) = 0;
-    virtual vector<BaseEntity*> searchName(IDatabase* database, const string& id) = 0;
-    virtual ~ISearch() = default;
+    SearchStrategy() = default;
+    virtual ~SearchStrategy() = default;
+
+    virtual vector<BaseEntity*> search(IDatabase* database, const string& keySearch) = 0;
 };
 
-class SearchStudent: public ISearch{
+class IdSearch: public SearchStrategy{
 public:
-    BaseEntity* search(IDatabase* database, const string& id) override;
-    vector<BaseEntity*> searchName(IDatabase* database, const string& name) override;
+    vector<BaseEntity*> search(IDatabase* database, const string& id);
+};
+
+class NameSearch: public SearchStrategy{
+    vector<BaseEntity*> search(IDatabase* database, const string& name);
 };
 
 
-class SearchLecturer: public ISearch{
-public:
-    BaseEntity* search(IDatabase* database, const string& id) override;
-    vector<BaseEntity*> searchName(IDatabase* database, const string& name) override;
-};
 
-class SearchFactory{
-public:
-    static ISearch* createSearch(const string& type){
-        if ("Student" == type)
-            return new SearchStudent();
-        else if ("Lecturer" == type)
-            return new SearchLecturer();
-        return nullptr;
-    }
-};
+
 
 
 #endif

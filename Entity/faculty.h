@@ -12,7 +12,7 @@ using std::string, std::vector;
 class Faculty : public BaseEntity{
 protected:
     string _email;
-    Lecturer _dean;
+    Lecturer _dean; // ID cua Truong khoa
 public:
     string getType() const;
     string getMail() const;

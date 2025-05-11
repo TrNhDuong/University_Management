@@ -1,49 +1,39 @@
 #include "command.h"
 
-void SearchFunction::searchObjectById(IDatabase* database, const string& id){
-    string type = database->getDataType();
-    std::unique_ptr<ISearch> searchMachine(SearchFactory::createSearch(type));
-    std::unique_ptr<IUI> printer(UIFactory::createUI(type));
 
-    if (!searchMachine || !printer) return;
-
-    BaseEntity* object = searchMachine->search(database, id);
-    if (object)
-        printer->print(object);
-}
-
-void SearchFunction::searchObjectByName(IDatabase* database, const string& name){
-    string type = database->getDataType();
-    std::unique_ptr<ISearch> searchMachine(SearchFactory::createSearch(type));
-    std::unique_ptr<IUI> printer(UIFactory::createUI(type));
-
-    if (!searchMachine || !printer)  return;
-
-    vector<BaseEntity*> listObject = searchMachine->searchName(database, name);
-    int size = listObject.size();
-    for (int i = 0; i < size; i++)
-        printer->print(listObject[i]);
+string DisplayCommand::getCommandType(){
+    return "Display";
 }
 
 string SearchCommand::getCommandType(){
     return "Search";
 }
 
-void SearchCommand::excute(map<string, IDatabase*> mappingDatabase, string type){
-    IDatabase* database = mappingDatabase[type];
-    if (_searchType == "ID"){
-        SearchFunction::searchObjectById(database, _searchObject);
-    } else if (_searchType == "Name"){
-        SearchFunction::searchObjectByName(database, _searchObject);
+void SearchCommand::excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
+    IDatabase* database = mappingDatabase[typeEntity];
+    if ("Id" == typeOfSubCommand){
+        string id;
+        cin >> id; 
+        _strategy = std::make_unique<IdSearch>();
+        vector<BaseEntity*> v = _strategy->search(database, id);  
+        IUI* printer = UIFactory::createUI(typeEntity);
+        for (int i = 0; i < v.size(); i++)
+            printer->print(v[i]);
+        delete printer;
+    } else if ("Name" == typeOfSubCommand){
+        string name;
+        cin >> name;
+        _strategy = std::make_unique<NameSearch>();
+        vector<BaseEntity*> v = _strategy->search(database, name);
+        IUI* printer = UIFactory::createUI(typeEntity);
+        for (int i = 0; i < v.size(); i++)
+            printer->print(v[i]);
+        delete printer;
     }
 }
 
-string DisplayCommand::getCommandType(){
-    return "Display";
-}
-
-void DisplayCommand::excute(map<string, IDatabase*> mappingDatabase, string type){
-    IDatabase* database = mappingDatabase[type];
-    IDisplay* displayMachine = DisplayFactory::createDisplay(type);
+void DisplayCommand::excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
+    IDatabase* database = mappingDatabase[typeEntity];
+    IDisplay* displayMachine = DisplayFactory::createDisplay(typeEntity);
     displayMachine->display(database);
 }
