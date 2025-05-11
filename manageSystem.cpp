@@ -53,14 +53,13 @@ void UniversitySystem::Run() {
 
     // Vòng lặp chính
     while (true) {
-        mainMenu->display();
         string choice = mainMenu->getChoice();
 
         auto it = commandMap.find(choice);
         if (it != commandMap.end()) {
             it->second->execute(); // Thực thi lệnh tương ứng
         } else {
-            std::cout << "Bạn yêu đã nhập sai, mời nhập lại!\n";
+            std::cout << "Bạn đã nhập sai, mời nhập lại!\n";
         }
     }
 }

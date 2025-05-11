@@ -40,13 +40,15 @@ public:
      * @brief Hiển thị menu.
      * @details Hàm này in ra danh sách các tùy chọn trong menu.
      */
-    virtual void display() const = 0;
+    void display(int selected = 0) const;
 
     /**
      * @brief Lấy lựa chọn của người dùng.
      * @return Lựa chọn của người dùng dưới dạng chuỗi.
      */
     string getChoice() const;
+
+    virtual string type() const = 0;
 };
 
 
@@ -66,7 +68,8 @@ public:
      * @brief Hiển thị menu chính.
      * @details Hàm này in ra danh sách các tùy chọn trong menu chính.
      */
-    void display() const override;
+
+     string type() const override;
 };
 
 /**
@@ -86,7 +89,8 @@ public:
      * @brief Hiển thị menu thực thể.
      * @details Hàm này in ra danh sách các tùy chọn trong menu thực thể.
      */
-    void display() const override;
+
+     string type() const override;
 
 };
 

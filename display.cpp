@@ -7,8 +7,11 @@
 #include "display.h"
 #include <iostream>
 #include <format>
+#include "utils.h"
 using std::format;
 using std::cout;
+
+
 
 /**
  * @brief Hiển thị thông tin sinh viên.
@@ -17,9 +20,36 @@ using std::cout;
  */
 void StudentDatabaseDisplay::display(IDatabase* database){
     StudentDatabase* studentDTB = dynamic_cast<StudentDatabase*>(database);
-    int size = studentDTB->_data.size();
-    for (int i = 0; i < size; i++)
-        StudentUI::print(studentDTB->_data[i]);
+    int menuSize = studentDTB->_data.size();
+    int selected = 0;
+    char key;
+
+    while (true){
+        clearScreen();
+        setColor(37);
+        cout << "========STUDENT DATABASE========\n";
+        for (int i = 0; i < menuSize; i++){
+            if (i == selected){
+                setColor(32);
+            }else{
+                setColor(37);
+            }
+            StudentUI::print(studentDTB->_data[i]);
+        }
+        cout << "===============================\n";
+
+        key = getch();
+        if (key == '\033') { // Phím mũi tên
+            getch(); // Bỏ qua ký tự '['
+            key = getch();
+            if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
+            else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
+        }
+        else if (key == ' ') {
+            break;
+        }
+
+    }
 };
 
 /**

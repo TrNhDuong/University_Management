@@ -5,6 +5,8 @@
 #include <iostream>
 #include <format>
 #include <iomanip>
+#include <termios.h>
+#include <unistd.h>
 using namespace std;
 
 
@@ -47,6 +49,8 @@ class ValidChoice{
         static bool checkValidChoice(vector<string>&, string&);
 };
 
-
+void setColor(int color);
+void clearScreen();
+char getch();
 
 #endif

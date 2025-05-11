@@ -7,10 +7,14 @@
 #include "menu.h"
 #include <iostream>
 #include <format>
+#include "utils.h"
+
 using std::cout;
 using std::cin;
 using std::endl;
 using std::format;
+using std::to_string;
+
 
 /**
  * @brief Hàm khởi tạo mặc định cho lớp Menu.
@@ -20,16 +24,27 @@ MainMenu::MainMenu() {
     _options = {"Thêm", "Xóa", "Thay Thế", "Hiển Thị", "Thoát"};
 }
 
-/**
- * @brief Hàm hiển thị menu chính.
- * @details Hàm này in ra danh sách các tùy chọn trong menu chính.
- */
-void MainMenu::display() const {
-    cout << "======== Main Menu ====\n";
+string MainMenu::type() const {
+    return "Main Menu";
+}
+
+string EntityMenu::type() const {
+    return "Entity Menu";
+}
+
+void Menu::display(int selected) const {
+    clearScreen(); // Thay thế system("cls")
+    cout << "========" << type() << "========\n";
     for (size_t i = 0; i < _options.size(); ++i) {
-        cout << format("{}. {}\n", i + 1, _options[i]);
+        if (i == selected) {
+            setColor(32); // Màu xanh lá (ANSI)
+        } else {
+            setColor(37); // Màu trắng (ANSI)
+        }
+        cout << "       " << _options[i] << "\n";
     }
-    cout << "=======================\n";
+    setColor(0); // Đặt lại màu mặc định
+    cout << "=========================\n";
 }
 
 /**
@@ -38,10 +53,23 @@ void MainMenu::display() const {
  * @details Hàm này yêu cầu người dùng nhập lựa chọn và trả về lựa chọn đó.
  */
 string Menu::getChoice() const {
-    string choice;
-    cout << "Nhập lựa chọn: ";
-    cin >> choice;
-    return choice;
+    int selected = 0;
+    char key;
+    int  menuSize = _options.size();
+
+    while (true) {
+        display(selected);
+
+        key = getch();
+        if (key == '\033') { // Phím mũi tên
+            getch(); // Bỏ qua ký tự '['
+            key = getch();
+            if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
+            else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
+        } else if (key == '\n') { // Enter
+            return to_string(selected + 1);
+        }
+    }
 }
 
 /**
@@ -51,19 +79,6 @@ string Menu::getChoice() const {
 EntityMenu::EntityMenu() {
     _options = {"Student", "Lecturer", "Faculty", "Exit"};
 }
-
-/**
- * @brief Hàm hiển thị menu thực thể.
- * @details Hàm này in ra danh sách các tùy chọn trong menu thực thể.
- */
-void EntityMenu::display() const {
-    cout << "======== Entity Menu ====\n";
-    for (size_t i = 0; i < _options.size(); ++i) {
-        cout << format("{}. {}\n", i + 1, _options[i]);
-    }
-    cout << "=========================\n";
-}
-
 
 /**
  * @brief Tạo một menu dựa trên loại menu được yêu cầu.
