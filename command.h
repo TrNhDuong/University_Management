@@ -226,7 +226,7 @@ class ExitCommand : public Command {
     
             vector<int> usedIndices;
     
-            for (int i = 0; i < 0; ++i) {
+            for (int i = 0; i < 2; ++i) {
                 int index;
                 do {
                     index = rand() % funnyQuestions.size();

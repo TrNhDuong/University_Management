@@ -2,9 +2,11 @@
 #include "display.h"
 
 void AddCommand::execute(){
-    menu->display();
-    string entityChoice = menu->getChoice();
+    string entityChoice;
+    string notice = "";
     while (true) {  
+        entityChoice = menu->getChoice();
+
         if (entityChoice == "1") {
             Student student;
             StudentGetData::InputData(student);
@@ -22,15 +24,15 @@ void AddCommand::execute(){
         } else {
             cout << "Bạn yêu đã nhập sai, mời nhập lại!\n";
         }
-        menu->display();
-        entityChoice = menu->getChoice();
+
+        getch();
     }
 }
 
 void ReplaceCommand::execute(){
-    menu->display();
-    string entityChoice = menu->getChoice();
+    string entityChoice;
     while (true) {
+        entityChoice = menu->getChoice();
         if (entityChoice == "1") {
             string id;
             cout << "Nhập mã sinh viên muốn thay thế: ";
@@ -84,15 +86,15 @@ void ReplaceCommand::execute(){
         }else {
             cout << "Bạn yêu đã nhập sai, mời nhập lại!\n";
         }
-        menu->display();
-        entityChoice = menu->getChoice();
+        
+        getch();
     }
 }
 
 void RemoveCommand::execute(){
-    menu->display();
-    string entityChoice = menu->getChoice();
+    string entityChoice;
     while (true) {
+        entityChoice = menu->getChoice();
         if (entityChoice == "1") {
             string id;
             cout << "Nhập mã sinh viên: ";
@@ -132,8 +134,7 @@ void RemoveCommand::execute(){
         } else {
             cout << "Bạn yêu đã nhập sai, mời nhập lại!\n";
         }
-        menu->display();
-        entityChoice = menu->getChoice();
+        getch();
     }
 }
 

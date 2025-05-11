@@ -36,6 +36,8 @@ void StudentDatabaseDisplay::display(IDatabase* database){
             }
             StudentUI::print(studentDTB->_data[i]);
         }
+
+        setColor(37);
         cout << "===============================\n";
 
         key = getch();
@@ -68,9 +70,38 @@ StudentDatabaseDisplay::~StudentDatabaseDisplay(){
 void LecturerDatabaseDisplay::display(IDatabase* database){
     // dynamic_cast<LecturerDatabase*>(database);
     LecturerDatabase* lecturerDTB = dynamic_cast<LecturerDatabase*>(database);
-    int size = lecturerDTB->_data.size();
-    for (int i = 0; i < size; i++)
-        LecturerUI::print(lecturerDTB->_data[i]);
+    int menuSize = lecturerDTB->_data.size();
+    int selected = 0;
+    char key;
+
+    while (true){
+        clearScreen();
+        setColor(37);
+        cout << "========LECTURER DATABASE========\n";
+        for (int i = 0; i < menuSize; i++){
+            if (i == selected){
+                setColor(32);
+            }else{
+                setColor(37);
+            }
+            LecturerUI::print(lecturerDTB->_data[i]);
+        }
+
+        setColor(37);
+        cout << "===============================\n";
+
+        key = getch();
+        if (key == '\033') { // Phím mũi tên
+            getch(); // Bỏ qua ký tự '['
+            key = getch();
+            if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
+            else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
+        }
+        else if (key == ' ') {
+            break;
+        }
+
+    }
 }
 
 /**
@@ -89,9 +120,38 @@ LecturerDatabaseDisplay::~LecturerDatabaseDisplay(){
 void FacultyDatabaseDisplay::display(IDatabase* database){
     // dynamic_cast<FacultyDatabase*>(database);
     FacultyDatabase* facultyDTB = dynamic_cast<FacultyDatabase*>(database);
-    int size = facultyDTB->_data.size();
-    for (int i = 0; i < size; i++)
-        FacultyUI::print(facultyDTB->_data[i]);
+    int menuSize = facultyDTB->_data.size();
+    int selected = 0;
+    char key;
+
+    while (true){
+        clearScreen();
+        setColor(37);
+        cout << "========FACULTY DATABASE========\n";
+        for (int i = 0; i < menuSize; i++){
+            if (i == selected){
+                setColor(32);
+            }else{
+                setColor(37);
+            }
+            FacultyUI::print(facultyDTB->_data[i]);
+        }
+
+        setColor(37);
+        cout << "===============================\n";
+
+        key = getch();
+        if (key == '\033') { // Phím mũi tên
+            getch(); // Bỏ qua ký tự '['
+            key = getch();
+            if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
+            else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
+        }
+        else if (key == ' ') {
+            break;
+        }
+
+    }
 }
 
 /**

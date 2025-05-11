@@ -3,7 +3,7 @@ CXX = g++-13
 CXXFLAGS = -std=c++23
 
 # Name of execution file
-TARGET = run
+TARGET = run.exe
 
 # List of source files
 SRC = *.cpp

@@ -11,6 +11,7 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include <string>
 using std::string;
 using std::vector;
 using std::unique_ptr;
