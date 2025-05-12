@@ -2,7 +2,7 @@
 #define _MANAGE_SYSTEM_H_
 #include <iostream>
 #include <map>
-
+#include <unistd.h>
 #include "data.h"
 #include "readData.h"
 

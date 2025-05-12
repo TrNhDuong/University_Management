@@ -1,5 +1,6 @@
 #include "readData.h"
 
+#pragma region readFacultyData
 void FacultyReadData::readData(const string& filename){
     _fileIn.open(filename);
     if (_fileIn.is_open() == false){
@@ -20,18 +21,13 @@ void FacultyReadData::readData(const string& filename){
         getline(ss, deanID);
         //find the Lectuer base on the deanID above
           // dùng singleton
-        int index = -1; //finding base on ID
-        for (int i = 0; i < lecDB.getSize(); i++)
-            if (deanID == lecDB.getData(i)->getId()){
-                index = i;
-                break;
-            }
-        Lecturer* deanPtr = nullptr;
+        int index = lecDB.find(deanID);
+        BaseEntity* deanPtr = nullptr;
         Faculty f; 
    
         if (index >= 0){
-            deanPtr = lecDB.getData(index); 
-            f.setDean(*deanPtr);
+            deanPtr = lecDB.getData(index);
+            f.setDean(*dynamic_cast<Lecturer*>(deanPtr));
         }
         else {
             //Truong khoa not found => Set NULL for truong khoa
@@ -52,7 +48,9 @@ void FacultyReadData::readData(const string& filename){
     _fileIn.close(); //close file
 }
 
+#pragma endregion 
 
+#pragma region readLecturerData
 void LecturerReadData::readData(const string& filename){
     _fileIn.open(filename);
     if (_fileIn.is_open() == false){
@@ -85,6 +83,9 @@ void LecturerReadData::readData(const string& filename){
     }
     _fileIn.close();
 }
+#pragma endregion
+
+#pragma region readStudentData
 
 void StudentReadData::readData(const string& filename){
     _fileIn.open(filename);
@@ -118,5 +119,5 @@ void StudentReadData::readData(const string& filename){
     }
     _fileIn.close();
 }
-
+#pragma endregion
 

@@ -18,27 +18,31 @@ public:
     virtual  string getInputType() const = 0;
     virtual BaseEntity* input() = 0;
     virtual ~IDataInput() = default;
+    IDataInput() = default;
 };
 
 class StudentInput: public IDataInput{
 public:
     string getInputType() const override;
     BaseEntity* input() override;
-    ~StudentInput();
+    StudentInput() = default;
+    ~StudentInput() = default;
 };
 
 class LecturerInput: public IDataInput{
 public:
     string getInputType() const override;
     BaseEntity* input() override;
-    ~LecturerInput();
+    LecturerInput() = default;
+    ~LecturerInput() = default;
 };
 
 class FacultyInput: public IDataInput{
 public:
     string getInputType() const override;
     BaseEntity* input() override;
-    ~FacultyInput();
+    FacultyInput() = default;
+    ~FacultyInput() = default;
 };
 
 class InputFactory{

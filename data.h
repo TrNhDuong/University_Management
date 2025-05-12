@@ -14,14 +14,27 @@ using std::string;
 using std::cout;
 using std::fstream;
 
+#pragma region IDatabase declaration
 class IDatabase{
 public:
     virtual string getDataType() const = 0;
+    virtual int getSize() const = 0;
+
+    virtual void Add(BaseEntity*) = 0;
+    virtual bool Remove(BaseEntity*) = 0;
+    virtual bool Remove(const string& id) = 0;
+    virtual int find(const string& id) const = 0;
+
+    virtual BaseEntity* getData(const int&) = 0;
+
     virtual ~IDatabase() = default;
 };
 
+#pragma endregion
+
 //CRTP (Curiously Recurring Template Pattern) + IDatabase + Template ->Need Optimization
 
+#pragma region StudentDatabase declaration
 class StudentDatabase: public IDatabase{
 private:
     vector<Student> _data;
@@ -30,26 +43,29 @@ private:
     StudentDatabase(const StudentDatabase&) = delete;
     Student& operator = (const StudentDatabase&) = delete;
 public:
-    string getDataType() const override;
     static StudentDatabase& getInstance(){
         static StudentDatabase instance;
         return instance;
     }
 
-    
+    string getDataType() const override;
+    int getSize() const override;
+    int find(const string& id) const override;
 
-    //need CRTL
-    int find(const string& id) const;
-    void Add(const Student& obj);
-    bool Remove(const string& ID); //return true if remove succesfully, return false if ID not found
-    bool Remove(Student& obj); ///return true if remove succesfully, return false if ID not found
+    void Add(BaseEntity* obj) override;
+    bool Remove(const string& ID) override; //return true if remove succesfully, return false if ID not found
+    bool Remove(BaseEntity* obj) override; ///return true if remove succesfully, return false if ID not found
     bool Replace(Student& des, Student& src); //return true if remove succesfully, return false if des not found
 
-    int getSize() const;
-    Student* getData(const int& index);
+    BaseEntity* getData(const int& index) override;
     
     friend class StudentReadData;
 };
+#pragma endregion
+
+
+
+#pragma region LecturerDatabase declaration
 
 class LecturerDatabase: public IDatabase{
 private:
@@ -64,19 +80,22 @@ public:
         return instance;
     }
     string getDataType() const override;
-    
-    Lecturer* getData(const int& index);
-    int find(const string& id) const; //return the index in vector _data, it is necessary (can't use friend to lecturer => invalid action harm to capsulation)
-    
-    void Add(const Lecturer& obj);
-    bool Remove(const string& ID);
-    bool Remove(Lecturer& obj);
-    bool Replace(Lecturer& des, Lecturer& src);
-    int getSize() const;
+    int getSize() const override;
+    int find(const string& id) const; //-1 if not exists
 
+    void Add(BaseEntity* obj) override;
+    bool Remove(const string& ID) override;
+    bool Remove(BaseEntity* obj) override;
+    bool Replace(Lecturer& des, Lecturer& src);
+
+    BaseEntity* getData(const int& index) override;
     friend class LecturerReadData;
 };
 
+#pragma endregion
+
+
+#pragma region FacultyDatabase declaration
 
 class FacultyDatabase: public IDatabase{
 private:
@@ -90,18 +109,21 @@ public:
         static FacultyDatabase instance;
         return instance;
     }
-    string getDataType() const override;
 
-    Faculty* getData(const int& index);
-    int find(const string& id) const;
-    int getSize() const;
-    void Add(const Faculty& obj);
-    bool Remove(const string& ID);
-    bool Remove(Faculty& obj);
+    string getDataType() const override;
+    int getSize() const override;
+    int find(const string& id) const override;
+
+    void Add(BaseEntity* object) override;
+    bool Remove(const string& ID) override;
+    bool Remove(BaseEntity* obj) override;
     bool Replace(Faculty& des, Faculty& src);
+
+    BaseEntity* getData(const int& index) override;
     
     friend class FacultyReadData;
 };
 
+#pragma endregion
 
 #endif

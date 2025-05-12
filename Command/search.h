@@ -2,7 +2,6 @@
 #define SEARCH_H
 #include "../Entity/baseEntity.h"
 #include "../data.h"
-#include "../manageSystem.h"
 #include <vector>
 #include <memory>
 #include <string>
@@ -19,16 +18,16 @@ public:
 
 class IdSearch: public SearchStrategy{
 public:
-    vector<BaseEntity*> search(IDatabase* database, const string& id);
+    IdSearch() = default;
+    ~IdSearch() = default;
+    vector<BaseEntity*> search(IDatabase* database, const string& id) override;
 };
 
 class NameSearch: public SearchStrategy{
-    vector<BaseEntity*> search(IDatabase* database, const string& name);
+public:
+    NameSearch() = default;
+    ~NameSearch() = default;
+    vector<BaseEntity*> search(IDatabase* database, const string& name) override;
 };
-
-
-
-
-
 
 #endif

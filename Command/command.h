@@ -19,6 +19,7 @@ public:
 };
 //typeEntity: Student, Lecturer
 //typeOfSubCommand: ex, Search has 2 type: Search by name or by ID
+class SearchStrategy;
 
 class SearchCommand: public ICommand{
 private:
@@ -26,15 +27,43 @@ private:
 public:
     SearchCommand() = default;
     ~SearchCommand() = default;
-    string getCommandType();
-    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand);
+    string getCommandType() override;
+    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
 class DisplayCommand: public ICommand{
 public:
     DisplayCommand() = default;
     ~DisplayCommand() = default;
-    string getCommandType();
-    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand);
+    string getCommandType() override;
+    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
+
+class AddCommand: public ICommand{
+public:
+    AddCommand() = default;
+    ~AddCommand() = default;
+    string getCommandType() override;
+    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+};
+
+class RemoveCommand: public ICommand{
+public:
+    RemoveCommand() = default;
+    ~RemoveCommand() = default;
+
+    string getCommandType() override;
+    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+};
+
+class ReplaceCommand: public ICommand{
+public:
+    ReplaceCommand() = default;
+    ~ReplaceCommand() = default;
+
+    string getCommandType() override;
+    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+};
+
+
 #endif
