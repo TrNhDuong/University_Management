@@ -1,11 +1,9 @@
-/**
- * @file baseEntity.cpp
- * @brief Triển khai các lớp BaseEntity và Birth.
- */
+#include "baseEntity.h"
+#include <iostream>
 
  #include "baseEntity.h"
  #include <sstream>
- #include <iostream>
+ #include <iostream>cpp
  
  /**
   * @class Birth

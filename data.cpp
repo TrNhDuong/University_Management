@@ -33,73 +33,34 @@ string FacultyDatabase::getDataType() const {
     return "Faculty";
 }
 
-
-/**
- * @brief Lấy kích thước của cơ sở dữ liệu.
- * @return Kích thước của cơ sở dữ liệu.
- * @details Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu.
- */
 int StudentDatabase::getSize() const {
     return _data.size();
 }
 
-/**
- * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
- * @param id Mã định danh của đối tượng cần tìm.
- * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
- * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
- */
-int FacultyDatabase::find(const string& id) const {
-
-    int i = 0;
-    for (i ; i < _data.size(); ++i){
-        if (_data[i].getId() == id) break;
-    }
-    if (i == _data.size()) return -1; //return -1 if it not find out
-    return i;
+int LecturerDatabase::getSize() const {
+    return _data.size();
 }
 
-/**
- * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
- * @param id Mã định danh của đối tượng cần tìm.
- * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
- * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
- */
-int StudentDatabase::find(const string& id) const {
-    int i = 0;
-    for (i ; i < _data.size(); ++i){
-        if (_data[i].getId() == id) break;
-    }
-    if (i == _data.size()) return -1; //return -1 if it not find out
-    return i;
+int FacultyDatabase::getSize() const {
+    return _data.size();
 }
 
-/**
- * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
- * @param id Mã định danh của đối tượng cần tìm.
- * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
- * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
- */
-int LecturerDatabase::find(const string& id) const{ //return the index
-    int i = 0;
-    for (i ; i < _data.size(); ++i){
-        if (_data[i].getId() == id) break;
-    }
-    if (i == _data.size()) return -1; //return -1 if it not find out
-    return i;
+Student* StudentDatabase::getData(const int& index){
+    if (index < 0 || index >= _data.size())
+        return nullptr;
+    return &_data[index];
 }
 
-/**
- * @brief Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số.
- * @param index Chỉ số của đối tượng cần lấy.
- * @return Tham chiếu đến đối tượng trong cơ sở dữ liệu.
- * @details Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số.
- */
-Faculty& FacultyDatabase::getData(const int& index){
-    if (index < 0 || index >= _data.size()){
-        throw std::out_of_range ("Index Faculty out of bound\n");
-    }
-    return _data[index];
+Lecturer* LecturerDatabase::getData(const int& index){
+    if (index < 0 || index >= _data.size())
+        return nullptr;
+    return &_data[index];
+}
+
+Faculty* FacultyDatabase::getData(const int& index){
+    if (index < 0 || index >= _data.size())
+        return nullptr;
+    return &_data[index];
 }
 
 /**

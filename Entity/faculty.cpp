@@ -5,7 +5,6 @@
  */
 
 #include "faculty.h"
-#include "utils.h"
 
 /**
  * @brief Hamh lấy kiểu dữ liệu của lớp Faculty.
@@ -62,15 +61,4 @@ void Faculty::setDean(const Lecturer& dean){
  */
 Lecturer Faculty::getDean() const{
     return _dean;
-}
-
-/**
- * @brief Hàm in thông tin của khoa.
- * @param faculty Đối tượng khoa cần in thông tin.
- * @details Hàm này in ra thông tin của khoa bao gồm mã khoa, tên khoa, ngày sinh, email và trưởng khoa.
- */
-void FacultyUI::print(Faculty& faculty){
-    cout << faculty.getId() << "|" << faculty.getName() << "|"
-     << faculty.getBirth().getDay() << "/" << faculty.getBirth().getMonth() << "/" << faculty.getBirth().getYear() << "|"
-    << faculty.getMail() << "|" << faculty.getDean().getId() << '\n';
 }

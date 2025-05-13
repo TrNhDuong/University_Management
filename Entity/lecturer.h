@@ -71,20 +71,6 @@ public:
     ~Lecturer();
 };
 
-/**
- * @class LecturerUI
- * @brief Lớp hiển thị thông tin giảng viên.
- * @details Lớp này cung cấp các phương thức để hiển thị thông tin của giảng viên.
- */
-class LecturerUI{
-public:
-
-    /**
-     * @brief Hiển thị thông tin giảng viên.
-     * @param lecturer Đối tượng giảng viên cần hiển thị.
-     * @details Hàm này in ra thông tin của giảng viên trên */
-    static void print(const Lecturer& lecturer);
-};
 
 
 #endif

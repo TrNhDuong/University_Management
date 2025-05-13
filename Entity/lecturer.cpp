@@ -66,16 +66,3 @@ int Lecturer::getInstructYear() const {
 string Lecturer::getDegree() const {
     return _academicDegree;
 }
-
-/**
- * @brief Hàm hiển thị thông tin giảng viên.
- * @param lecturer Đối tượng giảng viên cần hiển thị.
- * @details Hàm này in ra thông tin của giảng viên */
-void LecturerUI::print(const Lecturer& lecturer){
-    cout << format(
-        "{}|{}|{}|{}|{}|{}|{}\n",
-        lecturer.getId(), lecturer.getName(), 
-        lecturer.getBirth().getDay(), lecturer.getBirth().getMonth(), lecturer.getBirth().getYear(),
-        lecturer.getInstructYear(), lecturer.getDegree()
-    );
-}

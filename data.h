@@ -7,10 +7,17 @@
 #ifndef _DATA_H_
 #define _DATA_H_
 #include <vector>
+<<<<<<< HEAD
 #include "student.h"
 #include "lecturer.h"
 #include "faculty.h"
 #include "baseEntity.h"
+=======
+#include "Entity/student.h"
+#include "Entity/lecturer.h"
+#include "Entity/faculty.h"
+#include "Entity/baseEntity.h"
+>>>>>>> NDuong_branch
 #include <exception>
 #include <string>
 #include <fstream>
@@ -20,11 +27,6 @@ using std::string;
 using std::cout;
 using std::fstream;
 
-/**
- * @class IDatabase
- * @brief Lớp cơ sở cho các cơ sở dữ liệu sinh viên, giảng viên và khoa.
- * @details Các lớp này quản lý danh sách sinh viên, giảng viên và khoa trong hệ thống.
- */
 class IDatabase{
 public:
     /**
@@ -84,69 +86,11 @@ public:
         static StudentDatabase instance;
         return instance;
     }
-
-    /**
-     * @brief Lấy kích thước của cơ sở dữ liệu.
-     * @return Kích thước của cơ sở dữ liệu.
-     * @details Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu.
-     */
     int getSize() const;
-    
-    /**
-     * @brief Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số.
-     * @param index Chỉ số của đối tượng cần lấy.
-     * @return Tham chiếu đến đối tượng trong cơ sở dữ liệu.
-     * @details Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số.
-     */
-    Student& getData(const int& index);
-    
-    /**
-     * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
-     * @param id Mã định danh của đối tượng cần tìm.
-     * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
-     * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
-     */
-    int find(const string& id) const;
-    /**
-     * @brief Thêm một đối tượng vào cơ sở dữ liệu.
-     * @param obj Đối tượng cần thêm vào cơ sở dữ liệu.
-     * @details Hàm này thêm một đối tượng vào cơ sở dữ liệu.
-     */
-    void Add(const Student& obj);
-
-    /**
-     * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
-     * @param ID Mã định danh của đối tượng cần xóa.
-     * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
-     * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
-     */
-    bool Remove(const string& ID); 
-
-    /**
-     * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
-     * @param obj Đối tượng cần xóa khỏi cơ sở dữ liệu.
-     * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
-     * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
-     */
-    bool Remove(Student& obj); ///return true if remove succesfully, return false if ID not found
-
-    /**
-     * @brief Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
-     * @param des Đối tượng cần thay thế.
-     * @param src Đối tượng mới thay thế.
-     * @return true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
-     * @details Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
-     */
-    bool Replace(Student& des, Student& src); //return true if remove succesfully, return false if des not found
-    friend class StudentDatabaseDisplay;
+    Student* getData(const int&);
     friend class StudentReadData;
 };
 
-/**
- * @class LecturerDatabase
- * @brief Lớp cơ sở dữ liệu cho giảng viên.
- * @details Lớp này quản lý danh sách giảng viên trong hệ thống.
- */
 class LecturerDatabase: public IDatabase{
 private:
     /**
@@ -188,57 +132,8 @@ public:
      * @details Hàm này trả về một chuỗi mô tả kiểu dữ liệu của cơ sở dữ liệu.
      */
     string getDataType() const override;
-    
-    /**
-     * @brief Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số.
-     * @param index Chỉ số của đối tượng cần lấy.
-     * @return Tham chiếu đến đối tượng trong cơ sở dữ liệu.
-     * @details Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số.
-     */
-    Lecturer& getData(const int& index);
-
-    /**
-     * @brief Lấy kích thước của cơ sở dữ liệu.
-     * @return Kích thước của cơ sở dữ liệu.
-     * @details Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu.
-     */
-    int find(const string& id) const; //return the index in vector _data, it is necessary (can't use friend to lecturer => invalid action harm to capsulation)
-    
-    /**
-     * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
-     * @param id Mã định danh của đối tượng cần tìm.
-     * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
-     * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
-     */
-    void Add(const Lecturer& obj);
-
-    /**
-     * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
-     * @param ID Mã định danh của đối tượng cần xóa.
-     * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
-     * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
-     */
-    bool Remove(const string& ID);
-
-    /**
-     * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
-     * @param obj Đối tượng cần xóa khỏi cơ sở dữ liệu.
-     * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
-     * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
-     */
-    bool Remove(Lecturer& obj);
-
-    /**
-     * @brief Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
-     * @param des Đối tượng cần thay thế.
-     * @param src Đối tượng mới thay thế.
-     * @return true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
-     * @details Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
-     */
-    bool Replace(Lecturer& des, Lecturer& src);
-
-
-    friend class LecturerDatabaseDisplay;
+    Lecturer* getData(const int& index);
+    int getSize() const;
     friend class LecturerReadData;
 };
 
@@ -288,57 +183,9 @@ public:
      * @details Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu.
      */
     string getDataType() const override;
-
-    /**
-     * @brief Lấy dữ liệu từ cơ sở dữ liệu theo chỉ số.
-     * @param index Chỉ số của đối tượng cần lấy.
-     * @return Tham chiếu đến đối tượng trong cơ sở dữ liệu.
-     * @details Hàm này trả về một tham chiếu đến đối tượng trong cơ sở dữ liệu theo chỉ số.
-     */
-    Faculty& getData(const int& index);
-
-    /**
-     * @brief Lấy kích thước của cơ sở dữ liệu.
-     * @return Kích thước của cơ sở dữ liệu.
-     * @details Hàm này trả về số lượng đối tượng trong cơ sở dữ liệu.
-     */
-    int find(const string& id) const;
-
-    /**
-     * @brief Tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh.
-     * @param id Mã định danh của đối tượng cần tìm.
-     * @return Chỉ số của đối tượng trong cơ sở dữ liệu, hoặc -1 nếu không tìm thấy.
-     * @details Hàm này tìm kiếm một đối tượng trong cơ sở dữ liệu theo mã định danh và trả về chỉ số của nó.
-     */
-    void Add(const Faculty& obj);
-
-    /**
-     * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
-     * @param ID Mã định danh của đối tượng cần xóa.
-     * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
-     * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
-     */
-    bool Remove(const string& ID);
-
-    /**
-     * @brief Xóa một đối tượng khỏi cơ sở dữ liệu.
-     * @param obj Đối tượng cần xóa khỏi cơ sở dữ liệu.
-     * @return true nếu xóa thành công, false nếu không tìm thấy đối tượng.
-     * @details Hàm này xóa một đối tượng khỏi cơ sở dữ liệu.
-     */
-    bool Remove(Faculty& obj);
-
-    /**
-     * @brief Thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
-     * @param des Đối tượng cần thay thế.
-     * @param src Đối tượng mới thay thế.
-     * @return true nếu thay thế thành công, false nếu không tìm thấy đối tượng cần thay thế.
-     * @details Hàm này thay thế một đối tượng trong cơ sở dữ liệu bằng một đối tượng khác.
-     */
-    bool Replace(Faculty& des, Faculty& src);
-    
+    int getSize() const;
+    Faculty* getData(const int& index);
     friend class FacultyReadData;
-    friend class FacultyDatabaseDisplay;
 };
 
 

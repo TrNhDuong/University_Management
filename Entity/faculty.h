@@ -8,8 +8,11 @@
 #define _FACULTY_H_
 #include "baseEntity.h"
 #include "lecturer.h"
-#include "utils.h"
-
+#include <vector>
+#include <iostream>
+#include <format>
+using std::format;
+using std::cout;
 using std::string, std::vector;
 
 /**
@@ -74,18 +77,5 @@ public:
     ~Faculty();
 };
 
-/**
- * @class FacultyUI
- * @brief Lớp hiển thị thông tin khoa.
- * @details Lớp này cung cấp các phương thức để hiển thị thông tin của khoa.
- */
-class FacultyUI{
-public:
-    /**
-     * @brief Hàm in thông tin của khoa.
-     * @param faculty Đối tượng khoa cần in thông tin.
-     * @details Hàm này in ra thông tin của khoa */
-    static void print(Faculty& faculty);
-};
 
 #endif // _FACULTY_H_

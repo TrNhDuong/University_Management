@@ -1,14 +1,4 @@
-/**
- * @file readData.cpp
- * @brief thực hiện các hàm đọc dữ liệu từ file cho các lớp Faculty, Lecturer và Student.
- * @details Lớp này sử dụng Singleton design pattern để đảm bảo chỉ có một thể hiện duy nhất của lớp.
- */
-
-#include"readData.h"
-#include"faculty.h"
-#include"lecturer.h"
-#include<iostream>
-using std::getline;
+#include "readData.h"
 
 /**
  * @brief Đọc dữ liệu từ file cho lớp Faculty.
@@ -35,12 +25,17 @@ void FacultyReadData::readData(const string& filename){
         getline(ss, deanID);
         //find the Lectuer base on the deanID above
           // dùng singleton
-        int index = lecDB.LecturerDatabase::find(deanID); //finding base on ID
+        int index = -1; //finding base on ID
+        for (int i = 0; i < lecDB.getSize(); i++)
+            if (deanID == lecDB.getData(i)->getId()){
+                index = i;
+                break;
+            }
         Lecturer* deanPtr = nullptr;
         Faculty f; 
    
         if (index >= 0){
-            deanPtr = &lecDB.getData(index); 
+            deanPtr = lecDB.getData(index); 
             f.setDean(*deanPtr);
         }
         else {
@@ -51,9 +46,9 @@ void FacultyReadData::readData(const string& filename){
             zombie.setBirth("01/01/01");
             f.setDean(zombie);
         }
-        f.setName(name); 
-        f.setId(id); 
-        f.setBirth(birth); 
+        f.setName(name);
+        f.setId(id);
+        f.setBirth(birth);       
         f.setMail(email);
         FacultyDatabase& facultyDB = FacultyDatabase::getInstance();
         facultyDB._data.push_back(f);

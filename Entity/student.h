@@ -88,20 +88,4 @@ public:
     ~Student();
 };
 
-/**
- * @class StudentUI
- * @brief Lớp hiển thị thông tin sinh viên.
- * @details Lớp này cung cấp các phương thức để hiển thị thông tin của sinh viên.
- */
-class StudentUI{
-public:
-
-    /**
-     * @brief Hàm in thông tin của sinh viên.
-     * @param student Đối tượng sinh viên cần in thông tin.
-     * @details Hàm này in ra thông tin của sinh viên trên
-     */
-    static void print(const Student& student);
-};
-
-#endif // _STUDENT_H_
+#endif

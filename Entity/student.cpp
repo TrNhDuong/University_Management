@@ -88,16 +88,3 @@ void Student::setEnrollYear(const int& year){
     _enrollYear = year;
 }
 
-/**
- * @brief Hàm in thông tin của sinh viên.
- * @param st Đối tượng sinh viên cần in thông tin.
- * @details Hàm này in ra thông tin của sinh viên trên */
-void StudentUI::print(const Student& st){
-    cout << format(
-        "{:10}|{:25}|{:2}/{:2}/{:4}|{:5}|{:4}\n",
-        st.getId(),st.getName(), 
-        st.getBirth().getDay(), st.getBirth().getMonth(), st.getBirth().getYear(), 
-        st.getGPA(), st.getCompletedCredit()
-        );
-}
-

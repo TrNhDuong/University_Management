@@ -6,11 +6,16 @@
 
 #ifndef _READDATA_H
 #define _READDATA_H
-#include"data.h"
-#include<string> 
-#include<sstream>
-#include<fstream>
-
+#include <string> 
+#include <sstream>
+#include <fstream>
+#include "data.h"
+#include "Entity/student.h"
+#include "Entity/lecturer.h"
+#include "Entity/faculty.h"
+#include "Entity/baseEntity.h"
+#include <iostream>
+using std::getline;
 using std::ifstream, std::ofstream;
 using std::string, std::stringstream;
 
