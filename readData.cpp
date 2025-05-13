@@ -12,7 +12,7 @@ void FacultyReadData::readData(const string& filename){
     LecturerDatabase& lecDB = LecturerDatabase::getInstance();
     while(getline(_fileIn,line)){
         stringstream ss(line);
-        string name, id, birth, email, deanID; 
+        string name = "", id = "", birth = "", email = "", deanID = ""; 
         //seperate - Lack of managing the invalid data 
         getline(ss, name,'|');
         getline(ss, id,'|');

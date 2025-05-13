@@ -25,7 +25,7 @@ private:
     FacultyReadData(const FacultyReadData&) = delete;
     FacultyReadData& operator= (const FacultyReadData&) = delete; 
     ~FacultyReadData() = default;
-    ifstream _fileIn; //There is a possibility that programm read multiple of files, so i wont create a class to singleton the ifstream. 
+    ifstream _fileIn; //There is a possibility that program read multiple of files each, so i wont create a class to singleton the ifstream. 
 public:
     static FacultyReadData& getInstance(){
         static FacultyReadData instance;

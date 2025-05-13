@@ -1,12 +1,11 @@
 # Compiler and flags
 CXX = g++-13
-CXXFLAGS = -std=c++23 -Wall
-
+CXXFLAGS = -std=c++2b 
 # Name of execution file
 TARGET = run
 
 # List of source files
-SRC = main.cpp manageSystem.cpp faculty.cpp lecturer.cpp baseEntity.cpp student.cpp menu.cpp utils.cpp
+SRC = *.cpp Entity/*.cpp Command/*.cpp
 
 # Default command: compile everything
 all:
