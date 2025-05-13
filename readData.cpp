@@ -62,7 +62,7 @@ void LecturerReadData::readData(const string& filename){
     LecturerDatabase& lecturerDB = LecturerDatabase::getInstance();
     while(getline(_fileIn,line)){
         stringstream ss(line); //builder pattern
-        string name = "", id = "", birth = "", year_instruct = "", deg = "";
+        string name = "", id = "", birth = "", year_instruct = "", deg = "", mail ="";
 
         //seperate - Lack of managing the invalid data
         getline(ss,name,'|');
@@ -101,7 +101,7 @@ void StudentReadData::readData(const string& filename){
     StudentDatabase& studentDB = StudentDatabase::getInstance();
     while(getline(_fileIn,line)){
         stringstream ss(line); //builder pattern
-        string name = "", id, birth = "", year = "", gpa = "",credit = "";
+        string name = "", id, birth = "", year = "", gpa = "",credit = "", mail = "";
         //seperate - Lack of managing the invalid data
         getline(ss,name,'|');
         getline(ss,id,'|'); 
