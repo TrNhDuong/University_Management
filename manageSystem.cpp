@@ -21,28 +21,31 @@ void UniversitySystem::SetUp(){
 
 void UniversitySystem::Run(){
     SetUp();
+
+    MenuFactory menuFactory;
+    unique_ptr<Menu> mainMenu = menuFactory.createMenu("Main");
+    unique_ptr<Menu> entityMenu = menuFactory.createMenu("Entity");
+    unique_ptr<Menu> subMenu = menuFactory.createMenu("Sub");
+
     ICommand* commandMachine = nullptr;
-    while (true){
-        cout << "Nhap chuc nang muon tim: 1.Display, 2.Search, 3.Add\n";
-        int c;
-        cin >> c;
-        if (c == 1){
-            commandMachine = new DisplayCommand();
-            commandMachine->excute(mappingDatabase, "Student", "Id");
-        } else if (c == 2){
-            commandMachine = new SearchCommand();
-            commandMachine->excute(mappingDatabase, "Student", "Id");
-        } else if (c == 3){
-            commandMachine = new AddCommand();
-            commandMachine->excute(mappingDatabase, "Student", "");
-        } else {
+    
+    while (true) {
+        string typeCommand, typeEntity, typeSubCommand = "";
+        typeCommand = mainMenu->getChoice();
+        if (typeCommand == "Exit"){
+            TurnOffProgram::excute(mappingDatabase);
             break;
         }
+        typeEntity = entityMenu->getChoice();
+        if (typeEntity == "Exit")
+            continue;
+        if (typeCommand == "Search" ){
+            //Hien subMenu hien thi tuy chon search by id or by name
+            typeSubCommand = subMenu->getChoice();
+        }
+        commandMachine = CommandFactory::create(typeCommand);
+        commandMachine->excute(mappingDatabase, typeEntity, typeSubCommand);
         delete commandMachine;
         commandMachine = nullptr;
-        cout << "Press to return menu\n";
-        cin.ignore();
-        if (cin.get())
-            system("clear");
     }
 }

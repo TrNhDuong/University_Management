@@ -1,15 +1,17 @@
 #include "display.h"
 #include <memory>
+#include <iostream>
+using std::cin;
 
 
 void StudentUI::print(BaseEntity* student){
     Student* st = dynamic_cast<Student*>(student);
     if (st){
         cout << format(
-            "{:10}|{:40}|{:02}/{:02}/{:04}|{:5}|{:4}\n",
+            "{:10}|{:40}|{:02}/{:02}/{:04}|{:5}|{:4}|{:30}\n",
             st->getId(),st->getName(), 
             st->getBirth().getDay(), st->getBirth().getMonth(), st->getBirth().getYear(), 
-            st->getGPA(), st->getCompletedCredit()
+            st->getGPA(), st->getCompletedCredit(), st->getMail()
             );
     }
 }
@@ -18,10 +20,10 @@ void LecturerUI::print(BaseEntity* lecturer){
     Lecturer* lec = dynamic_cast<Lecturer*>(lecturer);
     if (lec){
         cout << format(
-            "{:10}|{:40}|{:02}/{:02}/{:4}|{:5}|{:4}\n",
+            "{:10}|{:40}|{:02}/{:02}/{:4}|{:5}|{:4}|{:30}\n",
             lec->getId(), lec->getName(), 
             lec->getBirth().getDay(), lec->getBirth().getMonth(), lec->getBirth().getYear(),
-            lec->getInstructYear(), lec->getDegree()
+            lec->getInstructYear(), lec->getDegree(), lec->getMail()
         );
     }
 }
@@ -44,6 +46,7 @@ void StudentDatabaseDisplay::display(IDatabase* database){
     int size = studentDTB->getSize();
     for (int i = 0; i < size; i++)
         printer->print(studentDTB->getData(i));
+    cin.get();
 };
 
 StudentDatabaseDisplay::~StudentDatabaseDisplay(){
@@ -56,6 +59,7 @@ void LecturerDatabaseDisplay::display(IDatabase* database){
     std::unique_ptr<IUI> printer = std::make_unique<LecturerUI>();
     for (int i = 0; i < size; i++)
         printer->print(lecturerDTB->getData(i));
+    cin.get();
 }
 
 LecturerDatabaseDisplay::~LecturerDatabaseDisplay(){
@@ -68,6 +72,7 @@ void FacultyDatabaseDisplay::display(IDatabase* database){
     std::unique_ptr<IUI> printer = std::make_unique<FacultyUI>();
     for (int i = 0; i < size; i++)
         printer->print(facultyDTB->getData(i));
+    cin.get();
 }
 
 FacultyDatabaseDisplay::~FacultyDatabaseDisplay(){

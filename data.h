@@ -24,7 +24,7 @@ public:
     virtual bool Remove(BaseEntity*) = 0;
     virtual bool Remove(const string& id) = 0;
     virtual int find(const string& id) const = 0;
-
+    virtual bool Replace(BaseEntity* des, BaseEntity* scr) = 0;
     virtual BaseEntity* getData(const int&) = 0;
 
     virtual ~IDatabase() = default;
@@ -55,7 +55,7 @@ public:
     void Add(BaseEntity* obj) override;
     bool Remove(const string& ID) override; //return true if remove succesfully, return false if ID not found
     bool Remove(BaseEntity* obj) override; ///return true if remove succesfully, return false if ID not found
-    bool Replace(Student& des, Student& src); //return true if remove succesfully, return false if des not found
+    bool Replace(BaseEntity* des, BaseEntity* src) override; //return true if remove succesfully, return false if des not found
 
     BaseEntity* getData(const int& index) override;
     
@@ -86,7 +86,7 @@ public:
     void Add(BaseEntity* obj) override;
     bool Remove(const string& ID) override;
     bool Remove(BaseEntity* obj) override;
-    bool Replace(Lecturer& des, Lecturer& src);
+    bool Replace(BaseEntity* des, BaseEntity* src) override;
 
     BaseEntity* getData(const int& index) override;
     friend class LecturerReadData;
@@ -117,7 +117,7 @@ public:
     void Add(BaseEntity* object) override;
     bool Remove(const string& ID) override;
     bool Remove(BaseEntity* obj) override;
-    bool Replace(Faculty& des, Faculty& src);
+    bool Replace(BaseEntity* des, BaseEntity* src) override;
 
     BaseEntity* getData(const int& index) override;
     

@@ -69,7 +69,9 @@ void LecturerReadData::readData(const string& filename){
         getline(ss,id,'|'); 
         getline(ss,birth,'|'); 
         getline(ss,year_instruct,'|'); 
-        getline(ss,deg); 
+        getline(ss,deg, '|'); 
+        getline(ss,mail);
+
         //managing the invalid data ?
 
         Lecturer new_person;
@@ -78,6 +80,7 @@ void LecturerReadData::readData(const string& filename){
         new_person.setBirth(birth);
         new_person.setInstructYear(stoi(year_instruct));
         new_person.setDeg(deg);
+        new_person.setMail(mail);
         //push into vector
         lecturerDB._data.push_back(new_person);
     }
@@ -93,7 +96,7 @@ void StudentReadData::readData(const string& filename){
         std::cout <<"Can't open file " << filename <<"\n";
         return;
     }
-    //read file: name|id|birth|year|gpa|credit
+    //read file: name|id|birth|year|gpa|credit|mail
     string line;
     StudentDatabase& studentDB = StudentDatabase::getInstance();
     while(getline(_fileIn,line)){
@@ -105,7 +108,8 @@ void StudentReadData::readData(const string& filename){
         getline(ss,birth,'|'); 
         getline(ss,year,'|');
         getline(ss,gpa,'|');  
-        getline(ss,credit);
+        getline(ss,credit,'|');
+        getline(ss,mail);
         //managing the invalid data ?
 
         Student new_person;
@@ -115,6 +119,7 @@ void StudentReadData::readData(const string& filename){
         new_person.setEnrollYear(stoi(year));
         new_person.setGPA(stof(gpa));
         new_person.setCredit(stoi(credit));
+        new_person.setMail(mail);
         studentDB._data.push_back(new_person);
     }
     _fileIn.close();

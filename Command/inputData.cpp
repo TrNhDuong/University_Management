@@ -21,7 +21,7 @@ string FacultyInput::getInputType() const {
 BaseEntity* StudentInput::input(){
     BaseEntity* ans = nullptr;
     Student* s = new Student();
-    string name, id, birth;
+    string name, id, birth, mail;
     float gpa;
     int enrollYear, credit;
     cout << "Nhap thong tin lien quan toi sinh vien:\n";
@@ -38,12 +38,15 @@ BaseEntity* StudentInput::input(){
     cin >> enrollYear;
     cout << "Nhap so tin chi da hoan thanh: ";
     cin >> credit;
+    cout << "Nhap mail cua sinh vien: ";
+    cin >> mail;
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);
     s->setEnrollYear(enrollYear);
     s->setGPA(gpa);
     s->setCredit(credit);
+    s->setMail(mail);
     ans = s;
     return ans;
 }
@@ -57,7 +60,7 @@ BaseEntity* LecturerInput::input(){
     Lecturer* s = new Lecturer();
     string name, id, birth;
     int structYear;
-    string  degree;
+    string  degree, mail;
     cout << "Nhap thong tin lien quan toi giang vien:\n";
     cout << "Nhap ten: ";
     getline(cin, name);
@@ -69,11 +72,14 @@ BaseEntity* LecturerInput::input(){
     cin >> structYear;
     cout << "Nhap hoc ham: ";
     cin >> degree;
+    cout << "Nhap mail: ";
+    cin >> mail;
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);
     s->setInstructYear(structYear);
     s->setDeg(degree);
+    s->setMail(mail);
     ans = s;
     return ans;
 }
@@ -84,7 +90,7 @@ BaseEntity* LecturerInput::input(){
 
 BaseEntity* FacultyInput::input(){
     BaseEntity* ans = nullptr;
-    Faculty s;
+    Faculty* s = new Faculty();
     string name, id, birth;
     string mail;
     string idDean;
@@ -105,7 +111,7 @@ BaseEntity* FacultyInput::input(){
     // s.setEnrollYear(enrollYear);
     // s.setGPA(gpa);
     // s.setCredit(credit);
-    ans = &s;
+    ans = s;
     return ans;
 }
 
@@ -116,8 +122,9 @@ IDataInput* InputFactory::create(const string& typeEntity){
         return new StudentInput();
     } else if ("Lecturer" == typeEntity){
         return new LecturerInput();
-    } else if ("Faculty" == typeEntity)
+    } else if ("Faculty" == typeEntity){
         return new FacultyInput();
+    }
     return nullptr;
 }
 

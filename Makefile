@@ -1,6 +1,7 @@
 # Compiler and flags
 CXX = g++-13
-CXXFLAGS = -std=c++2b 
+CXXFLAGS = -std=c++2b
+
 # Name of execution file
 TARGET = run
 

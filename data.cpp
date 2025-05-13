@@ -111,15 +111,18 @@ bool StudentDatabase::Remove(BaseEntity* obj){
     return Remove(obj->getId());
 }
 
-bool StudentDatabase::Replace(Student& des, Student& src){
-    int index = find(des.getId());
+bool StudentDatabase::Replace(BaseEntity* d, BaseEntity* s){
+    Student* des = dynamic_cast<Student*>(d);
+    Student* scr = dynamic_cast<Student*>(s);
+    int index = find(des->getId());
     if(index >= 0){
-        _data[index].setName(src.getName());
-        _data[index].setId(src.getId());
-        _data[index].setBirth(src.getBirth());
-        _data[index].setGPA(src.getGPA());
-        _data[index].setEnrollYear(src.getEnrollYear());
-        _data[index].setCredit(src.getCompletedCredit());
+        _data[index].setName(scr->getName());
+        _data[index].setId(scr->getId());
+        _data[index].setBirth(scr->getBirth());
+        _data[index].setGPA(scr->getGPA());
+        _data[index].setEnrollYear(scr->getEnrollYear());
+        _data[index].setCredit(scr->getCompletedCredit());
+        _data[index].setMail(scr->getMail());
         return true;
     }else {
         return false; //if des obj not found
@@ -149,14 +152,16 @@ bool FacultyDatabase::Remove(BaseEntity* obj){
 }
 
 
-bool FacultyDatabase::Replace(Faculty& des, Faculty& src){
-    int index = find(des.getId());
+bool FacultyDatabase::Replace(BaseEntity* d, BaseEntity* s){
+    Faculty* scr = dynamic_cast<Faculty*>(s);
+    Faculty* des = dynamic_cast<Faculty*>(d);
+    int index = find(des->getId());
     if(index >= 0){
-        _data[index].setName(src.getName());
-        _data[index].setId(src.getId());
-        _data[index].setBirth(src.getBirth());
-        _data[index].setMail(src.getMail());
-        _data[index].setDean(src.getDean());
+        _data[index].setName(scr->getName());
+        _data[index].setId(scr->getId());
+        _data[index].setBirth(scr->getBirth());
+        _data[index].setMail(scr->getMail());
+        _data[index].setDean(scr->getDean());
         return true;
     }else {
         return false; //if des obj not found
@@ -186,14 +191,17 @@ bool LecturerDatabase::Remove(BaseEntity* obj){
     return Remove(obj->getId());
 }
 
-bool LecturerDatabase::Replace(Lecturer& des, Lecturer& src){
-    int index = find(des.getId());
+bool LecturerDatabase::Replace(BaseEntity* d, BaseEntity* s){
+    Lecturer* des = dynamic_cast<Lecturer*>(d);
+    Lecturer* scr = dynamic_cast<Lecturer*>(s);
+
+    int index = find(des->getId());
     if(index >= 0){
-        _data[index].setName(src.getName());
-        _data[index].setId(src.getId());
-        _data[index].setBirth(src.getBirth());
-        _data[index].setInstructYear(src.getInstructYear());
-        _data[index].setDeg(src.getDegree());
+        _data[index].setName(scr->getName());
+        _data[index].setId(scr->getId());
+        _data[index].setBirth(scr->getBirth());
+        _data[index].setInstructYear(scr->getInstructYear());
+        _data[index].setDeg(scr->getDegree());
         return true;
     }else {
         return false; //if des obj not found

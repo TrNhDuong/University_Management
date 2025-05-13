@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include "data.h"
 #include "readData.h"
+#include "menu.h"
 
 #include "Command/display.h"
 #include "Command/search.h"

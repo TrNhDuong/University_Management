@@ -65,5 +65,17 @@ public:
     void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
+class TurnOffProgram{
+public:
+    TurnOffProgram() = default;
+    ~TurnOffProgram() = default;
+
+    static void excute(map<string, IDatabase*> mappingDatabase);
+};
+
+class CommandFactory{
+public:
+    static ICommand* create(const string& typeCommand);
+};
 
 #endif
