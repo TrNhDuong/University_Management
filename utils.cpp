@@ -13,3 +13,23 @@ bool ValidChoice::checkValidChoice(vector<string>& checkList, string& choice){
 
     return false;
 }
+
+void setColor(int color) {
+    cout << "\033[" << color << "m";
+}
+
+void clearScreen() {
+    system("clear");
+}
+
+char getch() {
+    struct termios oldt, newt;
+    char ch;
+    tcgetattr(STDIN_FILENO, &oldt);
+    newt = oldt;
+    newt.c_lflag &= ~(ICANON | ECHO);
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+    ch = getchar();
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    return ch;
+}
