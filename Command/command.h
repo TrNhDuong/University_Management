@@ -66,20 +66,11 @@ public:
 };
 
 class TurnOffProgram{
-private:
-    IDatabase* studentDB;
-    IDatabase* lecturerDB;
-    IDatabase* facultyDB;
 public:
     TurnOffProgram() = default;
-    TurnOffProgram(IDatabase* student, IDatabase* lecturer, IDatabase* faculty){
-        studentDB = student;
-        lecturerDB = lecturer;
-        facultyDB = faculty;
-    }
     ~TurnOffProgram() = default;
 
-    static void excute();
+    static void excute(map<string, IDatabase*> mappingDatabase);
 };
 
 class CommandFactory{

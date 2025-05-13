@@ -84,7 +84,7 @@ BaseEntity* LecturerInput::input(){
 
 BaseEntity* FacultyInput::input(){
     BaseEntity* ans = nullptr;
-    Faculty s;
+    Faculty* s = new Faculty();
     string name, id, birth;
     string mail;
     string idDean;
@@ -105,7 +105,7 @@ BaseEntity* FacultyInput::input(){
     // s.setEnrollYear(enrollYear);
     // s.setGPA(gpa);
     // s.setCredit(credit);
-    ans = &s;
+    ans = s;
     return ans;
 }
 
@@ -116,8 +116,9 @@ IDataInput* InputFactory::create(const string& typeEntity){
         return new StudentInput();
     } else if ("Lecturer" == typeEntity){
         return new LecturerInput();
-    } else if ("Faculty" == typeEntity)
+    } else if ("Faculty" == typeEntity){
         return new FacultyInput();
+    }
     return nullptr;
 }
 

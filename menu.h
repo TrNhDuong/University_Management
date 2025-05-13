@@ -37,6 +37,12 @@ public:
 
 };
 
+class SubMenu: public Menu{
+public:
+    SubMenu();
+    string type() const override;
+};
+
 class MenuFactory {
 public:
     static unique_ptr<Menu> createMenu(const string& type);

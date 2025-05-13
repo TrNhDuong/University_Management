@@ -21,33 +21,27 @@ void UniversitySystem::SetUp(){
 
 void UniversitySystem::Run(){
     SetUp();
+
     MenuFactory menuFactory;
     unique_ptr<Menu> mainMenu = menuFactory.createMenu("Main");
     unique_ptr<Menu> entityMenu = menuFactory.createMenu("Entity");
+    unique_ptr<Menu> subMenu = menuFactory.createMenu("Sub");
+
     ICommand* commandMachine = nullptr;
+    
     while (true) {
-        string typeCommand, typeEntity, typeSubCommand = "Id";
+        string typeCommand, typeEntity, typeSubCommand = "";
         typeCommand = mainMenu->getChoice();
-        if (typeCommand == "1"){
-            typeCommand = "Add";
-        } else if (typeCommand == "2"){
-            typeCommand = "Remove";
-        } else if (typeCommand == "3"){
-            typeCommand = "Replace";
-        } else if (typeCommand == "4"){
-            typeCommand = "Display";
-        } else if (typeCommand == "5"){
-            TurnOffProgram::excute();
+        if (typeCommand == "Exit"){
+            TurnOffProgram::excute(mappingDatabase);
+            break;
         }
         typeEntity = entityMenu->getChoice();
-        if (typeEntity == "1"){
-            typeEntity = "Student";
-        } else if (typeEntity == "2"){
-            typeEntity = "Lecturer";
-        } else if (typeEntity == "3"){
-            typeEntity = "Faculty";
-        } else {
+        if (typeEntity == "Exit")
             continue;
+        if (typeCommand == "Search" ){
+            //Hien subMenu hien thi tuy chon search by id or by name
+            typeSubCommand = subMenu->getChoice();
         }
         commandMachine = CommandFactory::create(typeCommand);
         commandMachine->excute(mappingDatabase, typeEntity, typeSubCommand);

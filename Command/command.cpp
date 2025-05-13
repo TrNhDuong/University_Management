@@ -1,4 +1,5 @@
 #include "command.h"
+#include "../saveDataToFile.h"
 
 
 #pragma region getCommandType
@@ -69,26 +70,72 @@ void DisplayCommand::excute(map<string, IDatabase*> mappingDatabase, string type
 }
 
 void AddCommand::excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
-    // IDatabase* database = mappingDatabase[typeEntity];
-    // IDataInput* inputMachine = InputFactory::create(typeEntity);
-    // BaseEntity* object = inputMachine->input();
-    // cout << "Successfully adding new university student\n";
-    cout << "Add command\n";
+    IDatabase* database = mappingDatabase[typeEntity];
+    IDataInput* inputMachine = InputFactory::create(typeEntity);
+    BaseEntity* object = inputMachine->input();
+    database->Add(object);
+    cout << "Adding new student successfully\n";
 }
 
 void RemoveCommand::excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
-    cout << "Remove command\n";
+    IDatabase* database = mappingDatabase[typeEntity];
+    cout << "Nhap id sinh vien muon loai bo: ";
+    string id;
+    cin >> id;
+    int index = database->find(id);
+    bool isRemove = false;
+    if (index < 0){
+        cout << "Khong ton tai sinh vien trong he thong\n";
+    } else {
+        cout << "Sinh vien ban muon xoa la: \n";
+        IUI* printer = UIFactory::createUI(typeEntity);
+        printer->print(database->getData(index));
+        cout << "Ban chac chan muon xoa sinh vien nay chu: (Y/N): ";
+        string ans;
+        cin >> ans;
+        if (ans == "Y"){
+            database->Remove(id);
+            isRemove = true;
+        }
+    }
+    if (isRemove)
+        cout << "Remove student successfully\n";
 }
 
 void ReplaceCommand::excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
-    cout << "Replace command\n";
+    IDatabase* database = mappingDatabase[typeEntity];
+    cout << "Nhap id sinh vien muon cap nhat: ";
+    string id;
+    cin >> id;
+    int index = database->find(id);
+    bool isRemove = false;
+    if (index < 0){
+        cout << "Khong ton tai sinh vien trong he thong\n";
+    } else {
+        cout << "Sinh vien ban muon cap nhat thong tin la: \n";
+        IUI* printer = UIFactory::createUI(typeEntity);
+        BaseEntity* des = database->getData(index);
+        printer->print(des);
+        cout << "Nhap thong tin thay doi: ";
+        IDataInput* inputMachine = InputFactory::create(typeEntity);
+        BaseEntity* scr = inputMachine->input();
+        database->Replace(des, scr);
+    }
+    if (isRemove)
+        cout << "Remove student successfully\n";
 }
 
-void TurnOffProgram::excute(){
+void TurnOffProgram::excute(map<string, IDatabase*> mappingDatabase){
     cout << "Exit";
     system("clear");
     cout << "Chao cac cau, djtme ban";
     cin.get();
+    // vector<string> type = {"Student", "Lecturer", "Faculty"};
+    // for (int i = 0; i < type.size(); i++){
+    //     ISaveData* savingMachine = SaveDataFactory::create(type[i]);
+    //     savingMachine->excute();
+    //     delete savingMachine;
+    // }
     //Luu thong tin du lieu o DB vao file txt, xa hon la DB o SQL sau khi nhan ket thuc chuong trinh
 }
 

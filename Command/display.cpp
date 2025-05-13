@@ -1,5 +1,7 @@
 #include "display.h"
 #include <memory>
+#include <iostream>
+using std::cin;
 
 
 void StudentUI::print(BaseEntity* student){
@@ -44,6 +46,7 @@ void StudentDatabaseDisplay::display(IDatabase* database){
     int size = studentDTB->getSize();
     for (int i = 0; i < size; i++)
         printer->print(studentDTB->getData(i));
+    cin.get();
 };
 
 StudentDatabaseDisplay::~StudentDatabaseDisplay(){
@@ -56,6 +59,7 @@ void LecturerDatabaseDisplay::display(IDatabase* database){
     std::unique_ptr<IUI> printer = std::make_unique<LecturerUI>();
     for (int i = 0; i < size; i++)
         printer->print(lecturerDTB->getData(i));
+    cin.get();
 }
 
 LecturerDatabaseDisplay::~LecturerDatabaseDisplay(){
@@ -68,6 +72,7 @@ void FacultyDatabaseDisplay::display(IDatabase* database){
     std::unique_ptr<IUI> printer = std::make_unique<FacultyUI>();
     for (int i = 0; i < size; i++)
         printer->print(facultyDTB->getData(i));
+    cin.get();
 }
 
 FacultyDatabaseDisplay::~FacultyDatabaseDisplay(){

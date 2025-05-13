@@ -15,9 +15,16 @@ using std::endl;
 using std::format;
 using std::to_string;
 
-
 MainMenu::MainMenu() {
-    _options = {"Add", "Remove", "Replace", "Display", "Exit"};
+    _options = {"Add", "Search", "Remove", "Replace", "Display", "Exit"};
+}
+
+EntityMenu::EntityMenu() {
+    _options = {"Student", "Lecturer", "Faculty", "Exit"};
+}
+
+SubMenu::SubMenu(){
+    _options = {"Id", "Name"};
 }
 
 string MainMenu::type() const {
@@ -26,6 +33,10 @@ string MainMenu::type() const {
 
 string EntityMenu::type() const {
     return "Entity Menu";
+}
+
+string SubMenu::type() const {
+    return "Sub Menu";
 }
 
 void Menu::display(int selected) const {
@@ -58,20 +69,21 @@ string Menu::getChoice() const {
             if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
             else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
         } else if (key == '\n') { // Enter
-            return to_string(selected + 1);
+            return _options[selected];
         }
     }
 }
 
-EntityMenu::EntityMenu() {
-    _options = {"Student", "Lecturer", "Faculty", "Exit"};
-}
+
+
 
 unique_ptr<Menu> MenuFactory::createMenu(const string& type) {
     if (type == "Main") {
         return make_unique<MainMenu>();
     } else if (type == "Entity") {
         return make_unique<EntityMenu>();
+    } else if (type == "Sub"){
+        return make_unique<SubMenu>();
     } else {
         return nullptr;
     }
