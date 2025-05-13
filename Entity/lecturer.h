@@ -17,10 +17,6 @@ public:
     ~Lecturer();
 };
 
-class LecturerUI{
-public:
-    static void print(const Lecturer& lecturer);
-};
 
 
 #endif

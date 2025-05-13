@@ -1,5 +1,6 @@
 #include "manageSystem.h"
 
+
 void UniversitySystem::SetUp(){
     studentDB = &StudentDatabase::getInstance();
     lecturerDB = &LecturerDatabase::getInstance();
@@ -20,8 +21,28 @@ void UniversitySystem::SetUp(){
 
 void UniversitySystem::Run(){
     SetUp();
-    DisplayFactory dpF;
-    IDisplay* f;
-    f = dpF.createDisplay(studentDB->getDataType());
-    f->display(studentDB);
+    ICommand* commandMachine = nullptr;
+    while (true){
+        cout << "Nhap chuc nang muon tim: 1.Display, 2.Search, 3.Add\n";
+        int c;
+        cin >> c;
+        if (c == 1){
+            commandMachine = new DisplayCommand();
+            commandMachine->excute(mappingDatabase, "Student", "Id");
+        } else if (c == 2){
+            commandMachine = new SearchCommand();
+            commandMachine->excute(mappingDatabase, "Student", "Id");
+        } else if (c == 3){
+            commandMachine = new AddCommand();
+            commandMachine->excute(mappingDatabase, "Student", "");
+        } else {
+            break;
+        }
+        delete commandMachine;
+        commandMachine = nullptr;
+        cout << "Press to return menu\n";
+        cin.ignore();
+        if (cin.get())
+            system("clear");
+    }
 }

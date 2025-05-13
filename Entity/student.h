@@ -20,8 +20,4 @@ public:
     ~Student();
 };
 
-class StudentUI{
-public:
-    static void print(const Student& student);
-};
 #endif
