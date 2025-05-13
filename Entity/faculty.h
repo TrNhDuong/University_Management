@@ -11,13 +11,10 @@ using std::string, std::vector;
 
 class Faculty : public BaseEntity{
 protected:
-    string _email;
     Lecturer _dean; // ID cua Truong khoa
 public:
     string getType() const;
-    string getMail() const;
     Lecturer getDean() const;
-    void setMail(const string& mail);
     void setDean(const Lecturer& dean);
 
     Faculty();

@@ -22,12 +22,15 @@ protected:
     string _name;
     string _id;
     Birth _birthDay;
+    string _mail;
 public:
     string getName() const;
     string getId() const;
+    string getMail() const;
     Birth getBirth() const;
     void setName(const string& name);
     void setId(const string& id);
+    void setMail(const string& mail);
     void setBirth(const Birth& birthDay);
     void setBirth(const string&);
     BaseEntity();

@@ -34,6 +34,7 @@ void Student::setGPA(const float& gpa){
     _gpa = gpa;
 }
 
+
 void Student::setCredit(const int& credit){
     _completedCredit = credit;
 }
