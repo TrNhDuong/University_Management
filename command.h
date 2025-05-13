@@ -243,4 +243,97 @@ class ExitCommand : public Command {
             exit(0);
         }
     };
+
+class IAddHandler {
+public:
+    virtual void Add() = 0;
+    virtual ~IAddHandler() = default;
+};
+
+
+class StudentAddHandler : public IAddHandler {
+    public:
+        void Add() override;
+};
+
+class FaccultyAddHandler : public IAddHandler {
+    public:
+        void Add() override;
+};
+
+class LecturerAddHandler : public IAddHandler {
+    public:
+        void Add() override;
+};
+
+class AddHandlerFactory {
+   public:
+    static IAddHandler* createAddHandler(const string& type);
+};
+
+class IReplaceHandler {
+public:
+    virtual void Replace() = 0;
+    virtual ~IReplaceHandler() = default;
+};
+class StudentReplaceHandler : public IReplaceHandler {
+    public:
+        void Replace() override;
+};
+class FacultyReplaceHandler : public IReplaceHandler {
+    public:
+        void Replace() override;
+};
+class LecturerReplaceHandler : public IReplaceHandler {
+    public:
+        void Replace() override;
+};
+class ReplaceHandlerFactory {
+   public:
+    static IReplaceHandler* createReplaceHandler(const string& type);
+};
+
+class IRemoveHandler {
+public:
+    virtual void Remove() = 0;
+    virtual ~IRemoveHandler() = default;
+};
+class StudentRemoveHandler : public IRemoveHandler {
+    public:
+        void Remove() override;
+};
+class FacultyRemoveHandler : public IRemoveHandler {
+    public:
+        void Remove() override;
+};
+class LecturerRemoveHandler : public IRemoveHandler {
+    public:
+        void Remove() override;
+};
+class RemoveHandlerFactory {
+   public:
+    static IRemoveHandler* createRemoveHandler(const string& type);
+};
+
+class IDisplayHandler {
+public:
+    virtual void Display() = 0;
+    virtual ~IDisplayHandler() = default;
+};
+class StudentDisplayHandler : public IDisplayHandler {
+    public:
+        void Display() override;
+};
+class FacultyDisplayHandler : public IDisplayHandler {
+    public:
+        void Display() override;
+};
+class LecturerDisplayHandler : public IDisplayHandler {
+    public:
+        void Display() override;
+};
+class DisplayHandlerFactory {
+   public:
+    static IDisplayHandler* createDisplayHandler(const string& type);
+};
 #endif // _COMMAND_H_

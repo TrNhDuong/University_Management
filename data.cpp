@@ -286,6 +286,7 @@ void StudentGetData::InputData(Student& student){
     string name;
     cin.ignore();
     getline(cin, name);
+    //
     student.setName(name);
     cout << "Nhập mã sinh viên: ";
     string id;
@@ -305,6 +306,8 @@ void StudentGetData::InputData(Student& student){
     int completedCredit;
     cin >> completedCredit;
     student.setCredit(completedCredit);
+
+
 }
 
 /**
