@@ -1,3 +1,0 @@
-Đinh Bá Tiến|12000001|01/01/1988|2015|Professor|cu@gmail.com
-Lương Vĩ Minh|12000002|02/02/1989|2014|PHD|lon@gmail.com
-Nguyễn Phúc Hậu|12000003|01/01/1930|2010|Professor|dn016777@gmail.com

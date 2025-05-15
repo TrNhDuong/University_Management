@@ -2,6 +2,8 @@
 #define SAVE_DATA_H
 #include "data.h"
 #include <fstream>
+#include <map>
+using std::map;
 
 class ISaveData{
 protected:
@@ -42,6 +44,6 @@ public:
 
 class SaveDataFactory{
 public:
-    static ISaveData* create(const string& type);
+    static ISaveData* create(const string& type, map<string, IDatabase*> DB);
 };
 #endif

@@ -1,5 +1,5 @@
 #include "command.h"
-#include "../saveDataToFile.h"
+#include "exit.h"
 
 
 #pragma region getCommandType
@@ -130,12 +130,12 @@ void TurnOffProgram::excute(map<string, IDatabase*> mappingDatabase){
     system("clear");
     cout << "Chao cac cau, djtme ban";
     cin.get();
-    // vector<string> type = {"Student", "Lecturer", "Faculty"};
-    // for (int i = 0; i < type.size(); i++){
-    //     ISaveData* savingMachine = SaveDataFactory::create(type[i]);
-    //     savingMachine->excute();
-    //     delete savingMachine;
-    // }
+    vector<string> type = {"Student", "Lecturer", "Faculty"};
+    for (int i = 0; i < type.size(); i++){
+        ISaveData* savingMachine = SaveDataFactory::create(type[i], mappingDatabase);
+        savingMachine->excute();
+        delete savingMachine;
+    }
     //Luu thong tin du lieu o DB vao file txt, xa hon la DB o SQL sau khi nhan ket thuc chuong trinh
 }
 
