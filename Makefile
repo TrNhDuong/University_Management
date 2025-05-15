@@ -1,12 +1,12 @@
 # Compiler and flags
 CXX = g++-13
-CXXFLAGS = -std=c++23
+CXXFLAGS = -std=c++2b
 
 # Name of execution file
-TARGET = run.exe
+TARGET = run
 
 # List of source files
-SRC = *.cpp
+SRC = *.cpp Entity/*.cpp Command/*.cpp
 
 # Default command: compile everything
 all:

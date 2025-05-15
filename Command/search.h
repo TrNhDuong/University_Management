@@ -2,40 +2,32 @@
 #define SEARCH_H
 #include "../Entity/baseEntity.h"
 #include "../data.h"
-#include "../manageSystem.h"
 #include <vector>
 #include <memory>
 #include <string>
 using std::vector;
 using std::string;
 
-class ISearch{
+class SearchStrategy{
 public:
-    virtual BaseEntity* search(IDatabase* database, const string& id) = 0;
-    virtual ~ISearch() = default;
+    SearchStrategy() = default;
+    virtual ~SearchStrategy() = default;
+
+    virtual vector<BaseEntity*> search(IDatabase* database, const string& keySearch) = 0;
 };
 
-class SearchStudent: public ISearch{
+class IdSearch: public SearchStrategy{
 public:
-    BaseEntity* search(IDatabase* database, const string& id) override;
+    IdSearch() = default;
+    ~IdSearch() = default;
+    vector<BaseEntity*> search(IDatabase* database, const string& id) override;
 };
 
-class SearchLecturer: public ISearch{
+class NameSearch: public SearchStrategy{
 public:
-    BaseEntity* search(IDatabase* database, const string& id) override;
+    NameSearch() = default;
+    ~NameSearch() = default;
+    vector<BaseEntity*> search(IDatabase* database, const string& name) override;
 };
-
-class SearchFactory{
-public:
-    static ISearch* createSearch(const string& type){
-        if ("Student" == type)
-            return new SearchStudent();
-        else if ("Lecturer" == type)
-            return new SearchLecturer();
-        return nullptr;
-    }
-};
-
-
 
 #endif

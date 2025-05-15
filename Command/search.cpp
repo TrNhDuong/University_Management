@@ -1,26 +1,20 @@
 #include "search.h"
 
 
-BaseEntity* SearchStudent::search(IDatabase* database, const string& id){
-    BaseEntity* object = nullptr;
-    StudentDatabase* studentDB = dynamic_cast<StudentDatabase*>(database);
-    int n = studentDB->getSize();
-    for (int i = 0; i < n; i++)
-        if (studentDB->getData(i)->getId() == id){
-            object = studentDB->getData(i);
-            break;
-        }
-    return object;
+vector<BaseEntity*> IdSearch::search(IDatabase* database, const string& id){
+    vector<BaseEntity*> ans;
+    int size = database->getSize();
+    for (int i = 0; i < size; i++)
+        if (database->getData(i)->getId().find(id) != string::npos)
+            ans.push_back(database->getData(i));
+    return ans;
 }
 
-BaseEntity* SearchLecturer::search(IDatabase* database, const string& id){
-    BaseEntity* object = nullptr;
-    LecturerDatabase* lecturerDB = dynamic_cast<LecturerDatabase*>(database);
-    int n = lecturerDB->getSize();
-    for (int i = 0; i < n; i++)
-        if (lecturerDB->getData(i)->getId() == id){
-            object = lecturerDB->getData(i);
-            break;
-        }
-    return object;
+vector<BaseEntity*> NameSearch::search(IDatabase* database, const string& name){
+    vector<BaseEntity*> ans;
+    int size = database->getSize();
+    for (int i = 0; i < size; i++)
+        if (database->getData(i)->getId().find(name) != string::npos)
+            ans.push_back(database->getData(i));
+    return ans;
 }

@@ -1,5 +1,4 @@
 {
-    
     "files.associations": {
         "iostream": "cpp",
         "array": "cpp",
@@ -60,14 +59,5 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "format": "cpp"
-    },
-    "C_Cpp.errorSquiggles": "disabled",
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false
-    },
-    "liveServer.settings.port": 5501
-
+    }
 }

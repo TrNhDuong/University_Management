@@ -1,13 +1,5 @@
-/**
- * @file manageSystem.cpp
- * @brief Triển khai lớp UniversitySystem cho hệ thống quản lý sinh viên.
- * @details
- * Lớp này chứa các phương thức để khởi động hệ thống quản lý sinh viên, bao gồm việc đọc dữ liệu từ file,
- * tạo các menu và thực hiện các lệnh tương ứng với lựa chọn của người dùng.
- */
-
-#include "menu.h"
 #include "manageSystem.h"
+
 
 void UniversitySystem::SetUp(){
     studentDB = &StudentDatabase::getInstance();
@@ -29,8 +21,34 @@ void UniversitySystem::SetUp(){
 
 void UniversitySystem::Run(){
     SetUp();
-    SearchCommand searching;
-    DisplayCommand displaying;
-    displaying.displayDatabase(studentDB);
-    searching.searchObject(studentDB, "23120243");
+
+    MenuFactory menuFactory;
+    unique_ptr<Menu> mainMenu = menuFactory.createMenu("Main");
+    unique_ptr<Menu> entityMenu = menuFactory.createMenu("Entity");
+    unique_ptr<Menu> subMenu = menuFactory.createMenu("Sub");
+
+    ICommand* commandMachine = nullptr;
+    
+    while (true) {
+        string typeCommand, typeEntity, typeSubCommand = "";
+        typeCommand = mainMenu->getChoice();
+        if (typeCommand == "Exit"){
+            TurnOffProgram::execute(mappingDatabase);
+            break;
+        }
+        
+        while (true){
+            typeEntity = entityMenu->getChoice();
+            if (typeEntity == "Exit"){
+                break;
+            }
+            
+            commandMachine = CommandFactory::create(typeCommand);
+            commandMachine->execute(mappingDatabase, typeEntity, typeSubCommand);
+            delete commandMachine;
+            commandMachine = nullptr;
+        }
+        
+        
+    }
 }
