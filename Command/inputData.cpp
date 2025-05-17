@@ -38,6 +38,7 @@ BaseEntity* StudentInput::input(){
     cin >> enrollYear;
     cout << "Nhap so tin chi da hoan thanh: ";
     cin >> credit;
+    cin.ignore();
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);
@@ -69,6 +70,7 @@ BaseEntity* LecturerInput::input(){
     cin >> structYear;
     cout << "Nhap hoc ham: ";
     cin >> degree;
+    cin.ignore();
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);

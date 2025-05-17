@@ -96,6 +96,7 @@ void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string type
             database->Remove(id);
             isRemove = true;
         }
+        cin.ignore();
     }
     if (isRemove)
         cout << "Remove student successfully\n";
@@ -120,6 +121,7 @@ void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typ
         BaseEntity* scr = inputMachine->input();
         database->Replace(des, scr);
     }
+    cin.ignore();
     if (isRemove)
         cout << "Remove student successfully\n";
 }
