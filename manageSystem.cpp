@@ -49,7 +49,6 @@ void UniversitySystem::Run(){
             commandMachine->execute(mappingDatabase, typeEntity, typeSubCommand);
             delete commandMachine;
             commandMachine = nullptr;
-            break;
         }
     }
 }

@@ -126,6 +126,8 @@ void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typ
         BaseEntity* scr = inputMachine->input();
         database->Replace(des, scr);
     }
+    cin.ignore();
+    cin.get();
 }
 
 void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){

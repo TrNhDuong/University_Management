@@ -1,7 +1,7 @@
 #include "exit.h"
 
 void SaveStudentData::execute(){
-    std::fstream file("../Data/StudentData.txt", std::ios::out);
+    std::fstream file("Data/StudentData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
         return;
@@ -17,7 +17,7 @@ void SaveStudentData::execute(){
 }
 
 void SaveLecturerData::execute(){
-    std::fstream file("../Data/LecturerData.txt", std::ios::out);
+    std::fstream file("Data/LecturerData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
         return;
@@ -33,7 +33,7 @@ void SaveLecturerData::execute(){
 }
 
 void SaveFacultyData::execute(){
-    std::fstream file("../Data/FacultyData.txt", std::ios::out);
+    std::fstream file("Data/FacultyData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
         return;
