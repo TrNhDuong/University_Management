@@ -26,7 +26,6 @@ BaseEntity* StudentInput::input(){
     int enrollYear, credit;
     cout << "Inpu student information:\n";
     cout << "Name: ";
-    cin.ignore();
     getline(cin, name);
     cout << "ID: ";
     getline(cin, id);
