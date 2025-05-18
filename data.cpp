@@ -28,9 +28,6 @@ int FacultyDatabase::getSize() const {
     return _data.size();
 }
 #pragma endregion
-//since the singleton in each student, faculty and lecturer database 
-//=> Can not use virtual for find_obj() and getData() method 
-//find_obj()
 
 #pragma region find(id)
 //return -1 if not exists in database
@@ -122,7 +119,6 @@ bool StudentDatabase::Replace(BaseEntity* d, BaseEntity* s){
         _data[index].setGPA(scr->getGPA());
         _data[index].setEnrollYear(scr->getEnrollYear());
         _data[index].setCredit(scr->getCompletedCredit());
-        _data[index].setMail(scr->getMail());
         return true;
     }else {
         return false; //if des obj not found

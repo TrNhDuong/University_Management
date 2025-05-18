@@ -1,6 +1,6 @@
 #include "exit.h"
 
-void SaveStudentData::excute(){
+void SaveStudentData::execute(){
     std::fstream file("../Data/StudentData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
@@ -16,7 +16,7 @@ void SaveStudentData::excute(){
     file.close();
 }
 
-void SaveLecturerData::excute(){
+void SaveLecturerData::execute(){
     std::fstream file("../Data/LecturerData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
@@ -32,7 +32,7 @@ void SaveLecturerData::excute(){
     file.close();
 }
 
-void SaveFacultyData::excute(){
+void SaveFacultyData::execute(){
     std::fstream file("../Data/FacultyData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";

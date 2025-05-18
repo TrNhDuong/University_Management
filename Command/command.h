@@ -3,6 +3,7 @@
 #include "search.h"
 #include "display.h"
 #include "inputData.h"
+#include "../utils.h"
 #include <map>
 #include <memory>
 #include <string>
@@ -14,7 +15,7 @@ class ICommand{
 public:
     ICommand() = default;
     virtual string getCommandType() = 0;
-    virtual void excute(map<string, IDatabase*>, string typeEntity, const string& typeOfSubCommand) = 0;
+    virtual void execute(map<string, IDatabase*>, string typeEntity, const string& typeOfSubCommand) = 0;
     virtual ~ICommand() = default;
 };
 //typeEntity: Student, Lecturer
@@ -28,7 +29,7 @@ public:
     SearchCommand() = default;
     ~SearchCommand() = default;
     string getCommandType() override;
-    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+    void execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
 class DisplayCommand: public ICommand{
@@ -36,7 +37,7 @@ public:
     DisplayCommand() = default;
     ~DisplayCommand() = default;
     string getCommandType() override;
-    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+    void execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
 class AddCommand: public ICommand{
@@ -44,7 +45,7 @@ public:
     AddCommand() = default;
     ~AddCommand() = default;
     string getCommandType() override;
-    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+    void execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
 class RemoveCommand: public ICommand{
@@ -53,7 +54,7 @@ public:
     ~RemoveCommand() = default;
 
     string getCommandType() override;
-    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+    void execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
 class ReplaceCommand: public ICommand{
@@ -62,7 +63,7 @@ public:
     ~ReplaceCommand() = default;
 
     string getCommandType() override;
-    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
+    void execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
 class TurnOffProgram{
@@ -70,7 +71,7 @@ public:
     TurnOffProgram() = default;
     ~TurnOffProgram() = default;
 
-    static void excute(map<string, IDatabase*> mappingDatabase);
+    static void execute(map<string, IDatabase*> mappingDatabase);
 };
 
 class CommandFactory{

@@ -5,9 +5,11 @@
 #include "../Entity/lecturer.h"
 #include "../Entity/faculty.h"
 #include "../Entity/baseEntity.h"
+#include "../utils.h"
 #include <iostream>
 #include <format>
 #include <string>
+
 using std::string;
 using std::format;
 using std::cout;

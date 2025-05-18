@@ -39,19 +39,41 @@ string SubMenu::type() const {
     return "Sub Menu";
 }
 
+
+
 void Menu::display(int selected) const {
-    clearScreen(); // Thay thế system("cls")
-    cout << "========" << type() << "========\n";
+    clearScreen(); // Xoá màn hình (thay thế system("cls"))
+
+    cout << "╔══════════════════════╗\n";
+    std::string title = toUpper(type());
+    size_t leftPad = (22 - title.length()) / 2;
+    size_t rightPad = 22 - title.length() - leftPad;
+    cout << "║"
+        << std::string(leftPad, ' ') << title << std::string(rightPad, ' ')
+        << "║\n";
+    cout << "╠══════════════════════╣\n";
+
     for (size_t i = 0; i < _options.size(); ++i) {
+        cout << "║ ";
         if (i == selected) {
-            setColor(32); // Màu xanh lá (ANSI)
+            setColor(32); // Màu xanh lá cây (dòng được chọn)
+            cout << "▶ ";
         } else {
-            setColor(37); // Màu trắng (ANSI)
+            setColor(37); // Màu trắng
+            cout << "  ";
         }
-        cout << "       " << _options[i] << "\n";
+
+        cout << _options[i];
+
+        size_t spaceCount = 18- _options[i].length();
+        for (size_t j = 0; j < spaceCount; ++j) cout << ' ';
+
+        setColor(37); // Màu trắng
+        cout << " ║\n";
     }
-    setColor(0); // Đặt lại màu mặc định
-    cout << "=========================\n";
+
+    setColor(0); // Đặt lại màu terminal về mặc định
+    cout << "╚══════════════════════╝\n"; 
 }
 
 string Menu::getChoice() const {
@@ -73,7 +95,6 @@ string Menu::getChoice() const {
         }
     }
 }
-
 
 
 
