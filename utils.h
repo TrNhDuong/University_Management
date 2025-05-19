@@ -52,5 +52,6 @@ class ValidChoice{
 void setColor(int color);
 void clearScreen();
 char getch();
+std::string toUpper(const std::string& str);
 
 #endif

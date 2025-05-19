@@ -33,19 +33,22 @@ void UniversitySystem::Run(){
         string typeCommand, typeEntity, typeSubCommand = "";
         typeCommand = mainMenu->getChoice();
         if (typeCommand == "Exit"){
-            TurnOffProgram::excute(mappingDatabase);
+            TurnOffProgram::execute(mappingDatabase);
             break;
         }
-        typeEntity = entityMenu->getChoice();
-        if (typeEntity == "Exit")
-            continue;
-        if (typeCommand == "Search" ){
-            //Hien subMenu hien thi tuy chon search by id or by name
-            typeSubCommand = subMenu->getChoice();
+        
+        while (true){
+            typeEntity = entityMenu->getChoice();
+            if (typeEntity == "Exit"){
+                break;
+            }
+            if ("Search" == typeCommand)
+                typeSubCommand = subMenu->getChoice();
+            
+            commandMachine = CommandFactory::create(typeCommand);
+            commandMachine->execute(mappingDatabase, typeEntity, typeSubCommand);
+            delete commandMachine;
+            commandMachine = nullptr;
         }
-        commandMachine = CommandFactory::create(typeCommand);
-        commandMachine->excute(mappingDatabase, typeEntity, typeSubCommand);
-        delete commandMachine;
-        commandMachine = nullptr;
     }
 }

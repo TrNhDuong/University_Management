@@ -33,3 +33,10 @@ char getch() {
     tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
     return ch;
 }
+
+std::string toUpper(const std::string& str) {
+    std::string result = str;
+    for (char& c : result)
+        c = std::toupper(static_cast<unsigned char>(c));
+    return result;
+}

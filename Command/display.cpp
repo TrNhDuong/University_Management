@@ -1,6 +1,8 @@
 #include "display.h"
+#include "../utils.h"
 #include <memory>
 #include <iostream>
+
 using std::cin;
 
 
@@ -40,39 +42,185 @@ void FacultyUI::print(BaseEntity* faculty){
     }
 }
 
+
 void StudentDatabaseDisplay::display(IDatabase* database){
     StudentDatabase* studentDTB = dynamic_cast<StudentDatabase*>(database);
+    int menuSize = studentDTB->getSize();
     std::unique_ptr<IUI> printer = std::make_unique<StudentUI>();
-    int size = studentDTB->getSize();
-    for (int i = 0; i < size; i++)
-        printer->print(studentDTB->getData(i));
-    cin.get();
-};
+    int selected = 0;
+    char key;
+    int width = 73;
+    while (true){
+        clearScreen();
+        setColor(37);
+        cout << "╔════════════════════════════════════════════════════════════════════════╗\n";
+        std::string title = "STUDENT DATABASE";
+        size_t leftPad = (width - title.length()) / 2;
+        size_t rightPad = width - title.length() - leftPad-1;
+        cout << "║"
+            << std::string(leftPad, ' ') << title << std::string(rightPad, ' ')
+            << "║\n";
+        cout << "╠════════════════════════════════════════════════════════════════════════╣\n";
+        cout << format(
+            "║{:11}{:35}{:14}{:6}{:4}║\n",
+            "ID", "Name", "Birth", "GPA", "Credit"
+        );
+        cout << "╠════════════════════════════════════════════════════════════════════════╣\n";
+
+        for (int i = 0; i < menuSize; i++){
+            if (i == selected){
+                setColor(32);
+            }else{
+                setColor(37);
+            }
+
+            Student *st = dynamic_cast<Student*>(studentDTB->getData(i));
+            cout << format(
+                "║{:11}{:35}{:02}/{:02}/{:4}{:^12}{:^4}║\n",
+                st->getId(),st->getName(), 
+                st->getBirth().getDay(), st->getBirth().getMonth(), st->getBirth().getYear(), 
+                st->getGPA(), st->getCompletedCredit()
+            );
+            setColor(37);
+            
+        }
+
+        cout << "╚════════════════════════════════════════════════════════════════════════╝\n"; 
+
+        key = getch();
+        if (key == '\033') { // Phím mũi tên
+            getch(); // Bỏ qua ký tự '['
+            key = getch();
+            if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
+            else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
+        }
+        else if (key == ' ') {
+            break;
+        }
+
+    }
+}
+
 
 StudentDatabaseDisplay::~StudentDatabaseDisplay(){
 
 }
 
 void LecturerDatabaseDisplay::display(IDatabase* database){
+    // dynamic_cast<LecturerDatabase*>(database);
     LecturerDatabase* lecturerDTB = dynamic_cast<LecturerDatabase*>(database);
-    int size = lecturerDTB->getSize();
+    int menuSize = lecturerDTB-> getSize();
     std::unique_ptr<IUI> printer = std::make_unique<LecturerUI>();
-    for (int i = 0; i < size; i++)
-        printer->print(lecturerDTB->getData(i));
-    cin.get();
+    int selected = 0;
+    char key;
+    int width = 73;
+
+    while (true){
+        clearScreen();
+        setColor(37);
+        cout << "╔════════════════════════════════════════════════════════════════════════╗\n";
+        std::string title = "LECTURER DATABASE";
+        size_t leftPad = (width - title.length()) / 2;
+        size_t rightPad = width - title.length() - leftPad-1;
+        cout << "║"
+            << std::string(leftPad, ' ') << title << std::string(rightPad, ' ')
+            << "║\n";
+        cout << "╠════════════════════════════════════════════════════════════════════════╣\n";
+        cout << format(
+            "║   {:10}{:25}{:14}{:13}{:7}║\n",
+            "ID", "Name", "Birth", "Degree", "Year"
+        );
+        cout << "╠════════════════════════════════════════════════════════════════════════╣\n";
+        for (int i = 0; i < menuSize; i++){
+            if (i == selected){
+                setColor(32);
+            }else{
+                setColor(37);
+            }
+            Lecturer *lec = dynamic_cast<Lecturer*>(lecturerDTB->getData(i));
+            cout << format(
+                "║{:11}{:25}{:02}/{:02}/{:<9}{:10}{:8}   ║\n",
+                lec->getId(), lec->getName(), 
+                lec->getBirth().getDay(), lec->getBirth().getMonth(), lec->getBirth().getYear(),
+                lec->getDegree(), lec->getInstructYear()
+            );
+            setColor(37);
+        }
+
+        cout << "╚════════════════════════════════════════════════════════════════════════╝\n";
+
+        key = getch();
+        if (key == '\033') { // Phím mũi tên
+            getch(); // Bỏ qua ký tự '['
+            key = getch();
+            if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
+            else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
+        }
+        else if (key == ' ') {
+            break;
+        }
+
+    }
 }
 
 LecturerDatabaseDisplay::~LecturerDatabaseDisplay(){
 
 }
-
 void FacultyDatabaseDisplay::display(IDatabase* database){
+    // dynamic_cast<FacultyDatabase*>(database);
     FacultyDatabase* facultyDTB = dynamic_cast<FacultyDatabase*>(database);
-    int size = facultyDTB->getSize();
+    int menuSize = facultyDTB-> getSize();
     std::unique_ptr<IUI> printer = std::make_unique<FacultyUI>();
-    for (int i = 0; i < size; i++)
-        printer->print(facultyDTB->getData(i));
-    cin.get();
+    int selected = 0;
+    char key;
+    int width = 85;
+    
+
+    while (true){
+        clearScreen();
+        setColor(37);
+        cout << "╔════════════════════════════════════════════════════════════════════════════════════╗\n";
+        std::string title = "FACULTY DATABASE";
+        size_t leftPad = (width - title.length()) / 2;
+        size_t rightPad = width - title.length() - leftPad-1;
+        cout << "║"
+            << std::string(leftPad, ' ') << title << std::string(rightPad, ' ')
+            << "║\n";
+        cout << "╠════════════════════════════════════════════════════════════════════════════════════╣\n";
+        cout << format(
+            "║ {:<15}{:20}{:<10}{:^20}{:^18}║\n",
+            "ID", "Name", "Birth", "Mail", "Dean"
+        );
+        cout << "╠════════════════════════════════════════════════════════════════════════════════════╣\n";
+        for (int i = 0; i < menuSize; i++){
+            if (i == selected){
+                setColor(32);
+            }else{
+                setColor(37);
+            }
+            Faculty *facul = dynamic_cast<Faculty*>(facultyDTB->getData(i));
+            cout << format(
+                "║{:<9}{:<24}{:02}/{:02}/{:<9}{:20}{:16}║\n",
+                facul->getId(), facul->getName(),
+                facul->getBirth().getDay(), facul->getBirth().getMonth(), facul->getBirth().getYear(), 
+                facul->getMail(), facul->getDean().getName()
+            );
+            setColor(37);
+        }
+        cout << "╚════════════════════════════════════════════════════════════════════════════════════╝\n";
+        
+        key = getch();
+        if (key == '\033') { // Phím mũi tên
+            getch(); // Bỏ qua ký tự '['
+            key = getch();
+            if (key == 'A') selected = (selected - 1 + menuSize) % menuSize; // Lên
+            else if (key == 'B') selected = (selected + 1) % menuSize;       // Xuống
+        }
+        else if (key == ' ') {
+            break;
+        }
+
+    }
 }
 
 FacultyDatabaseDisplay::~FacultyDatabaseDisplay(){
