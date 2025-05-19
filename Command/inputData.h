@@ -4,6 +4,7 @@
 #include "../Entity/student.h"
 #include "../Entity/lecturer.h"
 #include "../Entity/faculty.h"
+#include "../Entity/check.h"
 #include <vector>
 #include <memory>
 #include <string>
