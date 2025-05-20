@@ -1,5 +1,6 @@
 #include "command.h"
 #include "../saveDataToFile.h"
+#include "display.h"
 
 
 #pragma region getCommandType
@@ -31,35 +32,50 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
     IDatabase* database = mappingDatabase[typeEntity];
     if ("Id" == typeOfSubCommand){
         string id;
-        cout << "Nhap id muon tim kiem: ";
+        cout << "Enter search ID: ";
         cin >> id; 
         _strategy = std::make_unique<IdSearch>();
         vector<BaseEntity*> v = _strategy->search(database, id);  
         IUI* printer = UIFactory::createUI(typeEntity);
         if (v.size() == 0){
-            cout << "Khong co sinh vien nao co id giong voi " << id << '\n';
+            cout << "No " << typeEntity << " exists with the same ID:" << id << '\n';
         } else {
-            cout << "Sinh vien co Id giong voi " << id << ":\n";
-            for (int i = 0; i < v.size(); i++)
-                printer->print(v[i]);
+            string title;
+            if (typeEntity == "Student"){
+                title = "STUDENT ID SEARCH";
+            } else if (typeEntity == "Lecturer"){
+                title = "LECTURER ID SEARCH";
+            } else if (typeEntity == "Faculty"){
+                title = "FACULTY ID SEARCH";
+            }
+            PrintMenuNewFormat::printMenu(v, title, typeEntity);
         }
         delete printer;
     } else if ("Name" == typeOfSubCommand){
         string name;
-        cout << "Nhap ten sinh vien muon tim kiem: ";
-        cin >> name;
+        cout << "Input search name: ";
+        getline(cin, name);
         _strategy = std::make_unique<NameSearch>();
         vector<BaseEntity*> v = _strategy->search(database, name);
         IUI* printer = UIFactory::createUI(typeEntity);
         if (v.size() == 0){
-            cout << "Khong ton tai sinh vien nao ten tuong tu " << name << '\n';
+            cout << "No " << typeEntity << " exists with the same name:" << name << '\n';
         } else {
-            cout << "Sinh vien co ten tuong tu voi " << name << ":\n";
-            for (int i = 0; i < v.size(); i++)
-                printer->print(v[i]);
+            string title;
+            if (typeEntity == "Student"){
+                title = "STUDENT NAME SEARCH";
+            } else if (typeEntity == "Lecturer"){
+                title = "LECTURER NAME SEARCH";
+            } else if (typeEntity == "Faculty"){
+                title = "FACULTY NAME SEARCH";
+            }
+            PrintMenuNewFormat::printMenu(v, title, typeEntity);
         }
+
         delete printer;
     }
+    cin.ignore();
+    cin.get();
 }
 
 void DisplayCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){

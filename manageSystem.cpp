@@ -36,11 +36,14 @@ void UniversitySystem::Run(){
             TurnOffProgram::execute(mappingDatabase);
             break;
         }
-        
         while (true){
             typeEntity = entityMenu->getChoice();
             if (typeEntity == "Exit"){
                 break;
+            }
+
+            if (typeCommand == "Search"){
+                typeSubCommand = subMenu->getChoice();
             }
             
             commandMachine = CommandFactory::create(typeCommand);
