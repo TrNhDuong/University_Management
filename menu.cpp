@@ -24,7 +24,7 @@ EntityMenu::EntityMenu() {
 }
 
 SubMenu::SubMenu(){
-    _options = {"Id", "Name"};
+    _options = {"Id", "Name", "Exit"};
 }
 
 string MainMenu::type() const {

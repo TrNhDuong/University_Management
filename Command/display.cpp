@@ -142,6 +142,7 @@ void PrintMenuNewFormat::printMenu(vector<BaseEntity*>& data,const string& title
             }
 
             cout << "╚════════════════════════════════════════════════════════════════════════╝\n"; 
+            cout << "Press space to continue...\n";
 
             key = getch();
             if (key == '\033') { // Phím mũi tên
@@ -188,6 +189,7 @@ void PrintMenuNewFormat::printMenu(vector<BaseEntity*>& data,const string& title
             }
 
             cout << "╚════════════════════════════════════════════════════════════════════════╝\n";
+            cout << "Press space to continue...\n";
 
             key = getch();
             if (key == '\033') { // Phím mũi tên
@@ -235,6 +237,7 @@ void PrintMenuNewFormat::printMenu(vector<BaseEntity*>& data,const string& title
                 setColor(37);
             }
             cout << "╚════════════════════════════════════════════════════════════════════════════════════╝\n";
+            cout << "Press space to continue...\n";
             
             key = getch();
             if (key == '\033') { // Phím mũi tên

@@ -46,6 +46,10 @@ void UniversitySystem::Run(){
                 typeSubCommand = subMenu->getChoice();
             }
             
+            if (typeSubCommand == "Exit"){
+                break;
+            }
+            
             commandMachine = CommandFactory::create(typeCommand);
             commandMachine->execute(mappingDatabase, typeEntity, typeSubCommand);
             delete commandMachine;

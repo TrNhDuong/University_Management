@@ -28,6 +28,7 @@ BaseEntity* StudentInput::input(){
     int enrollYear, credit;
     cout << "Nhap thong tin lien quan toi sinh vien:\n";
     cout << "Nhap ten: ";
+    
     getline(cin, name);
     while (!checkValidWord::isValidStr(name, errorMsg)){
         cout << errorMsg << '\n';

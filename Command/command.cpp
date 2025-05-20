@@ -1,5 +1,4 @@
 #include "command.h"
-#include "../saveDataToFile.h"
 #include "display.h"
 
 
@@ -39,6 +38,11 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
         IUI* printer = UIFactory::createUI(typeEntity);
         if (v.size() == 0){
             cout << "No " << typeEntity << " exists with the same ID:" << id << '\n';
+            cout << "Press space to continue...\n";
+            char temp = 'a';
+            while (temp != ' '){
+                temp = getch();
+            }
         } else {
             string title;
             if (typeEntity == "Student"){
@@ -60,6 +64,11 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
         IUI* printer = UIFactory::createUI(typeEntity);
         if (v.size() == 0){
             cout << "No " << typeEntity << " exists with the same name:" << name << '\n';
+            cout << "Press space to continue...\n";
+            char temp = 'a';
+            while (temp != ' '){
+                temp = getch();
+            }
         } else {
             string title;
             if (typeEntity == "Student"){
@@ -74,8 +83,6 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
 
         delete printer;
     }
-    cin.ignore();
-    cin.get();
 }
 
 void DisplayCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
@@ -94,18 +101,18 @@ void AddCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEnt
 
 void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
-    cout << "Nhap id sinh vien muon loai bo: ";
+    cout << "Nhap id " << typeEntity << " muon xoa: ";
     string id;
     cin >> id;
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
-        cout << "Khong ton tai sinh vien trong he thong\n";
+        cout << "Khong ton tai " << typeEntity <<" trong he thong\n";
     } else {
-        cout << "Sinh vien ban muon xoa la: \n";
+        cout <<  typeEntity <<" ban muon xoa la: \n";
         IUI* printer = UIFactory::createUI(typeEntity);
         printer->print(database->getData(index));
-        cout << "Ban chac chan muon xoa sinh vien nay chu: (Y/N): ";
+        cout << "Ban chac chan muon xoa "<< typeEntity << " nay chu: (Y/N): ";
         string ans;
         cin >> ans;
         if (ans == "Y"){
@@ -115,14 +122,20 @@ void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string type
         cin.ignore();
     }
     if (isRemove)
-        cout << "Remove student successfully\n";
+        cout << "Remove "<< typeEntity <<" successfully\n";
+    cout << "Press space to continue...\n";
+    char temp = 'a';
+    while (temp != ' '){
+        temp = getch();
+    }
 }
 
 void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
     cout << "Nhap id sinh vien muon cap nhat: ";
     string id;
-    cin >> id;
+    getline(cin, id);
+
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
@@ -132,14 +145,21 @@ void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typ
         IUI* printer = UIFactory::createUI(typeEntity);
         BaseEntity* des = database->getData(index);
         printer->print(des);
-        cout << "Nhap thong tin thay doi: ";
         IDataInput* inputMachine = InputFactory::create(typeEntity);
         BaseEntity* scr = inputMachine->input();
         database->Replace(des, scr);
     }
-    cin.ignore();
-    if (isRemove)
+
+    if (isRemove){
         cout << "Remove student successfully\n";
+    }
+
+    cout << "Press space to continue...\n";
+    char temp = 'a';
+    while (temp != ' '){
+        temp = getch();
+    }
+
 }
 
 void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
