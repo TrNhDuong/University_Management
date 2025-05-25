@@ -8,8 +8,12 @@
 #include "Entity/lecturer.h"
 #include "Entity/faculty.h"
 #include "Entity/baseEntity.h"
+#include "Entity/check.h" //kiểm lỗi dữ liệu
+#include<exception> //kiểm lỗi dữ liệu
+#include<stdexcept> //kiểm lỗi: sử dụng throw runtime_error
 #include <iostream>
 using std::getline;
+using std::exception, std::runtime_error;
 using std::ifstream, std::ofstream;
 using std::string, std::stringstream;
 
