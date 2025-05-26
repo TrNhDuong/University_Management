@@ -1,6 +1,6 @@
-#include "saveDataToFile.h"
+#include "exit.h"
 
-void SaveStudentData::excute(){
+void SaveStudentData::execute(){
     std::fstream file("Data/StudentData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
@@ -11,12 +11,12 @@ void SaveStudentData::excute(){
         BaseEntity* object = database->getData(i);
         Student* stu = dynamic_cast<Student*>(object);
         file << stu->getName() << "|" << stu->getId() << "|" << stu->getBirth().getDay() << "/" << stu->getBirth().getMonth() 
-        << "/" << stu->getBirth().getYear() << "|" << stu->getEnrollYear() << "|" << stu->getGPA() << "|" << stu->getCompletedCredit() << "\n";
+        << "/" << stu->getBirth().getYear() << "|" << stu->getEnrollYear() << "|" << stu->getGPA() << "|" << stu->getCompletedCredit() << "|" << stu->getMail() << "\n";
     }
     file.close();
 }
 
-void SaveLecturerData::excute(){
+void SaveLecturerData::execute(){
     std::fstream file("Data/LecturerData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
@@ -27,12 +27,12 @@ void SaveLecturerData::excute(){
         BaseEntity* object = database->getData(i);
         Lecturer* stu = dynamic_cast<Lecturer*>(object);
         file << stu->getName() << "|" << stu->getId() << "|" << stu->getBirth().getDay() << "/" << stu->getBirth().getMonth() 
-        << "/" << stu->getBirth().getYear() << "|" << stu->getInstructYear() << "|" << stu->getDegree() << "\n";
+        << "/" << stu->getBirth().getYear() << "|" << stu->getInstructYear() << "|" << stu->getDegree() << "|" << stu->getMail() << "\n";
     }
     file.close();
 }
 
-void SaveFacultyData::excute(){
+void SaveFacultyData::execute(){
     std::fstream file("Data/FacultyData.txt", std::ios::out);
     if (!file.is_open()){
         cout << "Khong ton tai file\n";
@@ -48,13 +48,13 @@ void SaveFacultyData::excute(){
     file.close();
 }
 
-ISaveData* SaveDataFactory::create(const string& type){
+ISaveData* SaveDataFactory::create(const string& type, map<string, IDatabase*> DB){
     if ("Student" == type){
-        return new SaveStudentData();
+        return new SaveStudentData(DB[type]);
     } else if ("Lecturer" == type){
-        return new SaveLecturerData();
+        return new SaveLecturerData(DB[type]);
     } else if ("Faculty" == type){
-        return new SaveFacultyData();
+        return new SaveFacultyData(DB[type]);
     }
     return nullptr;
 }

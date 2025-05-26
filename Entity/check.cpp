@@ -311,8 +311,8 @@ bool checkValidNum::isValidCredit(const string& credit, string & errorMsg) {
 
 
 bool checkValidNum::isValidInstructYear(const int& instructYear) {  // >= 0 & < 60
-    if (instructYear < 0) return false;// "Số năm giảng dạy được nhập là số âm"
-    if (instructYear > 60) return false; // "Số năm giảng dạy quá lớn"
+    if (instructYear < 0) return false;// "Năm đầu tiên giảng dạy là số âm"
+    if (instructYear > 2030) return false; // "Năm đầu tiên giảng dạy quá lớn"
     return true;
 
 }

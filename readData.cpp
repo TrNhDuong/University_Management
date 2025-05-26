@@ -12,13 +12,40 @@ void FacultyReadData::readData(const string& filename){
     LecturerDatabase& lecDB = LecturerDatabase::getInstance();
     while(getline(_fileIn,line)){
         stringstream ss(line);
-        string name, id, birth, email, deanID; 
-        //seperate - Lack of managing the invalid data 
+        string name = "", id = "", birth = "", email = "", deanID = ""; 
+        //Managing the invalid data
+        string ignore = "";
+
+        //FORMAT Falcuty data:
+                    // name|id|birth|email|deanID
         getline(ss, name,'|');
+        if (checkValidWord::isValidStr(name,ignore) == false){
+            //Invalid name
+            throw runtime_error("Nội dung của file Falcuty, tên không đúng định dạng");
+        }
         getline(ss, id,'|');
+        if (checkValidWord::isValidID(id,ignore) == false){
+            //Invalid ID
+            throw runtime_error("Nội dung của file Falcuty, ID không đúng định dạng");
+        }
         getline(ss, birth,'|');
+        if (checkValidNum::isValidBirth(birth,ignore)==false){
+            //Invalid birth
+            throw runtime_error("Nội dung của file Falcuty, ngày thành lập không đúng định dạng");
+        }
+
         getline(ss, email,'|');
-        getline(ss, deanID);
+        if (checkValidWord::isValidEmail(email,ignore) == false){
+            //Invalid email
+            throw runtime_error("Nội dung của file Falcuty, email không đúng định dạng");
+        }
+
+        getline(ss, deanID,'|');
+       if (checkValidWord::isValidID(deanID,ignore) == false){
+        //Invalid deanID
+            throw runtime_error("Nội dung của file Falcuty, ID trưởng khoa không đúng định dạng");
+        }
+
         //find the Lectuer base on the deanID above
           // dùng singleton
         int index = lecDB.find(deanID);
@@ -57,20 +84,46 @@ void LecturerReadData::readData(const string& filename){
         std::cout <<"Can't open file " << filename <<"\n";
         return;
     }
-    //read file: name|id|birth|year_instruct|degree
     string line;
     LecturerDatabase& lecturerDB = LecturerDatabase::getInstance();
     while(getline(_fileIn,line)){
         stringstream ss(line); //builder pattern
-        string name, id, birth, year_instruct, deg;
-
-        //seperate - Lack of managing the invalid data
+        string name = "", id = "", birth = "", year_instruct = "", deg = "", mail ="";
+      
+        //Format Lecturer file: name|id|birth|year_instruct|degree
+        //Managing the invalid data
+        string ignore = "";
         getline(ss,name,'|');
+        if (checkValidWord::isValidStr(name,ignore) == false){
+            //Invalid name
+            throw runtime_error("Nội dung của file Lecturer tên không đúng định dạng");
+        }
         getline(ss,id,'|'); 
+        if (checkValidWord::isValidID(id,ignore) == false){
+            //Invalid ID
+            throw runtime_error("Nội dung của file Lecturer, ID không đúng định dạng");
+        }
         getline(ss,birth,'|'); 
+        if( checkValidNum::isValidBirth(birth,ignore) == false){
+            //Invalid birth
+            throw runtime_error("Nội dung của file Lecturer, ngày sinh không đúng định dạng");
+        }
         getline(ss,year_instruct,'|'); 
-        getline(ss,deg); 
-        //managing the invalid data ?
+        if( checkValidNum::isValidInstructYear(year_instruct,ignore) == false){
+            //Invalid year instruct
+            std::cout << "\n" << year_instruct << "\n";
+            throw runtime_error("Nội dung của file Lecturer, năm hướng dẫn/Year instruct không đúng định dạng");
+        }
+        getline(ss,deg, '|'); 
+        if (checkValidWord::isValidStr(deg,ignore) == false){
+            //Invalid degree
+            throw runtime_error("Nội dung của file Lecturer, Bằng cấp không đúng định dạng");
+        }
+        getline(ss,mail);
+        if( checkValidWord::isValidEmail(mail,ignore) == false){
+            //Invalid email
+            throw runtime_error("Nội dung của file Lecturer, email không đúng định dạng");
+        }
 
         Lecturer new_person;
         new_person.setName(name);
@@ -78,6 +131,7 @@ void LecturerReadData::readData(const string& filename){
         new_person.setBirth(birth);
         new_person.setInstructYear(stoi(year_instruct));
         new_person.setDeg(deg);
+        new_person.setMail(mail);
         //push into vector
         lecturerDB._data.push_back(new_person);
     }
@@ -93,21 +147,52 @@ void StudentReadData::readData(const string& filename){
         std::cout <<"Can't open file " << filename <<"\n";
         return;
     }
-    //read file: name|id|birth|year|gpa|credit
+    //Format Student file: name|id|birth|year|gpa|credit|mail
     string line;
     StudentDatabase& studentDB = StudentDatabase::getInstance();
     while(getline(_fileIn,line)){
         stringstream ss(line); //builder pattern
-        string name, id, birth, year, gpa,credit;
-        //seperate - Lack of managing the invalid data
+        string name = "", id, birth = "", year = "", gpa = "",credit = "", mail = "";
+        
+        //FORMAT Student data: Name|ID|Birth|Year|GPA|Credit|Mail
+        //Managing the invalid data
+        string ignore = "";
         getline(ss,name,'|');
+        if (checkValidWord::isValidStr(name,ignore) == false){
+            //Invalid name
+            throw runtime_error("Nội dung của file Student, tên không đúng định dạng");
+        }
         getline(ss,id,'|'); 
+        if (checkValidWord::isValidID(id,ignore) == false){
+            //Invalid ID
+            throw runtime_error("Nội dung của file Student, ID không đúng định dạng");
+        }
         getline(ss,birth,'|'); 
+        if (checkValidNum::isValidBirth(birth,ignore) == false){
+            //Invalid birth
+            throw runtime_error("Nội dung của file Student, ngày sinh không đúng định dạng");
+        }
         getline(ss,year,'|');
+        if (checkValidNum::isValidYearEnroll(year,ignore) == false){
+            //Invalid year
+            throw runtime_error("Nội dung của file Student, năm nhập học không đúng định dạng");
+        }
         getline(ss,gpa,'|');  
-        getline(ss,credit);
-        //managing the invalid data ?
+        if (checkValidNum::isValidGPA(gpa,ignore) == false){
+            //Invalid GPA
+            throw runtime_error("Nội dung của file Student, GPA không đúng định dạng");
+        }
+        getline(ss,credit,'|');
+        if (checkValidNum::isValidCredit(credit,ignore) == false){
+            //Invalid credit
+            throw runtime_error("Nội dung của file Student, số tín chỉ không đúng định dạng");
+        }
 
+        getline(ss,mail,'|'); //dont't have email in Student file yet
+        if (checkValidWord::isValidEmail(mail,ignore) == false){
+            //Invalid email
+            throw runtime_error("Nội dung của file Student, email không đúng định dạng");
+        }
         Student new_person;
         new_person.setName(name);
         new_person.setId(id);
@@ -115,6 +200,7 @@ void StudentReadData::readData(const string& filename){
         new_person.setEnrollYear(stoi(year));
         new_person.setGPA(stof(gpa));
         new_person.setCredit(stoi(credit));
+        new_person.setMail(mail);
         studentDB._data.push_back(new_person);
     }
     _fileIn.close();

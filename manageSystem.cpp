@@ -51,7 +51,5 @@ void UniversitySystem::Run(){
             delete commandMachine;
             commandMachine = nullptr;
         }
-        
-        
     }
 }

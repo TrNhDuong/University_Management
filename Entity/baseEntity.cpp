@@ -66,6 +66,10 @@ Birth BaseEntity::getBirth() const{
     return _birthDay;
 }
 
+string BaseEntity::getMail() const{
+    return _mail;
+}
+
 void BaseEntity::setName(const string& name){
     _name = name;
 }
@@ -80,4 +84,8 @@ void BaseEntity::setBirth(const Birth& birthDay){
 
 void BaseEntity::setBirth(const string& s){
     _birthDay.setBirth(s);
+}
+
+void BaseEntity::setMail(const string& mail){
+    _mail = mail;
 }

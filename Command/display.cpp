@@ -10,10 +10,10 @@ void StudentUI::print(BaseEntity* student){
     Student* st = dynamic_cast<Student*>(student);
     if (st){
         cout << format(
-            "{:10}|{:40}|{:02}/{:02}/{:04}|{:5}|{:4}\n",
+            "{:10}|{:40}|{:02}/{:02}/{:04}|{:5}|{:4}|{:30}\n",
             st->getId(),st->getName(), 
             st->getBirth().getDay(), st->getBirth().getMonth(), st->getBirth().getYear(), 
-            st->getGPA(), st->getCompletedCredit()
+            st->getGPA(), st->getCompletedCredit(), st->getMail()
             );
     }
 }
@@ -22,10 +22,10 @@ void LecturerUI::print(BaseEntity* lecturer){
     Lecturer* lec = dynamic_cast<Lecturer*>(lecturer);
     if (lec){
         cout << format(
-            "{:10}|{:40}|{:02}/{:02}/{:4}|{:5}|{:4}\n",
+            "{:10}|{:40}|{:02}/{:02}/{:4}|{:5}|{:4}|{:30}\n",
             lec->getId(), lec->getName(), 
             lec->getBirth().getDay(), lec->getBirth().getMonth(), lec->getBirth().getYear(),
-            lec->getInstructYear(), lec->getDegree()
+            lec->getInstructYear(), lec->getDegree(), lec->getMail()
         );
     }
 }

@@ -1,6 +1,6 @@
 #include "command.h"
-#include "../saveDataToFile.h"
-#include "display.h"
+#include "exit.h"
+
 
 
 #pragma region getCommandType
@@ -40,36 +40,24 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
         if (v.size() == 0){
             cout << "No " << typeEntity << " exists with the same ID:" << id << '\n';
         } else {
-            string title;
-            if (typeEntity == "Student"){
-                title = "STUDENT ID SEARCH";
-            } else if (typeEntity == "Lecturer"){
-                title = "LECTURER ID SEARCH";
-            } else if (typeEntity == "Faculty"){
-                title = "FACULTY ID SEARCH";
-            }
-            PrintMenuNewFormat::printMenu(v, title, typeEntity);
+            cout << "List of " << typeEntity << " has the same ID as " << id << ":\n";
+            for (int i = 0; i < v.size(); i++)
+                printer->print(v[i]);
         }
         delete printer;
     } else if ("Name" == typeOfSubCommand){
         string name;
-        cout << "Input search name: ";
-        getline(cin, name);
+        cout << "Input search namw: ";
+        cin >> name;
         _strategy = std::make_unique<NameSearch>();
         vector<BaseEntity*> v = _strategy->search(database, name);
         IUI* printer = UIFactory::createUI(typeEntity);
         if (v.size() == 0){
             cout << "No " << typeEntity << " exists with the same name:" << name << '\n';
         } else {
-            string title;
-            if (typeEntity == "Student"){
-                title = "STUDENT NAME SEARCH";
-            } else if (typeEntity == "Lecturer"){
-                title = "LECTURER NAME SEARCH";
-            } else if (typeEntity == "Faculty"){
-                title = "FACULTY NAME SEARCH";
-            }
-            PrintMenuNewFormat::printMenu(v, title, typeEntity);
+            cout << "List of " << typeEntity << " has the same name as " << name << ":\n";
+            for (int i = 0; i < v.size(); i++)
+                printer->print(v[i]);
         }
 
         delete printer;
@@ -94,52 +82,53 @@ void AddCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEnt
 
 void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
-    cout << "Nhap id sinh vien muon loai bo: ";
+    cout << "Input remove ID: ";
     string id;
     cin >> id;
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
-        cout << "Khong ton tai sinh vien trong he thong\n";
+        cout << "No " << typeEntity << " exists in database \n";
+        cin.ignore();
+        cin.get();
     } else {
-        cout << "Sinh vien ban muon xoa la: \n";
+        cout << "The " << typeEntity << " that is going to be removed is: \n";
         IUI* printer = UIFactory::createUI(typeEntity);
         printer->print(database->getData(index));
-        cout << "Ban chac chan muon xoa sinh vien nay chu: (Y/N): ";
+        cout << "Are you sure you want to remove: (Y/N): ";
         string ans;
         cin >> ans;
         if (ans == "Y"){
             database->Remove(id);
             isRemove = true;
         }
-        cin.ignore();
     }
-    if (isRemove)
-        cout << "Remove student successfully\n";
+    if (isRemove){
+        cout << "Remove successfully\n";
+        cin.get();
+    }
 }
 
 void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
-    cout << "Nhap id sinh vien muon cap nhat: ";
+    cout << "Enter ID:";
     string id;
     cin >> id;
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
-        cout << "Khong ton tai sinh vien trong he thong\n";
+        cout << "No " << typeEntity << " exists in database \n";
     } else {
-        cout << "Sinh vien ban muon cap nhat thong tin la: \n";
+        cout << typeEntity << " you want to update/replace infomation is: ";
         IUI* printer = UIFactory::createUI(typeEntity);
         BaseEntity* des = database->getData(index);
         printer->print(des);
-        cout << "Nhap thong tin thay doi: ";
         IDataInput* inputMachine = InputFactory::create(typeEntity);
         BaseEntity* scr = inputMachine->input();
         database->Replace(des, scr);
     }
     cin.ignore();
-    if (isRemove)
-        cout << "Remove student successfully\n";
+    cin.get();
 }
 
 void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
@@ -147,12 +136,12 @@ void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
     system("clear");
     cout << "Chao cac cau, ";
     cin.get();
-    // vector<string> type = {"Student", "Lecturer", "Faculty"};
-    // for (int i = 0; i < type.size(); i++){
-    //     ISaveData* savingMachine = SaveDataFactory::create(type[i]);
-    //     savingMachine->execute();
-    //     delete savingMachine;
-    // }
+    vector<string> type = {"Student", "Lecturer", "Faculty"};
+    for (int i = 0; i < type.size(); i++){
+        ISaveData* savingMachine = SaveDataFactory::create(type[i], mappingDatabase);
+        savingMachine->execute();
+        delete savingMachine;
+    }
     //Luu thong tin du lieu o DB vao file txt, xa hon la DB o SQL sau khi nhan ket thuc chuong trinh
 }
 
