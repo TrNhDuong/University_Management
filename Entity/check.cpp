@@ -1,63 +1,4 @@
 #include "check.h"
-// int main() {
-//     checkValidWord wordChecker;
-//     checkValidNum numChecker;
-
-//     // === Test cho isValidStr ===
-//     std::cout << "Test isValidStr:\n";
-//     std::cout << wordChecker.isValidStr("Nguyen Van A") << " (Expected: 1)\n";
-//     std::cout << wordChecker.isValidStr("Nguyen123") << " (Expected: 0)\n";
-//     std::cout << wordChecker.isValidStr("") << " (Expected: 0)\n";
-
-//     // === Test cho isValidID ===
-//     std::cout << "\nTest isValidID:\n";
-//     std::cout << wordChecker.isValidID("12345678") << " (Expected: 1)\n";
-//     std::cout << wordChecker.isValidID("1234abc") << " (Expected: 0)\n";
-//     std::cout << wordChecker.isValidID("") << " (Expected: 0)\n";
-
-//     // === Test cho isValidEmail ===
-//     std::cout << "\nTest isValidEmail:\n";
-//     std::cout << wordChecker.isValidEmail("abc@gmail.com") << " (Expected: 1)\n";
-//     std::cout << wordChecker.isValidEmail("abc@.com") << " (Expected: 0)\n";
-//     std::cout << wordChecker.isValidEmail("@gmail.com") << " (Expected: 0)\n";
-//     std::cout << wordChecker.isValidEmail("abc@gmail.") << " (Expected: 0)\n";
-
-//     // === Test cho isValidBirth ===
-//     std::cout << "\nTest isValidBirth (string):\n";
-//     std::cout << numChecker.isValidBirth("29/02/2020") << " (Expected: 1)\n"; // Leap year
-//     std::cout << numChecker.isValidBirth("31/04/2020") << " (Expected: 0)\n"; // April has 30 days
-//     std::cout << numChecker.isValidBirth("01/13/2020") << " (Expected: 0)\n"; // Invalid month
-//     std::cout << numChecker.isValidBirth("abc") << " (Expected: 0)\n"; // Invalid format
-
-//     // === Test cho isValidGPA ===
-//     std::cout << "\nTest isValidGPA:\n";
-//     std::cout << numChecker.isValidGPA("9.5") << " (Expected: 1)\n";
-//     std::cout << numChecker.isValidGPA("10.1") << " (Expected: 0)\n";
-//     std::cout << numChecker.isValidGPA("-1") << " (Expected: 0)\n";
-//     std::cout << numChecker.isValidGPA("abc") << " (Expected: 0)\n";
-
-//     // === Test cho isValidCredit ===
-//     std::cout << "\nTest isValidCredit:\n";
-//     std::cout << numChecker.isValidCredit("100") << " (Expected: 1)\n";
-//     std::cout << numChecker.isValidCredit("10000") << " (Expected: 0)\n";
-//     std::cout << numChecker.isValidCredit("-50") << " (Expected: 0)\n";
-//     std::cout << numChecker.isValidCredit("abc") << " (Expected: 0)\n";
-
-//     // === Test cho isValidInstructYear ===
-//     std::cout << "\nTest isValidInstructYear:\n";
-//     std::cout << numChecker.isValidInstructYear("30") << " (Expected: 1)\n";
-//     std::cout << numChecker.isValidInstructYear("65") << " (Expected: 0)\n";
-//     std::cout << numChecker.isValidInstructYear("-5") << " (Expected: 0)\n";
-
-//     // === Test cho isValidYearEnroll ===
-//     std::cout << "\nTest isValidYearEnroll:\n";
-//     std::cout << numChecker.isValidYearEnroll("2024") << " (Expected: 1)\n";
-//     std::cout << numChecker.isValidYearEnroll("2027") << " (Expected: 0)\n";
-//     std::cout << numChecker.isValidYearEnroll("-2000") << " (Expected: 0)\n";
-
-//     return 0;
-// }
-
 
 // Hàm kiểm tra năm nhuận
 bool checkValidNum::isLeapYear(const int& year) {
@@ -312,7 +253,7 @@ bool checkValidNum::isValidCredit(const string& credit, string & errorMsg) {
 
 bool checkValidNum::isValidInstructYear(const int& instructYear) {  // >= 0 & < 60
     if (instructYear < 0) return false;// "Số năm giảng dạy được nhập là số âm"
-    if (instructYear > 60) return false; // "Số năm giảng dạy quá lớn"
+    if (instructYear > 2030) return false; // "Số năm giảng dạy quá lớn"
     return true;
 
 }
