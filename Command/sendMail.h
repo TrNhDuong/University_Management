@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
+#include <fstream>
 using namespace std;
 
 class MailSV {
