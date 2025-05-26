@@ -10,7 +10,7 @@ SRC = *.cpp Entity/*.cpp Command/*.cpp
 
 # Default command: compile everything
 all:
-	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET) -lcurl
 
 # Clean command
 clean:
