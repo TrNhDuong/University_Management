@@ -318,13 +318,13 @@ bool checkValidNum::isValidCredit(const string& credit, string & errorMsg) {
 }
 
 
-bool checkValidNum::isValidInstructYear(const int& instructYear, const int& yearBirth) { 
-    if (instructYear < yearBirth + 18) return false;// "Năm đầu tiên giảng dạy phải lớn hơn (năm sinh + 18)"
+bool checkValidNum::isValidInstructYear(const int& instructYear,  const int yearBirth) { 
+    if (instructYear < (yearBirth + 18)) return false;// "Năm đầu tiên giảng dạy phải lớn hơn năm sinh ít nhất 18 tuổi"
     if (instructYear > 2030) return false; // "Năm đầu tiên giảng dạy quá lớn"
     return true;
 
 }
-bool checkValidNum::isValidInstructYear(const string& instructYear, string & errorMsg, const int& yearBirth) {
+bool checkValidNum::isValidInstructYear(const string& instructYear, string & errorMsg,  const int yearBirth) {
     if (isValidDigitStr(instructYear, errorMsg)) {
         int temp = stoi(instructYear);
         return isValidInstructYear(temp, yearBirth);
@@ -333,15 +333,20 @@ bool checkValidNum::isValidInstructYear(const string& instructYear, string & err
 }
 
 //Năm nhập học/khóa nhập học của sinh viên >= 2000
-bool checkValidNum::isValidYearEnroll(const int& yearEnroll, const int& yearBirth) {
-    if (yearEnroll < yearBirth + 10) return false;// "Số năm nhập học nhỏ hơn năm sinh" //sẽ có một số ngoại lệ nên ta để yearBirth + 10
+bool checkValidNum::isValidYearEnroll(const int& yearEnroll,  const int& yearBirth) {
+    if (yearEnroll < (yearBirth + 16)) {
+        return false;// "Năm nhập học phải lớn hơn năm sinh ít nhất 16 tuổi" //sẽ có một số ngoại lệ nên ta để yearBirth + 10
+    }
+    std::cout << yearEnroll << " - " << yearBirth << std::endl;
+
     if (yearEnroll > 2026) return false; // "Số năm nhập học lớn hơn 2026"
     return true;
 }
-bool checkValidNum::isValidYearEnroll(const string& yearEnroll, string & errorMsg, const int& yearBirth = 2000) {
+bool checkValidNum::isValidYearEnroll(const string& yearEnroll, string & errorMsg,  const int& yearBirth ) {
     if (isValidDigitStr(yearEnroll, errorMsg)) {
         int temp = stoi(yearEnroll);
-        return isValidYearEnroll(temp);
+        
+        return isValidYearEnroll(temp, yearBirth);
     }
     return false;
 }

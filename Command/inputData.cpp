@@ -66,13 +66,27 @@ BaseEntity* StudentInput::input(){
     }
     gpa =stof(tempGPA);
 
+    //lấy index của năm sinh trong birth
+    int index = 0;
+    bool isMeet = false;
+    for (index = 0; index < birth.length(); ++index){
+        if (birth[index] == '/' && isMeet){
+            break;
+        }
+        else if (birth[index] == '/'){
+            isMeet = true;
+        }
+    }
+    int yearBirth = stoi(birth.substr(index+1,birth.length()-1)); //Lấy năm sinh từ chuỗi birth
+   
     cout << "Nhap nam nhap hoc: ";
     string tempEnrollYear = "";
     getline(cin, tempEnrollYear);
-    int yearBirth = stoi(birth.substr(birth.length() - 4)); //Lấy năm sinh từ chuỗi birth
+    
     while (!checkValidNum::isValidYearEnroll(tempEnrollYear, errorMsg, yearBirth)){
         cout << errorMsg << '\n';
         cout << "Nhap lai nam nhap hoc: ";
+        tempEnrollYear ="";
         getline(cin, tempEnrollYear);
         errorMsg.clear();
     }
@@ -140,9 +154,22 @@ BaseEntity* LecturerInput::input(){
         errorMsg.clear();
     }
 
+
+    //lấy index của năm sinh trong birth
+    int index = 0;
+    bool isMeet = false;
+    for (index = 0; index < birth.length(); ++index){
+        if (birth[index] == '/' && isMeet){
+            break;
+        }
+        else if (birth[index] == '/'){
+            isMeet = true;
+        }
+    }
+    int yearBirth = stoi(birth.substr(index+1,birth.length()-1)); //Lấy năm sinh từ chuỗi birth
+   // cout <<yearBirth <<" - year birth " << std::endl;
     cout << "Nhap nam bat dau giang day: ";
     getline(cin, structYear);
-    int yearBirth = stoi(birth.substr(birth.length() - 4)); //Lấy năm sinh từ chuỗi birth
     while (!checkValidNum::isValidInstructYear(structYear, errorMsg, yearBirth)){
         cout << errorMsg << '\n';
         cout << "Nhap lai nam bat dau giang day: ";

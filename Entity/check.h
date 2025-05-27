@@ -42,11 +42,11 @@ public:
     static bool isValidCredit(const int& credit);
     static bool isValidCredit(const string& credit, string & errorMsg);
 
-    static bool isValidInstructYear(const int& instructYear, const int& yearBirth = 2000);
-    static bool isValidInstructYear(const string& instructYear, string & errorMsg, const int& yearBirth = 2000);
+    static bool isValidInstructYear(const int& instructYear,  const int yearBirth = 2000 );
+    static bool isValidInstructYear(const string& instructYear, string & errorMsg,  const int yearBirth = 2000);
 
-    static bool isValidYearEnroll(const int& yearEnroll, const int& yearBirth = 2000);
-    static bool isValidYearEnroll(const string& yearEnroll, string & errorMsg, const int& yearBirth = 2000);
+    static bool isValidYearEnroll(const int& yearEnroll,  const int& yearBirth = 2000 );
+    static bool isValidYearEnroll(const string& yearEnroll, string & errorMsg,  const int& yearBirth = 2000);
 };
 
 
