@@ -14,6 +14,11 @@ using std::string;
 using std::format;
 using std::cout;
 
+class PrintMenuNewFormat{
+    public:
+        static void printMenu(vector<BaseEntity*>& data,const string& title, string type);
+};
+
 class IUI{
 public:
     virtual void print(BaseEntity*) = 0;
@@ -75,4 +80,6 @@ class DisplayFactory{
 public:
     static IDisplay* createDisplay(const string& type);
 };
+
+
 #endif

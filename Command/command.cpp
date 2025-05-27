@@ -2,7 +2,6 @@
 #include "exit.h"
 
 
-
 #pragma region getCommandType
 string DisplayCommand::getCommandType(){
     return "Display";
@@ -22,6 +21,10 @@ string RemoveCommand::getCommandType(){
 
 string ReplaceCommand::getCommandType(){
     return "Replace";
+}
+
+string Notification::getCommandType(){
+    return "Notification";
 }
 
 
@@ -59,6 +62,7 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
             for (int i = 0; i < v.size(); i++)
                 printer->print(v[i]);
         }
+
         delete printer;
     }
     cin.ignore();
@@ -142,6 +146,12 @@ void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
         delete savingMachine;
     }
     //Luu thong tin du lieu o DB vao file txt, xa hon la DB o SQL sau khi nhan ket thuc chuong trinh
+}
+
+void Notification::execute(){
+    MailSV mailMachine;
+    mailMachine.excute();
+    cin.get();
 }
 
 ICommand* CommandFactory::create(const string& typeCommand){

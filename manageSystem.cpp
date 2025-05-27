@@ -35,15 +35,19 @@ void UniversitySystem::Run(){
         if (typeCommand == "Exit"){
             TurnOffProgram::execute(mappingDatabase);
             break;
+        } else if (typeCommand == "Notification"){
+            Notification::execute();
+            continue;
         }
-        
         while (true){
             typeEntity = entityMenu->getChoice();
             if (typeEntity == "Exit"){
                 break;
             }
-            if ("Search" == typeCommand)
+
+            if (typeCommand == "Search"){
                 typeSubCommand = subMenu->getChoice();
+            }
             
             commandMachine = CommandFactory::create(typeCommand);
             commandMachine->execute(mappingDatabase, typeEntity, typeSubCommand);

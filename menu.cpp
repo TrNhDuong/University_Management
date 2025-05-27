@@ -16,7 +16,7 @@ using std::format;
 using std::to_string;
 
 MainMenu::MainMenu() {
-    _options = {"Add", "Search", "Remove", "Replace", "Display", "Exit"};
+    _options = {"Add", "Search", "Remove", "Replace", "Display", "Notification", "Exit"};
 }
 
 EntityMenu::EntityMenu() {

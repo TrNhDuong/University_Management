@@ -2,6 +2,7 @@
 #define COMMAND_H
 #include "search.h"
 #include "display.h"
+#include "sendMail.h"
 #include "inputData.h"
 #include "../utils.h"
 #include <map>
@@ -66,6 +67,14 @@ public:
     void execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
+class Notification: public ICommand {
+public:
+    Notification() = default;
+    ~Notification() = default;
+
+    string getCommandType() override;
+    static void execute();
+};
 class TurnOffProgram{
 public:
     TurnOffProgram() = default;

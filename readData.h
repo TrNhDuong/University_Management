@@ -8,8 +8,12 @@
 #include "Entity/lecturer.h"
 #include "Entity/faculty.h"
 #include "Entity/baseEntity.h"
+#include "Entity/check.h" //kiểm lỗi dữ liệu
+#include<exception> //kiểm lỗi dữ liệu
+#include<stdexcept> //kiểm lỗi: sử dụng throw runtime_error
 #include <iostream>
 using std::getline;
+using std::exception, std::runtime_error;
 using std::ifstream, std::ofstream;
 using std::string, std::stringstream;
 
@@ -25,7 +29,7 @@ private:
     FacultyReadData(const FacultyReadData&) = delete;
     FacultyReadData& operator= (const FacultyReadData&) = delete; 
     ~FacultyReadData() = default;
-    ifstream _fileIn; //There is a possibility that programm read multiple of files, so i wont create a class to singleton the ifstream. 
+    ifstream _fileIn; //There is a possibility that program read multiple of files each, so i wont create a class to singleton the ifstream. 
 public:
     static FacultyReadData& getInstance(){
         static FacultyReadData instance;
