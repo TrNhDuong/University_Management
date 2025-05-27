@@ -91,7 +91,7 @@ void MailSV::sendMail(string to_email, string subject, string content ){
             std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
         } else {
             std::cout << "Email sent successfully!" << std::endl;
-            std::cout << "Response from SendGrid: " << response_string << std::endl;
+            //std::cout << "Response from SendGrid: " << response_string << std::endl;
         }
 
         curl_slist_free_all(headers);
