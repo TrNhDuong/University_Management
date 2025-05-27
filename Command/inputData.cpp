@@ -55,28 +55,41 @@ BaseEntity* StudentInput::input(){
     }
 
     cout << "Nhap GPA: ";
-    cin >> gpa;
-    while (!checkValidNum::isValidGPA(gpa)){
+    string tempGPA ="";
+    getline(cin,tempGPA);
+     //lỗi gpa nhập vào chữ thì chạy liên tục
+    while (!checkValidNum::isValidGPA(tempGPA, errorMsg)){
+        cout << errorMsg << '\n';
         cout << "Nhap lai GPA: ";
-        cin >> gpa;
+        getline(cin,tempGPA);
         errorMsg.clear();
     }
-    //lỗi gpa nhập vào chữ thì chạy liên tục
+    gpa =stof(tempGPA);
 
     cout << "Nhap nam nhap hoc: ";
-    cin >> enrollYear;
-    while (!checkValidNum::isValidYearEnroll(enrollYear)){
+    string tempEnrollYear = "";
+    getline(cin, tempEnrollYear);
+    int yearBirth = stoi(birth.substr(birth.length() - 4)); //Lấy năm sinh từ chuỗi birth
+    while (!checkValidNum::isValidYearEnroll(tempEnrollYear, errorMsg, yearBirth)){
+        cout << errorMsg << '\n';
         cout << "Nhap lai nam nhap hoc: ";
-        cin >> enrollYear;
+        getline(cin, tempEnrollYear);
+        errorMsg.clear();
     }
+    enrollYear = stoi(tempEnrollYear);
 
     cout << "Nhap so tin chi da hoan thanh: ";
-    cin >> credit;
-    while (!checkValidNum::isValidCredit(credit)){
+    string tempCredit = "";
+    getline(cin, tempCredit);
+    while (!checkValidNum::isValidCredit(tempCredit, errorMsg)){
+        cout << errorMsg << '\n';
         cout << "Nhap lai so tin chi da hoan thanh: ";
-        cin >> credit;
+        getline(cin, tempCredit);
+        errorMsg.clear();
     }
-    cin.ignore();
+    credit = stoi(tempCredit);
+
+    //set data for Student
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);
@@ -129,19 +142,20 @@ BaseEntity* LecturerInput::input(){
 
     cout << "Nhap nam bat dau giang day: ";
     getline(cin, structYear);
-    while (!checkValidNum::isValidInstructYear(structYear, errorMsg)){
+    int yearBirth = stoi(birth.substr(birth.length() - 4)); //Lấy năm sinh từ chuỗi birth
+    while (!checkValidNum::isValidInstructYear(structYear, errorMsg, yearBirth)){
         cout << errorMsg << '\n';
         cout << "Nhap lai nam bat dau giang day: ";
-        cin >> structYear;
+        getline(cin, structYear);
         errorMsg.clear();
     }
 
     cout << "Nhap hoc ham: ";
-    cin >> degree;
+    getline(cin,degree);
     while (!checkValidWord::isValidStr(degree, errorMsg)){
         cout << errorMsg << '\n';
         cout << "Nhap lai hoc ham: ";
-        cin >> degree;
+        getline(cin,degree);
         errorMsg.clear();
     }
 
