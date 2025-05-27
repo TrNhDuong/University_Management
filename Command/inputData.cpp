@@ -55,28 +55,55 @@ BaseEntity* StudentInput::input(){
     }
 
     cout << "Nhap GPA: ";
-    cin >> gpa;
-    while (!checkValidNum::isValidGPA(gpa)){
+    string tempGPA ="";
+    getline(cin,tempGPA);
+     //lỗi gpa nhập vào chữ thì chạy liên tục
+    while (!checkValidNum::isValidGPA(tempGPA, errorMsg)){
+        cout << errorMsg << '\n';
         cout << "Nhap lai GPA: ";
-        cin >> gpa;
+        getline(cin,tempGPA);
         errorMsg.clear();
     }
-    //lỗi gpa nhập vào chữ thì chạy liên tục
+    gpa =stof(tempGPA);
 
-    cout << "Nhap nam nhap hoc: ";
-    cin >> enrollYear;
-    while (!checkValidNum::isValidYearEnroll(enrollYear)){
-        cout << "Nhap lai nam nhap hoc: ";
-        cin >> enrollYear;
+    //lấy index của năm sinh trong birth
+    int index = 0;
+    bool isMeet = false;
+    for (index = 0; index < birth.length(); ++index){
+        if (birth[index] == '/' && isMeet){
+            break;
+        }
+        else if (birth[index] == '/'){
+            isMeet = true;
+        }
     }
+    int yearBirth = stoi(birth.substr(index+1,birth.length()-1)); //Lấy năm sinh từ chuỗi birth
+   
+    cout << "Nhap nam nhap hoc: ";
+    string tempEnrollYear = "";
+    getline(cin, tempEnrollYear);
+    
+    while (!checkValidNum::isValidYearEnroll(tempEnrollYear, errorMsg, yearBirth)){
+        cout << errorMsg << '\n';
+        cout << "Nhap lai nam nhap hoc: ";
+        tempEnrollYear ="";
+        getline(cin, tempEnrollYear);
+        errorMsg.clear();
+    }
+    enrollYear = stoi(tempEnrollYear);
 
     cout << "Nhap so tin chi da hoan thanh: ";
-    cin >> credit;
-    while (!checkValidNum::isValidCredit(credit)){
+    string tempCredit = "";
+    getline(cin, tempCredit);
+    while (!checkValidNum::isValidCredit(tempCredit, errorMsg)){
+        cout << errorMsg << '\n';
         cout << "Nhap lai so tin chi da hoan thanh: ";
-        cin >> credit;
+        getline(cin, tempCredit);
+        errorMsg.clear();
     }
-    cin.ignore();
+    credit = stoi(tempCredit);
+
+    //set data for Student
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);
@@ -127,21 +154,35 @@ BaseEntity* LecturerInput::input(){
         errorMsg.clear();
     }
 
+
+    //lấy index của năm sinh trong birth
+    int index = 0;
+    bool isMeet = false;
+    for (index = 0; index < birth.length(); ++index){
+        if (birth[index] == '/' && isMeet){
+            break;
+        }
+        else if (birth[index] == '/'){
+            isMeet = true;
+        }
+    }
+    int yearBirth = stoi(birth.substr(index+1,birth.length()-1)); //Lấy năm sinh từ chuỗi birth
+   // cout <<yearBirth <<" - year birth " << std::endl;
     cout << "Nhap nam bat dau giang day: ";
     getline(cin, structYear);
-    while (!checkValidNum::isValidInstructYear(structYear, errorMsg)){
+    while (!checkValidNum::isValidInstructYear(structYear, errorMsg, yearBirth)){
         cout << errorMsg << '\n';
         cout << "Nhap lai nam bat dau giang day: ";
-        cin >> structYear;
+        getline(cin, structYear);
         errorMsg.clear();
     }
 
     cout << "Nhap hoc ham: ";
-    cin >> degree;
+    getline(cin,degree);
     while (!checkValidWord::isValidStr(degree, errorMsg)){
         cout << errorMsg << '\n';
         cout << "Nhap lai hoc ham: ";
-        cin >> degree;
+        getline(cin,degree);
         errorMsg.clear();
     }
 

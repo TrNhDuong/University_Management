@@ -30,7 +30,7 @@ bool checkValidWord::isValidStr(const string& str, string & errorMsg) {
             }
             prevWasSpace = true; 
         } else {
-            errorMsg = "Tên có chứa ký tự không là chữ cái hoặc space";
+            errorMsg = "Tên có chứa ký tự không là chữ cái hoặc không là space";
             return false; // Lỗi: "Tên có chứa ký tự không là chữ cái hoặc space"
         }
     if (!hasLetter) {
@@ -176,9 +176,17 @@ bool checkValidNum::isValidBirth(const string& bir, string & errorMsg) {
             return false;
         } //not a number
     }
-
+    int y = stoi(year);
+    if (y < 1900) {
+        errorMsg = "Năm được nhập lập phải lớn hơn 1900";
+        return false; //Lỗi: "Năm được nhập lập phải lớn hơn 1900 và nhỏ hơn 2100"
+    }
+    else if (y > 2100){
+        errorMsg = "Năm được nhập lập phải nhỏ hơn 2100";
+        return false; //Lỗi: "Năm được nhập lập phải lớn hơn 1900 và nhỏ hơn 2100"
+    }
     //kiểm tra date là hợp lệ
-    Birth temp; temp.setBirth(stoi(day), stoi(mon), stoi(year));
+    Birth temp; temp.setBirth(stoi(day), stoi(mon), y);
     return isValidBirth(temp);
 }
 
@@ -249,30 +257,35 @@ bool checkValidNum::isValidCredit(const string& credit, string & errorMsg) {
 }
 
 
-bool checkValidNum::isValidInstructYear(const int& instructYear) {  // >= 0 & < 60
-    if (instructYear < 0) return false;// "Năm đầu tiên giảng dạy là số âm"
+bool checkValidNum::isValidInstructYear(const int& instructYear,  const int yearBirth) { 
+    if (instructYear < (yearBirth + 18)) return false;// "Năm đầu tiên giảng dạy phải lớn hơn năm sinh ít nhất 18 tuổi"
     if (instructYear > 2030) return false; // "Năm đầu tiên giảng dạy quá lớn"
     return true;
 
 }
-bool checkValidNum::isValidInstructYear(const string& instructYear, string & errorMsg) {
+bool checkValidNum::isValidInstructYear(const string& instructYear, string & errorMsg,  const int yearBirth) {
     if (isValidDigitStr(instructYear, errorMsg)) {
         int temp = stoi(instructYear);
-        return isValidInstructYear(temp);
+        return isValidInstructYear(temp, yearBirth);
     }
     return false;
 }
 
 //Năm nhập học/khóa nhập học của sinh viên >= 2000
-bool checkValidNum::isValidYearEnroll(const int& yearEnroll) {
-    if (yearEnroll < 0) return false;// "Số năm nhập học được nhập là số âm"
+bool checkValidNum::isValidYearEnroll(const int& yearEnroll,  const int& yearBirth) {
+    if (yearEnroll < (yearBirth + 16)) {
+        return false;// "Năm nhập học phải lớn hơn năm sinh ít nhất 16 tuổi" //sẽ có một số ngoại lệ nên ta để yearBirth + 10
+    }
+    std::cout << yearEnroll << " - " << yearBirth << std::endl;
+
     if (yearEnroll > 2026) return false; // "Số năm nhập học lớn hơn 2026"
     return true;
 }
-bool checkValidNum::isValidYearEnroll(const string& yearEnroll, string & errorMsg) {
+bool checkValidNum::isValidYearEnroll(const string& yearEnroll, string & errorMsg,  const int& yearBirth ) {
     if (isValidDigitStr(yearEnroll, errorMsg)) {
         int temp = stoi(yearEnroll);
-        return isValidYearEnroll(temp);
+        
+        return isValidYearEnroll(temp, yearBirth);
     }
     return false;
 }

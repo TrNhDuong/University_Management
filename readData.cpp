@@ -108,10 +108,24 @@ void LecturerReadData::readData(const string& filename){
             //Invalid birth
             throw runtime_error("Nội dung của file Lecturer, ngày sinh không đúng định dạng");
         }
-        getline(ss,year_instruct,'|'); 
-        if( checkValidNum::isValidInstructYear(year_instruct,ignore) == false){
+
+         //lấy index của năm sinh trong birth
+        int index = 0;
+        bool isMeet = false;
+        for (index = 0; index < birth.length(); ++index){
+            if (birth[index] == '/' && isMeet){
+                break;
+            }
+            else if (birth[index] == '/'){
+                isMeet = true;
+            }
+        }
+        int yearBirth = stoi(birth.substr(index+1,birth.length()-1)); //Lấy năm sinh từ chuỗi birth
+   
+        getline(ss,year_instruct,'|'); ; 
+        if( checkValidNum::isValidInstructYear(year_instruct,ignore, yearBirth) == false){
             //Invalid year instruct
-            std::cout << "\n" << year_instruct << "\n";
+           // std::cout << "\n" << year_instruct << "\n";
             throw runtime_error("Nội dung của file Lecturer, năm hướng dẫn/Year instruct không đúng định dạng");
         }
         getline(ss,deg, '|'); 
@@ -172,9 +186,22 @@ void StudentReadData::readData(const string& filename){
             //Invalid birth
             throw runtime_error("Nội dung của file Student, ngày sinh không đúng định dạng");
         }
+         //lấy index của năm sinh trong birth
+        int index = 0;
+        bool isMeet = false;
+        for (index = 0; index < birth.length(); ++index){
+            if (birth[index] == '/' && isMeet){
+                break;
+            }
+            else if (birth[index] == '/'){
+                isMeet = true;
+            }
+        }
+        int yearBirth = stoi(birth.substr(index+1,birth.length()-1)); //Lấy năm sinh từ chuỗi birth 
         getline(ss,year,'|');
-        if (checkValidNum::isValidYearEnroll(year,ignore) == false){
-            //Invalid year
+        if (checkValidNum::isValidYearEnroll(year,ignore, yearBirth) == false){
+            //Invalid year'
+          //  std::cout <<"\n\n" << year << endl << endl;
             throw runtime_error("Nội dung của file Student, năm nhập học không đúng định dạng");
         }
         getline(ss,gpa,'|');  
