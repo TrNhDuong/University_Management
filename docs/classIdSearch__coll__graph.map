@@ -1,0 +1,4 @@
+<map id="IdSearch" name="IdSearch">
+<area shape="rect" id="node1" title="Lớp đại diện cho chiến lược tìm kiếm theo ID." alt="" coords="27,80,105,107"/>
+<area shape="rect" id="node2" href="$classSearchStrategy.html" title="Lớp trừu tượng đại diện cho chiến lược tìm kiếm." alt="" coords="5,5,127,32"/>
+</map>

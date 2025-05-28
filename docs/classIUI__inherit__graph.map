@@ -1,0 +1,6 @@
+<map id="IUI" name="IUI">
+<area shape="rect" id="node1" title="Lớp trừu tượng đại diện cho giao diện người dùng." alt="" coords="137,5,177,32"/>
+<area shape="rect" id="node2" href="$classFacultyUI.html" title="Lớp đại diện cho giao diện người dùng hiển thị thông tin khoa." alt="" coords="5,80,88,107"/>
+<area shape="rect" id="node3" href="$classLecturerUI.html" title="Lớp đại diện cho giao diện người dùng hiển thị thông tin giảng viên." alt="" coords="113,80,202,107"/>
+<area shape="rect" id="node4" href="$classStudentUI.html" title="Lớp đại diện cho giao diện người dùng hiển thị thông tin sinh viên." alt="" coords="226,80,313,107"/>
+</map>

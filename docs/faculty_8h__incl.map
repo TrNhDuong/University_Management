@@ -1,0 +1,9 @@
+<map id="Entity/faculty.h" name="Entity/faculty.h">
+<area shape="rect" id="node1" title="Định nghĩa lớp Faculty đại diện cho khoa trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="134,5,253,32"/>
+<area shape="rect" id="node2" href="$baseEntity_8h.html" title="Định nghĩa lớp cơ sở cho các thực thể trong hệ thống." alt="" coords="5,155,107,181"/>
+<area shape="rect" id="node4" href="$lecturer_8h.html" title="Định nghĩa lớp Lecturer đại diện cho giảng viên trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="55,80,137,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="162,80,225,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="249,80,329,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="353,80,420,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="27,229,85,256"/>
+</map>

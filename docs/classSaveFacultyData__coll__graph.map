@@ -1,0 +1,5 @@
+<map id="SaveFacultyData" name="SaveFacultyData">
+<area shape="rect" id="node1" title="Lớp đại diện cho máy lưu dữ liệu khoa." alt="" coords="5,171,136,197"/>
+<area shape="rect" id="node2" href="$classISaveData.html" title="Lớp trừu tượng đại diện cho máy lưu dữ liệu." alt="" coords="26,95,115,121"/>
+<area shape="rect" id="node3" href="$classIDatabase.html" title="Lớp trừu tượng đại diện cho cơ sở dữ liệu." alt="" coords="27,5,115,32"/>
+</map>

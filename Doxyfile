@@ -1,0 +1,6 @@
+PROJECT_NAME     = "University Management System"
+EXTRACT_ALL      = YES
+GENERATE_LATEX   = NO
+INPUT            = ./ Command Entity ../lib
+RECURSIVE        = YES
+HTML_OUTPUT      = docs

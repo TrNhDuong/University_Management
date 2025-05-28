@@ -1,0 +1,4 @@
+<map id="LecturerDatabase" name="LecturerDatabase">
+<area shape="rect" id="node1" title="Lớp đại diện cho cơ sở dữ liệu giảng viên." alt="" coords="5,80,143,107"/>
+<area shape="rect" id="node2" href="$classIDatabase.html" title="Lớp trừu tượng đại diện cho cơ sở dữ liệu." alt="" coords="30,5,118,32"/>
+</map>

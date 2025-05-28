@@ -1,0 +1,5 @@
+<map id="EntityMenu" name="EntityMenu">
+<area shape="rect" id="node1" title="Lớp đại diện cho menu thực thể trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="23,171,119,197"/>
+<area shape="rect" id="node2" href="$classMenu.html" title="Lớp trừu tượng đại diện cho menu trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="41,95,100,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,5,136,32"/>
+</map>

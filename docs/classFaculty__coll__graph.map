@@ -1,0 +1,7 @@
+<map id="Faculty" name="Faculty">
+<area shape="rect" id="node1" title="Lớp đại diện cho khoa trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="46,289,114,316"/>
+<area shape="rect" id="node2" href="$classBaseEntity.html" title="Lớp cơ sở đại diện cho các thực thể trong hệ thống." alt="" coords="29,124,121,151"/>
+<area shape="rect" id="node5" href="$classLecturer.html" title="Lớp đại diện cho giảng viên trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="96,200,171,227"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,5,64,32"/>
+<area shape="rect" id="node4" href="$classBirth.html" title="Lớp đại diện cho ngày sinh của thực thể" alt="" coords="88,5,141,32"/>
+</map>

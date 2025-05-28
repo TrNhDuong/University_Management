@@ -1,0 +1,4 @@
+<map id="RemoveCommand" name="RemoveCommand">
+<area shape="rect" id="node1" title="Lớp đại diện cho lệnh xóa trong hệ thống." alt="" coords="5,80,148,107"/>
+<area shape="rect" id="node2" href="$classICommand.html" title="Lớp trừu tượng đại diện cho một lệnh trong hệ thống." alt="" coords="30,5,123,32"/>
+</map>

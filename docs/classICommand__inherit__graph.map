@@ -1,0 +1,9 @@
+<map id="ICommand" name="ICommand">
+<area shape="rect" id="node1" title="Lớp trừu tượng đại diện cho một lệnh trong hệ thống." alt="" coords="381,5,475,32"/>
+<area shape="rect" id="node2" href="$classAddCommand.html" title="Lớp đại diện cho lệnh thêm mới trong hệ thống." alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node3" href="$classDisplayCommand.html" title="Lớp đại diện cho lệnh hiển thị trong hệ thống." alt="" coords="144,80,283,107"/>
+<area shape="rect" id="node4" href="$classNotification.html" title="Lớp đại diện cho lệnh thông báo trong hệ thống." alt="" coords="307,80,405,107"/>
+<area shape="rect" id="node5" href="$classRemoveCommand.html" title="Lớp đại diện cho lệnh xóa trong hệ thống." alt="" coords="429,80,571,107"/>
+<area shape="rect" id="node6" href="$classReplaceCommand.html" title="Lớp đại diện cho lệnh thay thế trong hệ thống." alt="" coords="596,80,737,107"/>
+<area shape="rect" id="node7" href="$classSearchCommand.html" title="Lớp đại diện cho lệnh tìm kiếm trong hệ thống." alt="" coords="761,80,895,107"/>
+</map>

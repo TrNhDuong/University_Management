@@ -1,0 +1,6 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classIDisplay.html" title="Lớp trừu tượng đại diện cho máy hiển thị dữ liệu." alt="" coords="5,56,80,83"/>
+<area shape="rect" id="node2" href="$classFacultyDatabaseDisplay.html" title="Lớp đại diện cho máy hiển thị dữ liệu khoa." alt="" coords="132,5,311,32"/>
+<area shape="rect" id="node3" href="$classLecturerDatabaseDisplay.html" title="Lớp đại diện cho máy hiển thị dữ liệu giảng viên." alt="" coords="128,56,315,83"/>
+<area shape="rect" id="node4" href="$classStudentDatabaseDisplay.html" title="Lớp đại diện cho máy hiển thị dữ liệu sinh viên." alt="" coords="130,107,313,133"/>
+</map>

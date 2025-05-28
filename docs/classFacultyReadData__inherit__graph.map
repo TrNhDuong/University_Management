@@ -1,0 +1,4 @@
+<map id="FacultyReadData" name="FacultyReadData">
+<area shape="rect" id="node1" title="Lớp đại diện cho máy đọc dữ liệu khoa." alt="" coords="5,80,137,107"/>
+<area shape="rect" id="node2" href="$classIReadData.html" title="Lớp trừu tượng đại diện cho máy đọc dữ liệu." alt="" coords="26,5,117,32"/>
+</map>
