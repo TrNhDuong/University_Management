@@ -276,7 +276,7 @@ bool checkValidNum::isValidYearEnroll(const int& yearEnroll,  const int& yearBir
     if (yearEnroll < (yearBirth + 16)) {
         return false;// "Năm nhập học phải lớn hơn năm sinh ít nhất 16 tuổi" //sẽ có một số ngoại lệ nên ta để yearBirth + 10
     }
-    std::cout << yearEnroll << " - " << yearBirth << std::endl;
+    //std::cout << yearEnroll << " - " << yearBirth << std::endl;
 
     if (yearEnroll > 2026) return false; // "Số năm nhập học lớn hơn 2026"
     return true;

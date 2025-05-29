@@ -1,5 +1,6 @@
 #include "command.h"
 #include "exit.h"
+#include "../utils.h"
 
 
 #pragma region getCommandType
@@ -79,6 +80,9 @@ void AddCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEnt
     IDatabase* database = mappingDatabase[typeEntity];
     IDataInput* inputMachine = InputFactory::create(typeEntity);
     BaseEntity* object = inputMachine->input();
+    if (object == nullptr){
+        return;
+    }
     database->Add(object);
     cout << "Adding new student successfully\n";
 }
@@ -148,7 +152,12 @@ void Notification::execute(map<string, IDatabase*> mappingDatabase, string typeE
 
     MailCommand mailMachine;
     mailMachine.excute(mappingDatabase, typeEntity, typeOfSubCommand);
-    cin.get();
+    // system("clear");
+    cout << "Da gui thong bao thanh cong\n";
+
+    //sleep(3);
+    cout << "Nhan phim bat ki de tro ve\n";
+    getch();
 }
 
 ICommand* CommandFactory::create(const string& typeCommand){
