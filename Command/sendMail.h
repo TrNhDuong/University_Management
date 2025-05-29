@@ -13,6 +13,9 @@
 #include <string>
 #include <curl/curl.h>
 #include <fstream>
+#include <vector>
+#include "../data.h"
+#include <map>
 using namespace std;
 
 /**
@@ -22,18 +25,18 @@ using namespace std;
  * @note Bao gồm các phương thức để lấy API key, nhập thông tin người nhận, tiêu đề và nội dung email.
  * @note Cung cấp phương thức excute để thực hiện việc gửi email.
  */
-class MailSV {
+class MailCommand {
 private:
     static size_t WriteCallback(char *contents, size_t size, size_t nmemb, string *response);
     string getAPIkey();
-    string inputReceiver();
+    vector<string> getReceiver(IDatabase* db);
     string inputHeader();
     string inputContent();
-    void sendMail(string to_mail, string subject, string content);
+    void sendMail(vector<string> to_mail, string subject, string content);
 public:
-    MailSV() = default;
-    void excute();
-    ~MailSV() = default;
+    MailCommand() = default;
+    void excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand);
+    ~MailCommand() = default;
 };
 
 #endif

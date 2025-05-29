@@ -1,12 +1,12 @@
 #include "sendMail.h"
 
-size_t MailSV::WriteCallback(char *contents, size_t size, size_t nmemb, string *response){
+size_t MailCommand::WriteCallback(char *contents, size_t size, size_t nmemb, string *response){
     size_t total_size = size * nmemb;
     response->append(contents, total_size);
     return total_size;
 }
 
-string MailSV::getAPIkey(){
+string MailCommand::getAPIkey(){
     string apiKey;
     fstream file(".env", ios::in);
     string line;
@@ -20,42 +20,46 @@ string MailSV::getAPIkey(){
     return apiKey;
 }
 
-string MailSV::inputReceiver(){
-    string receiver;
-    cout << "Nhap mail nguoi nhan: ";
-    getline(cin, receiver);
+vector<string> MailCommand::getReceiver(IDatabase* db){
+    vector<string> receiver;
+    for (int i = 0; i < db->getSize(); i++)
+        receiver.push_back(db->getData(i)->getMail());
     return receiver;
 }
 
-string MailSV::inputHeader(){
+string MailCommand::inputHeader(){
     string header;
     cout << "Tieu de: ";
     getline(cin, header);
     return header;
 }
 
-string MailSV::inputContent(){
+string MailCommand::inputContent(){
     string content;
     cout << "Noi dung: ";
     getline(cin, content);
     return content;
 }
 
-void MailSV::sendMail(string to_email, string subject, string content ){
+void MailCommand::sendMail(vector<string> toMail, string subject, string content ){
     string from_email = "nhatduong01012005@gmail.com";
-    std::string api_key = getAPIkey();
+    std::string api_key = getAPIkey(); // không nên để public
     CURL *curl;
     CURLcode res;
     string response_string;
 
+    std::string to_recipients_json;
+    for (size_t i = 0; i < toMail.size(); ++i) {
+        to_recipients_json += "{ \"email\": \"" + toMail[i] + "\" }";
+        if (i < toMail.size() - 1) {
+            to_recipients_json += ", ";
+        }
+    }
+
     string post_data = "{"
         "\"personalizations\": ["
             "{"
-                "\"to\": ["
-                    "{"
-                        "\"email\": \"" + to_email + "\""
-                    "}"
-                "]"
+                "\"to\": [" + to_recipients_json + "]"
             "}"
         "],"
         "\"from\": {"
@@ -79,7 +83,6 @@ void MailSV::sendMail(string to_email, string subject, string content ){
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response_string);
 
-        // Thiết lập header cho xác thực và content type
         struct curl_slist *headers = nullptr;
         std::string auth_header = "Authorization: Bearer " + api_key;
         headers = curl_slist_append(headers, auth_header.c_str());
@@ -91,18 +94,19 @@ void MailSV::sendMail(string to_email, string subject, string content ){
             std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
         } else {
             std::cout << "Email sent successfully!" << std::endl;
-            //std::cout << "Response from SendGrid: " << response_string << std::endl;
+            std::cout << "Response from SendGrid: " << response_string << std::endl;
         }
 
         curl_slist_free_all(headers);
         curl_easy_cleanup(curl);
     }
     curl_global_cleanup();
-
 }
 
-void MailSV::excute(){
-    string receiver = inputReceiver();
+
+void MailCommand::excute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
+    IDatabase* db = mappingDatabase[typeEntity];
+    vector<string> receiver = getReceiver(db);
     string header = inputHeader();
     string content = inputContent();
     sendMail(receiver, header, content);

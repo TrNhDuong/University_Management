@@ -114,7 +114,7 @@ public:
     ~Notification() = default;
 
     string getCommandType() override;
-    static void execute();
+    void execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand) override;
 };
 
 /**

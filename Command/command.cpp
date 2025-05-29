@@ -135,10 +135,6 @@ void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typ
 }
 
 void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
-    cout << "Exit";
-    system("clear");
-    cout << "Chao cac cau, ";
-    cin.get();
     vector<string> type = {"Student", "Lecturer", "Faculty"};
     for (int i = 0; i < type.size(); i++){
         ISaveData* savingMachine = SaveDataFactory::create(type[i], mappingDatabase);
@@ -148,9 +144,10 @@ void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
     //Luu thong tin du lieu o DB vao file txt, xa hon la DB o SQL sau khi nhan ket thuc chuong trinh
 }
 
-void Notification::execute(){
-    MailSV mailMachine;
-    mailMachine.excute();
+void Notification::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
+
+    MailCommand mailMachine;
+    mailMachine.excute(mappingDatabase, typeEntity, typeOfSubCommand);
     cin.get();
 }
 
@@ -165,6 +162,8 @@ ICommand* CommandFactory::create(const string& typeCommand){
         return new ReplaceCommand();
     } else if ("Add" == typeCommand){
         return new AddCommand();
+    } else if ("Notification" == typeCommand){
+        return new Notification();
     }
     return nullptr;
 }
