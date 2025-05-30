@@ -89,7 +89,8 @@ public:
             return new StudentUI();
         else if (type == "Lecturer")
             return new LecturerUI();
-
+        else if (type == "Faculty")
+            return new FacultyUI();
         return nullptr;
     }
 };

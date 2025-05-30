@@ -85,6 +85,7 @@ void AddCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEnt
     }
     database->Add(object);
     cout << "Adding new student successfully\n";
+    getch();
 }
 
 void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
@@ -101,7 +102,8 @@ void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string type
     } else {
         cout << "The " << typeEntity << " that is going to be removed is: \n";
         IUI* printer = UIFactory::createUI(typeEntity);
-        printer->print(database->getData(index));
+        BaseEntity* object = database->getData(index);
+        printer->print(object);
         cout << "Are you sure you want to remove: (Y/N): ";
         string ans;
         cin >> ans;
@@ -112,8 +114,8 @@ void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string type
     }
     if (isRemove){
         cout << "Remove successfully\n";
-        cin.get();
     }
+    getch();
 }
 
 void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
@@ -131,11 +133,13 @@ void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typ
         BaseEntity* des = database->getData(index);
         printer->print(des);
         IDataInput* inputMachine = InputFactory::create(typeEntity);
+        cin.ignore();
         BaseEntity* scr = inputMachine->input();
         database->Replace(des, scr);
+        cout << "Replace/Update successfully\n";
     }
-    cin.ignore();
-    cin.get();
+    cout << "Press any keyboard to continue";
+    getch();
 }
 
 void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){

@@ -34,7 +34,7 @@ void FacultyUI::print(BaseEntity* faculty){
     Faculty* facul = dynamic_cast<Faculty*>(faculty);
     if (facul){
         cout << format(
-            "{:10}|{:40}|{:02}/{:02}/{:4}|{:30}|{:25}\n",
+            "{:10}|{:35}|{:02}/{:02}/{:4}|{:20}|{:20}\n",
             facul->getId(), facul->getName(),
             facul->getBirth().getDay(), facul->getBirth().getMonth(), facul->getBirth().getYear(), 
             facul->getMail(), facul->getDean().getName()
