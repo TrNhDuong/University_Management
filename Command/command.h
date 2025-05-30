@@ -16,6 +16,8 @@
 using std::string;
 using std::map;
 using std::unique_ptr;
+using std::ostream;
+using std::istream;
 
 /**
  * @class ICommand
@@ -24,6 +26,8 @@ using std::unique_ptr;
  * @note Các lệnh có thể bao gồm: tìm kiếm, hiển thị, thêm, xóa, thay thế, thông báo, tắt chương trình.
  */
 class ICommand{
+protected:
+    string inputString(ostream& os, istream& is,const string& prompt);
 public:
     ICommand() = default;
     virtual string getCommandType() = 0;

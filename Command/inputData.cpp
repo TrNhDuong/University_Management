@@ -96,8 +96,9 @@ BaseEntity* StudentInput::input(){
         errorMsg.clear();
         cnt++;
     }
-    if (cnt == 6){
-        cout << "Ban da nhap sai qua 5 lan\n";
+    if (cnt == 3){
+        cout << "Ban da nhap sai qua 3 lan\n";
+        getch();
         return nullptr;
     }
     //Avoid being inf loop when birth year >= 2011
@@ -116,6 +117,19 @@ BaseEntity* StudentInput::input(){
 
     cout << "Nhap mail: ";
     getline(cin, mail);
+    cnt = 0;
+    while (!checkValidWord::isValidEmail(mail, errorMsg) && cnt < 3){
+        cout << errorMsg << '\n';
+        cout << "Nhap lai mail: ";
+        getline(cin, mail);
+        errorMsg.clear();
+        cnt++;
+    }
+    if (cnt == 3){
+        cout << "Ban da nhap sai qua 3 lan\n";
+        getch();
+        return nullptr;
+    }
 
     //set data for Student
     s->setName(name);
@@ -208,6 +222,12 @@ BaseEntity* LecturerInput::input(){
     string mail;
     cout << "Nhap mail: ";
     getline(cin, mail);
+    while (!checkValidWord::isValidEmail(mail, errorMsg)){
+        cout << errorMsg << '\n';
+        cout << "Nhap lai mail: ";
+        getline(cin, mail);
+        errorMsg.clear();
+    }
 
     cin.ignore();
     s->setName(name);

@@ -28,6 +28,12 @@ string Notification::getCommandType(){
     return "Notification";
 }
 
+string ICommand::inputString(ostream& os, istream& is,const string& prompt){
+    string s;
+    os << prompt;
+    is >> s;
+    return s;
+}
 
 #pragma endregion
 
@@ -36,8 +42,7 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
     IDatabase* database = mappingDatabase[typeEntity];
     if ("Id" == typeOfSubCommand){
         string id;
-        cout << "Enter search ID: ";
-        cin >> id; 
+        id = inputString(cout, cin, "Enter search ID:");
         _strategy = std::make_unique<IdSearch>();
         vector<BaseEntity*> v = _strategy->search(database, id);  
         IUI* printer = UIFactory::createUI(typeEntity);
@@ -51,8 +56,7 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
         delete printer;
     } else if ("Name" == typeOfSubCommand){
         string name;
-        cout << "Input search name: ";
-        cin >> name;
+        name = inputString(cout, cin, "Enter search name: ");
         _strategy = std::make_unique<NameSearch>();
         vector<BaseEntity*> v = _strategy->search(database, name);
         IUI* printer = UIFactory::createUI(typeEntity);
@@ -84,15 +88,14 @@ void AddCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEnt
         return;
     }
     database->Add(object);
-    cout << "Adding new student successfully\n";
+    cout << "Adding new " << typeEntity << " successfully\n";
     getch();
 }
 
 void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
-    cout << "Input remove ID: ";
     string id;
-    cin >> id;
+    id = inputString(cout, cin, "Enter remove ID: ");
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
@@ -120,9 +123,8 @@ void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string type
 
 void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
-    cout << "Enter ID:";
     string id;
-    cin >> id;
+    id = inputString(cout, cin, "Enter ID: ");
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
@@ -156,10 +158,7 @@ void Notification::execute(map<string, IDatabase*> mappingDatabase, string typeE
 
     MailCommand mailMachine;
     mailMachine.excute(mappingDatabase, typeEntity, typeOfSubCommand);
-    // system("clear");
     cout << "Da gui thong bao thanh cong\n";
-
-    //sleep(3);
     cout << "Nhan phim bat ki de tro ve\n";
     getch();
 }
