@@ -173,10 +173,32 @@ void LecturerDatabase:: Add(BaseEntity* obj){
     Lecturer* s = dynamic_cast<Lecturer*>(obj);
     _data.push_back(*s);
 }
+Faculty* FacultyDatabase::findDean(const string& Id_gv) {  // trả về đối tượng là Faculty có Id trưởng khoa khớp với tham số truyền vào
+    if (Id_gv == "NULL" || Id_gv == "") return nullptr;
+    for (int i = 0; i < _data.size(); ++i){
+        if (_data[i].getDean().getId() == Id_gv){ //lấy id của trưởng khoa so sánh với Id_gv
+            return &_data[i]; //trả về tham chiếu chứa thông tin faculty 
+        }
+    }
+    return nullptr; 
 
+}
 bool LecturerDatabase::Remove(const string& ID){
     for (int i = 0; i < _data.size(); ++i){
         if (ID == _data[i].getId()){
+            //Kiểm tra tính ràng buộc dữ liệu
+            //setting Null for dean if dean ID == ID
+            FacultyDatabase& facultyDb = FacultyDatabase::getInstance();
+            // find khoa thông qua id giáo viên để trả về một đối tượng con trỏ khoa có trưởng khoa là ID
+            Faculty* obj = (facultyDb.findDean(ID));
+            if (obj){
+                // Nếu xóa 1 giáo viên mà giáo viên đó làm trưởng khoa -> sẽ tiến hành set null cho Dean của khoa.
+                Lecturer zombie;
+                zombie.setId("NULL");
+                zombie.setName("NULL");
+                zombie.setBirth("01/01/01");
+                obj->setDean(zombie);
+            } 
             _data.erase(_data.begin()+i);
             return true; 
             break;
@@ -191,7 +213,10 @@ bool LecturerDatabase::Remove(BaseEntity* obj){
 bool LecturerDatabase::Replace(BaseEntity* d, BaseEntity* s){
     Lecturer* des = dynamic_cast<Lecturer*>(d);
     Lecturer* scr = dynamic_cast<Lecturer*>(s);
-
+    //Kiểm tra xem scr có là trưởng khoa ? nếu có thì set null
+    FacultyDatabase& facultyDb = FacultyDatabase::getInstance();
+    Faculty* obj = (facultyDb.findDean(des->getId()));
+    
     int index = find(des->getId());
     if(index >= 0){
         _data[index].setName(scr->getName());
@@ -199,6 +224,15 @@ bool LecturerDatabase::Replace(BaseEntity* d, BaseEntity* s){
         _data[index].setBirth(scr->getBirth());
         _data[index].setInstructYear(scr->getInstructYear());
         _data[index].setDeg(scr->getDegree());
+        //Nếu như des có tồn tại trong bảng giáo viên -> Tiến hành xóa trưởng khoa
+        if (obj){
+                // Nếu xóa 1 giáo viên mà giáo viên đó làm trưởng khoa -> sẽ tiến hành set null cho Dean của khoa.
+                Lecturer zombie;
+                zombie.setId("NULL");
+                zombie.setName("NULL");
+                zombie.setBirth("01/01/01");
+                obj->setDean(zombie); //khoa set trưởng khoa là NULL 
+            } 
         return true;
     }else {
         return false; //if des obj not found

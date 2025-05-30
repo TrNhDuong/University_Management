@@ -151,6 +151,7 @@ public:
     string getDataType() const override;
     int getSize() const override;
     int find(const string& id) const override;
+    Faculty* findDean(const string& id_truongkhoa) ; // trả về đối tượng là Faculty có Id trưởng khoa khớp với tham số truyền vào
 
     void Add(BaseEntity* object) override;
     bool Remove(const string& ID) override;
