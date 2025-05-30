@@ -1,3 +1,4 @@
-Dinh Ba Tien|12000001|1/1/1988|2015|Professor|fakeData1@gmail.com|
-Luong Vi Minh|12000002|2/2/1989|2014|PHD|fakeData2@gmail.com|
-Nguyen Phuc Hau|12000003|1/1/1930|2010|Professor|fakeData3@gmail.com|
+Nguyen Van A|12000001|1/1/1988|2015|Professor|fakeData1@gmail.com|
+Nguyen Thi B|12000002|2/2/1989|2014|PHD|fakeData2@gmail.com|
+Le Van C|12000003|1/1/1930|2010|Professor|fakeData3@gmail.com|
+Dinh Van E|1102|1/1/2000|2023|thac si|dvF@hcmus.edu.vn

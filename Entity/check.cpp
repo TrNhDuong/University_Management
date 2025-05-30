@@ -44,8 +44,13 @@ bool checkValidWord::isValidStr(const string& str, string & errorMsg) {
 
 // (only include <number>), len <= 8
 bool checkValidWord::isValidID(const string& numbers, string & errorMsg) {
+    if (numbers == "NULL") return true; // "NULL" is a valid ID because of truong khoa Dean may be null for an Faculty
     int n = numbers.length();
-
+    if (n > 8) {
+        errorMsg = "ID nhập vào quá dài, tối đa là 8 ký tự";
+        return false; // Lỗi: "ID nhập vào quá dài, tối đa là 8 ký tự"
+    } 
+    else
     if (n == 0){
         errorMsg = "ID nhập vào là rỗng";
         return false; // Lỗi: "ID nhập vào là rỗng"

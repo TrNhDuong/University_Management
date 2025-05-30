@@ -229,7 +229,6 @@ BaseEntity* LecturerInput::input(){
         errorMsg.clear();
     }
 
-    cin.ignore();
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);
