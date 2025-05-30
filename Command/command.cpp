@@ -51,7 +51,7 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
         delete printer;
     } else if ("Name" == typeOfSubCommand){
         string name;
-        cout << "Input search namw: ";
+        cout << "Input search name: ";
         cin >> name;
         _strategy = std::make_unique<NameSearch>();
         vector<BaseEntity*> v = _strategy->search(database, name);
