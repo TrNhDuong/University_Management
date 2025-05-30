@@ -40,6 +40,7 @@ string ICommand::inputString(ostream& os, istream& is,const string& prompt){
 #pragma region execute
 void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
+
     if ("Id" == typeOfSubCommand){
         string id;
         id = inputString(cout, cin, "Enter search ID:");
@@ -70,7 +71,7 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
 
         delete printer;
     }
-    cin.ignore();
+    cin.get();
     cin.get();
 }
 
@@ -140,7 +141,8 @@ void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typ
         database->Replace(des, scr);
         cout << "Replace/Update successfully\n";
     }
-    cout << "Press any keyboard to continue";
+    cin.ignore();
+    cout << "Press any keyboard to continue\n";
     getch();
 }
 

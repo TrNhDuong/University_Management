@@ -211,11 +211,11 @@ BaseEntity* LecturerInput::input(){
         errorMsg.clear();
     }
 
-    cout << "Nhap hoc ham: ";
+    cout << "Nhập học hàm: ";
     getline(cin,degree);
     while (!checkValidWord::isValidStr(degree, errorMsg)){
         cout << errorMsg << '\n';
-        cout << "Nhap lai hoc ham: ";
+        cout << "Nhập học hàm: ";
         getline(cin,degree);
         errorMsg.clear();
     }
