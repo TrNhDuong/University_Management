@@ -1,0 +1,5 @@
+<map id="SearchStrategy" name="SearchStrategy">
+<area shape="rect" id="node1" title="Lớp trừu tượng đại diện cho chiến lược tìm kiếm." alt="" coords="41,5,163,32"/>
+<area shape="rect" id="node2" href="$classIdSearch.html" title="Lớp đại diện cho chiến lược tìm kiếm theo ID." alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node3" href="$classNameSearch.html" title="Lớp đại diện cho chiến lược tìm kiếm theo tên." alt="" coords="108,80,213,107"/>
+</map>

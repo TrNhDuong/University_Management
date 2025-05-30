@@ -20,10 +20,11 @@ string FacultyInput::getInputType() const {
 #pragma region StudentInput
 
 BaseEntity* StudentInput::input(){
+    StudentDatabase& DB = StudentDatabase::getInstance();
     BaseEntity* ans = nullptr;
     Student* s = new Student();
 
-    string name, id, birth, errorMsg;
+    string name, id, birth, errorMsg, mail; 
     float gpa;
     int enrollYear, credit;
     cout << "Nhap thong tin lien quan toi sinh vien:\n";
@@ -38,8 +39,12 @@ BaseEntity* StudentInput::input(){
 
     cout << "Nhap MSSV: ";
     getline(cin, id);
-    while (!checkValidWord::isValidID(id, errorMsg)){
-        cout << errorMsg << '\n';
+    // int index = DB.find(id);
+    while (!checkValidWord::isValidID(id, errorMsg) || DB.find(id) != -1){
+        if (errorMsg != "")
+            cout << errorMsg << '\n';
+        if (DB.find(id) != -1)
+            cout << "Id da ton tai\n";
         cout << "Nhap lai MSSV: ";
         getline(cin, id);
         errorMsg.clear();
@@ -82,14 +87,21 @@ BaseEntity* StudentInput::input(){
     cout << "Nhap nam nhap hoc: ";
     string tempEnrollYear = "";
     getline(cin, tempEnrollYear);
-    
-    while (!checkValidNum::isValidYearEnroll(tempEnrollYear, errorMsg, yearBirth)){
+    int cnt = 0;
+    while (!checkValidNum::isValidYearEnroll(tempEnrollYear, errorMsg, yearBirth) && cnt < 6){
         cout << errorMsg << '\n';
         cout << "Nhap lai nam nhap hoc: ";
         tempEnrollYear ="";
         getline(cin, tempEnrollYear);
         errorMsg.clear();
+        cnt++;
     }
+    if (cnt == 3){
+        cout << "Ban da nhap sai qua 3 lan\n";
+        getch();
+        return nullptr;
+    }
+    //Avoid being inf loop when birth year >= 2011
     enrollYear = stoi(tempEnrollYear);
 
     cout << "Nhap so tin chi da hoan thanh: ";
@@ -103,6 +115,22 @@ BaseEntity* StudentInput::input(){
     }
     credit = stoi(tempCredit);
 
+    cout << "Nhap mail: ";
+    getline(cin, mail);
+    cnt = 0;
+    while (!checkValidWord::isValidEmail(mail, errorMsg) && cnt < 3){
+        cout << errorMsg << '\n';
+        cout << "Nhap lai mail: ";
+        getline(cin, mail);
+        errorMsg.clear();
+        cnt++;
+    }
+    if (cnt == 3){
+        cout << "Ban da nhap sai qua 3 lan\n";
+        getch();
+        return nullptr;
+    }
+
     //set data for Student
     s->setName(name);
     s->setBirth(birth);
@@ -110,6 +138,7 @@ BaseEntity* StudentInput::input(){
     s->setEnrollYear(enrollYear);
     s->setGPA(gpa);
     s->setCredit(credit);
+    s->setMail(mail);
     ans = s;
     return ans;
 
@@ -120,6 +149,7 @@ BaseEntity* StudentInput::input(){
 #pragma region LecturerInput
 
 BaseEntity* LecturerInput::input(){
+    LecturerDatabase& DB = LecturerDatabase::getInstance();
     BaseEntity* ans = nullptr;
     Lecturer* s = new Lecturer();
     string name, id, birth, errorMsg;
@@ -138,8 +168,12 @@ BaseEntity* LecturerInput::input(){
 
     cout << "Nhap MSGV: ";
     getline(cin, id);
-    while (!checkValidWord::isValidID(id, errorMsg)){
-        cout << errorMsg << '\n';
+    // int index = DB.find(id);
+    while (!checkValidWord::isValidID(id, errorMsg) || DB.find(id) != -1){
+        if (errorMsg != "")
+            cout << errorMsg << '\n';
+        if (DB.find(id) != -1)
+            cout << "Id da ton tai\n";
         cout << "Nhap lai MSGV: ";
         getline(cin, id);
         errorMsg.clear();
@@ -185,13 +219,22 @@ BaseEntity* LecturerInput::input(){
         getline(cin,degree);
         errorMsg.clear();
     }
+    string mail;
+    cout << "Nhap mail: ";
+    getline(cin, mail);
+    while (!checkValidWord::isValidEmail(mail, errorMsg)){
+        cout << errorMsg << '\n';
+        cout << "Nhap lai mail: ";
+        getline(cin, mail);
+        errorMsg.clear();
+    }
 
-    cin.ignore();
     s->setName(name);
     s->setBirth(birth);
     s->setId(id);
     s->setInstructYear(stoi(structYear));
     s->setDeg(degree);
+    s->setMail(mail);
     ans = s;
     return ans;
 }
@@ -201,6 +244,7 @@ BaseEntity* LecturerInput::input(){
 #pragma region FacultyInput
 
 BaseEntity* FacultyInput::input(){
+    FacultyDatabase& DB = FacultyDatabase::getInstance();
     BaseEntity* ans = nullptr;
     Faculty* s = new Faculty();
     string name, id, birth, errorMsg;
@@ -217,12 +261,19 @@ BaseEntity* FacultyInput::input(){
     }
     cout << "Nhap ID: ";
     getline(cin, id);
-    while (!checkValidWord::isValidID(id, errorMsg)){
-        cout << errorMsg << '\n';
+    //int index = DB.find(id);
+    while (!checkValidWord::isValidID(id, errorMsg) || DB.find(id) != -1){
+        if (errorMsg != "")
+            cout << errorMsg << '\n';
+        if (DB.find(id) != -1)
+            cout << "Id da ton tai\n";
         cout << "Nhap lai ID: ";
         getline(cin, id);
         errorMsg.clear();
     }
+
+
+
     cout << "Nhap ngay thanh lap (dd/mm/yyyy): ";
     getline(cin, birth);
     while (!checkValidNum::isValidBirth(birth, errorMsg)){

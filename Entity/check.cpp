@@ -44,8 +44,13 @@ bool checkValidWord::isValidStr(const string& str, string & errorMsg) {
 
 // (only include <number>), len <= 8
 bool checkValidWord::isValidID(const string& numbers, string & errorMsg) {
+    if (numbers == "NULL") return true; // "NULL" is a valid ID because of truong khoa Dean may be null for an Faculty
     int n = numbers.length();
-
+    if (n > 8) {
+        errorMsg = "ID nhập vào quá dài, tối đa là 8 ký tự";
+        return false; // Lỗi: "ID nhập vào quá dài, tối đa là 8 ký tự"
+    } 
+    else
     if (n == 0){
         errorMsg = "ID nhập vào là rỗng";
         return false; // Lỗi: "ID nhập vào là rỗng"
@@ -276,7 +281,7 @@ bool checkValidNum::isValidYearEnroll(const int& yearEnroll,  const int& yearBir
     if (yearEnroll < (yearBirth + 16)) {
         return false;// "Năm nhập học phải lớn hơn năm sinh ít nhất 16 tuổi" //sẽ có một số ngoại lệ nên ta để yearBirth + 10
     }
-    std::cout << yearEnroll << " - " << yearBirth << std::endl;
+    //std::cout << yearEnroll << " - " << yearBirth << std::endl;
 
     if (yearEnroll > 2026) return false; // "Số năm nhập học lớn hơn 2026"
     return true;

@@ -1,0 +1,4 @@
+<map id="FacultyUI" name="FacultyUI">
+<area shape="rect" id="node1" title="Lớp đại diện cho giao diện người dùng hiển thị thông tin khoa." alt="" coords="5,80,88,107"/>
+<area shape="rect" id="node2" href="$classIUI.html" title="Lớp trừu tượng đại diện cho giao diện người dùng." alt="" coords="27,5,67,32"/>
+</map>

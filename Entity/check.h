@@ -1,3 +1,10 @@
+/**
+ * @file check.h
+ * @brief Kiểm tra tính hợp lệ của dữ liệu nhập vào
+ * @details Lớp checkValidWord và checkValidNum cung cấp các phương thức để kiểm tra tính hợp lệ của chuỗi ký tự và số.
+ * @note Bao gồm các phương thức kiểm tra tính hợp lệ của tên, ID, email, ngày sinh, GPA, tín chỉ và năm nhập học.
+ */
+
 #ifndef _CHECK_H_
 #define _CHECK_H_
 
@@ -11,13 +18,12 @@ using namespace std;
 
 
 
-//Chỉ copy các hàm/method liên quan đến kiểm lỗi, còn lại không cần copy nếu ko có ghi chú riêng cho nó
-
-/*                      READ ME
-        Logic của class checkValid sẽ bao gồm các bước ktra phù hợp
-        cho cả đọc file và đọc dữ liệu từ bàn phím.
-        Ở định nghĩa của mỗi method sẽ có mô tả logic mà hàm sẽ kiểm tra
-*/
+/**
+ * @class checkValidWord
+ * @brief Lớp để kiểm tra tính hợp lệ của chuỗi ký tự
+ * @details Lớp này cung cấp các phương thức để kiểm tra tính hợp lệ của tên, ID, email.
+ * @note Các phương thức sẽ trả về true nếu chuỗi hợp lệ, ngược lại sẽ trả về false và cung cấp thông báo lỗi.
+ */
 class checkValidWord {
 public:
     //for name and degree: string-words
@@ -27,6 +33,13 @@ public:
     static bool isValidEmail(const string& email, string & errorMsg);
 
 };
+
+/**
+ * @class checkValidNum
+ * @brief Lớp để kiểm tra tính hợp lệ của các số
+ * @details Lớp này cung cấp các phương thức để kiểm tra tính hợp lệ của ngày sinh, GPA, tín chỉ, năm giảng dạy và năm nhập học.
+ * @note Các phương thức sẽ trả về true nếu số hợp lệ, ngược lại sẽ trả về false và cung cấp thông báo lỗi.
+ */
 class checkValidNum {
 public:
     //Digit

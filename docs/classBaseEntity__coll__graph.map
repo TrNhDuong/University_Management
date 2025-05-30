@@ -1,0 +1,5 @@
+<map id="BaseEntity" name="BaseEntity">
+<area shape="rect" id="node1" title="Lớp cơ sở đại diện cho các thực thể trong hệ thống." alt="" coords="29,124,121,151"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,64,32"/>
+<area shape="rect" id="node3" href="$classBirth.html" title="Lớp đại diện cho ngày sinh của thực thể" alt="" coords="88,5,141,32"/>
+</map>

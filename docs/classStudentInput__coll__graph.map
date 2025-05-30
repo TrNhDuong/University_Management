@@ -1,0 +1,4 @@
+<map id="StudentInput" name="StudentInput">
+<area shape="rect" id="node1" title="Lớp đại diện cho máy nhập dữ liệu sinh viên." alt="" coords="5,80,111,107"/>
+<area shape="rect" id="node2" href="$classIDataInput.html" title="Lớp trừu tượng đại diện cho máy nhập dữ liệu." alt="" coords="13,5,103,32"/>
+</map>

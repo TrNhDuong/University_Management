@@ -1,0 +1,6 @@
+<map id="IReadData" name="IReadData">
+<area shape="rect" id="node1" title="Lớp trừu tượng đại diện cho máy đọc dữ liệu." alt="" coords="186,5,277,32"/>
+<area shape="rect" id="node2" href="$classFacultyReadData.html" title="Lớp đại diện cho máy đọc dữ liệu khoa." alt="" coords="5,80,137,107"/>
+<area shape="rect" id="node3" href="$classLecturerReadData.html" title="Lớp đại diện cho máy đọc dữ liệu giảng viên." alt="" coords="162,80,301,107"/>
+<area shape="rect" id="node4" href="$classStudentReadData.html" title="Lớp đại diện cho máy đọc dữ liệu sinh viên." alt="" coords="325,80,461,107"/>
+</map>

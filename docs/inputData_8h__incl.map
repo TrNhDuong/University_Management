@@ -1,0 +1,14 @@
+<map id="Command/inputData.h" name="Command/inputData.h">
+<area shape="rect" id="node1" title="Nhập dữ liệu từ người dùng." alt="" coords="335,5,504,32"/>
+<area shape="rect" id="node2" href="$baseEntity_8h.html" title="Định nghĩa lớp cơ sở cho các thực thể trong hệ thống." alt="" coords="310,229,465,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="358,304,417,331"/>
+<area shape="rect" id="node4" href="$student_8h.html" title="Định nghĩa lớp Student đại diện cho sinh viên trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="39,80,176,107"/>
+<area shape="rect" id="node5" href="$lecturer_8h.html" title="Định nghĩa lớp Lecturer đại diện cho giảng viên trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="319,155,456,181"/>
+<area shape="rect" id="node6" href="$faculty_8h.html" title="Định nghĩa lớp Faculty đại diện cho khoa trong hệ thống quản lý cơ sở dữ liệu." alt="" coords="252,80,382,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="90,155,152,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="481,155,561,181"/>
+<area shape="rect" id="node10" href="$check_8h.html" title="Kiểm tra tính hợp lệ của dữ liệu nhập vào." alt="" coords="636,80,763,107"/>
+<area shape="rect" id="node12" title=" " alt="" coords="812,80,889,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="228,155,294,181"/>
+<area shape="rect" id="node11" title=" " alt="" coords="737,155,812,181"/>
+</map>

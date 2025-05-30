@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classSearchStrategy.html" title="Lớp trừu tượng đại diện cho chiến lược tìm kiếm." alt="" coords="5,31,127,57"/>
+<area shape="rect" id="node2" href="$classIdSearch.html" title="Lớp đại diện cho chiến lược tìm kiếm theo ID." alt="" coords="188,5,267,32"/>
+<area shape="rect" id="node3" href="$classNameSearch.html" title="Lớp đại diện cho chiến lược tìm kiếm theo tên." alt="" coords="175,56,280,83"/>
+</map>

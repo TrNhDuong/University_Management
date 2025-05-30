@@ -1,0 +1,4 @@
+<map id="Notification" name="Notification">
+<area shape="rect" id="node1" title="Lớp đại diện cho lệnh thông báo trong hệ thống." alt="" coords="5,80,103,107"/>
+<area shape="rect" id="node2" href="$classICommand.html" title="Lớp trừu tượng đại diện cho một lệnh trong hệ thống." alt="" coords="7,5,101,32"/>
+</map>

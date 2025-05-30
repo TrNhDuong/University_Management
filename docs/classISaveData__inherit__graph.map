@@ -1,0 +1,6 @@
+<map id="ISaveData" name="ISaveData">
+<area shape="rect" id="node1" title="Lớp trừu tượng đại diện cho máy lưu dữ liệu." alt="" coords="185,5,274,32"/>
+<area shape="rect" id="node2" href="$classSaveFacultyData.html" title="Lớp đại diện cho máy lưu dữ liệu khoa." alt="" coords="5,80,136,107"/>
+<area shape="rect" id="node3" href="$classSaveLecturerData.html" title="Lớp đại diện cho máy lưu dữ liệu giảng viên." alt="" coords="160,80,299,107"/>
+<area shape="rect" id="node4" href="$classSaveStudentData.html" title="Lớp đại diện cho máy lưu dữ liệu sinh viên." alt="" coords="323,80,458,107"/>
+</map>

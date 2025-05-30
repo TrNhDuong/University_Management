@@ -1,3 +1,10 @@
+/**
+ * @file data.h
+ * @brief Định nghĩa các lớp quản lý cơ sở dữ liệu cho sinh viên, giảng viên và khoa
+ * @details Các lớp này sử dụng mẫu thiết kế Singleton để đảm bảo chỉ có một thể hiện duy nhất của mỗi cơ sở dữ liệu.
+ * @note Bao gồm các phương thức để thêm, xóa, thay thế và truy xuất dữ liệu từ cơ sở dữ liệu.
+ * @note Các lớp này kế thừa từ IDatabase, cung cấp các phương thức trừu tượng để tương tác với dữ liệu.
+ */
 #ifndef _DATA_H_
 #define _DATA_H_
 #include <vector>
@@ -14,6 +21,12 @@ using std::string;
 using std::cout;
 using std::fstream;
 
+/**
+ * @class IDatabase
+ * @brief Lớp trừu tượng đại diện cho cơ sở dữ liệu
+ * @details Lớp này định nghĩa các phương thức trừu tượng để tương tác với cơ sở dữ liệu, bao gồm thêm, xóa, thay thế và truy xuất dữ liệu.
+ * @note Các lớp con sẽ kế thừa từ IDatabase và triển khai các phương thức cụ thể cho từng loại cơ sở dữ liệu.
+ */
 #pragma region IDatabase declaration
 class IDatabase{
 public:
@@ -34,6 +47,15 @@ public:
 
 //CRTP (Curiously Recurring Template Pattern) + IDatabase + Template ->Need Optimization
 
+/**
+ * @class StudentDatabase
+ * @brief Lớp đại diện cho cơ sở dữ liệu sinh viên
+ * @details Lớp này kế thừa từ IDatabase và sử dụng mẫu thiết kế Singleton để đảm bảo chỉ có một thể hiện duy nhất của cơ sở dữ liệu sinh viên.
+ * @note Cung cấp các phương thức để thêm, xóa, thay thế và truy xuất dữ liệu sinh viên.
+ * @note Lớp này sử dụng vector để lưu trữ dữ liệu sinh viên và cung cấp các phương thức để tương tác với dữ liệu.
+ * @note Các phương thức này bao gồm getDataType, getSize, find, Add, Remove, Replace và getData.
+ * @note Lớp này cũng định nghĩa một phương thức tĩnh getInstance để lấy thể hiện duy nhất của cơ sở dữ liệu sinh viên.
+ */
 #pragma region StudentDatabase declaration
 class StudentDatabase: public IDatabase{
 private:
@@ -66,7 +88,15 @@ public:
 
 
 #pragma region LecturerDatabase declaration
-
+/**
+ * @class LecturerDatabase
+ * @brief Lớp đại diện cho cơ sở dữ liệu giảng viên
+ * @details Lớp này kế thừa từ IDatabase và sử dụng mẫu thiết kế Singleton để đảm bảo chỉ có một thể hiện duy nhất của cơ sở dữ liệu giảng viên.
+ * @note Cung cấp các phương thức để thêm, xóa, thay thế và truy xuất dữ liệu giảng viên.
+ * @note Lớp này sử dụng vector để lưu trữ dữ liệu giảng viên và cung cấp các phương thức để tương tác với dữ liệu.
+ * @note Các phương thức này bao gồm getDataType, getSize, find, Add, Remove, Replace và getData.
+ * @note Lớp này cũng định nghĩa một phương thức tĩnh getInstance để lấy thể hiện duy nhất của cơ sở dữ liệu giảng viên.
+ */
 class LecturerDatabase: public IDatabase{
 private:
     vector<Lecturer> _data;
@@ -96,7 +126,15 @@ public:
 
 
 #pragma region FacultyDatabase declaration
-
+/**
+ * @class FacultyDatabase
+ * @brief Lớp đại diện cho cơ sở dữ liệu khoa
+ * @details Lớp này kế thừa từ IDatabase và sử dụng mẫu thiết kế Singleton để đảm bảo chỉ có một thể hiện duy nhất của cơ sở dữ liệu khoa.
+ * @note Cung cấp các phương thức để thêm, xóa, thay thế và truy xuất dữ liệu khoa.
+ * @note Lớp này sử dụng vector để lưu trữ dữ liệu khoa và cung cấp các phương thức để tương tác với dữ liệu.
+ * @note Các phương thức này bao gồm getDataType, getSize, find, Add, Remove, Replace và getData.
+ * @note Lớp này cũng định nghĩa một phương thức tĩnh getInstance để lấy thể hiện duy nhất của cơ sở dữ liệu khoa.
+ */
 class FacultyDatabase: public IDatabase{
 private:
     vector<Faculty> _data;

@@ -1,5 +1,6 @@
 #include "command.h"
 #include "exit.h"
+#include "../utils.h"
 
 
 #pragma region getCommandType
@@ -27,6 +28,12 @@ string Notification::getCommandType(){
     return "Notification";
 }
 
+string ICommand::inputString(ostream& os, istream& is,const string& prompt){
+    string s;
+    os << prompt;
+    is >> s;
+    return s;
+}
 
 #pragma endregion
 
@@ -35,8 +42,7 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
     IDatabase* database = mappingDatabase[typeEntity];
     if ("Id" == typeOfSubCommand){
         string id;
-        cout << "Enter search ID: ";
-        cin >> id; 
+        id = inputString(cout, cin, "Enter search ID:");
         _strategy = std::make_unique<IdSearch>();
         vector<BaseEntity*> v = _strategy->search(database, id);  
         IUI* printer = UIFactory::createUI(typeEntity);
@@ -50,8 +56,7 @@ void SearchCommand::execute(map<string, IDatabase*> mappingDatabase, string type
         delete printer;
     } else if ("Name" == typeOfSubCommand){
         string name;
-        cout << "Input search namw: ";
-        cin >> name;
+        name = inputString(cout, cin, "Enter search name: ");
         _strategy = std::make_unique<NameSearch>();
         vector<BaseEntity*> v = _strategy->search(database, name);
         IUI* printer = UIFactory::createUI(typeEntity);
@@ -79,15 +84,18 @@ void AddCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEnt
     IDatabase* database = mappingDatabase[typeEntity];
     IDataInput* inputMachine = InputFactory::create(typeEntity);
     BaseEntity* object = inputMachine->input();
+    if (object == nullptr){
+        return;
+    }
     database->Add(object);
-    cout << "Adding new student successfully\n";
+    cout << "Adding new " << typeEntity << " successfully\n";
+    getch();
 }
 
 void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
-    cout << "Input remove ID: ";
     string id;
-    cin >> id;
+    id = inputString(cout, cin, "Enter remove ID: ");
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
@@ -97,7 +105,8 @@ void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string type
     } else {
         cout << "The " << typeEntity << " that is going to be removed is: \n";
         IUI* printer = UIFactory::createUI(typeEntity);
-        printer->print(database->getData(index));
+        BaseEntity* object = database->getData(index);
+        printer->print(object);
         cout << "Are you sure you want to remove: (Y/N): ";
         string ans;
         cin >> ans;
@@ -108,15 +117,14 @@ void RemoveCommand::execute(map<string, IDatabase*> mappingDatabase, string type
     }
     if (isRemove){
         cout << "Remove successfully\n";
-        cin.get();
     }
+    getch();
 }
 
 void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
     IDatabase* database = mappingDatabase[typeEntity];
-    cout << "Enter ID:";
     string id;
-    cin >> id;
+    id = inputString(cout, cin, "Enter ID: ");
     int index = database->find(id);
     bool isRemove = false;
     if (index < 0){
@@ -127,18 +135,16 @@ void ReplaceCommand::execute(map<string, IDatabase*> mappingDatabase, string typ
         BaseEntity* des = database->getData(index);
         printer->print(des);
         IDataInput* inputMachine = InputFactory::create(typeEntity);
+        cin.ignore();
         BaseEntity* scr = inputMachine->input();
         database->Replace(des, scr);
+        cout << "Replace/Update successfully\n";
     }
-    cin.ignore();
-    cin.get();
+    cout << "Press any keyboard to continue";
+    getch();
 }
 
 void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
-    cout << "Exit";
-    system("clear");
-    cout << "Chao cac cau, ";
-    cin.get();
     vector<string> type = {"Student", "Lecturer", "Faculty"};
     for (int i = 0; i < type.size(); i++){
         ISaveData* savingMachine = SaveDataFactory::create(type[i], mappingDatabase);
@@ -148,10 +154,13 @@ void TurnOffProgram::execute(map<string, IDatabase*> mappingDatabase){
     //Luu thong tin du lieu o DB vao file txt, xa hon la DB o SQL sau khi nhan ket thuc chuong trinh
 }
 
-void Notification::execute(){
-    MailSV mailMachine;
-    mailMachine.excute();
-    cin.get();
+void Notification::execute(map<string, IDatabase*> mappingDatabase, string typeEntity, const string& typeOfSubCommand){
+
+    MailCommand mailMachine;
+    mailMachine.excute(mappingDatabase, typeEntity, typeOfSubCommand);
+    cout << "Da gui thong bao thanh cong\n";
+    cout << "Nhan phim bat ki de tro ve\n";
+    getch();
 }
 
 ICommand* CommandFactory::create(const string& typeCommand){
@@ -165,6 +174,8 @@ ICommand* CommandFactory::create(const string& typeCommand){
         return new ReplaceCommand();
     } else if ("Add" == typeCommand){
         return new AddCommand();
+    } else if ("Notification" == typeCommand){
+        return new Notification();
     }
     return nullptr;
 }

@@ -1,0 +1,4 @@
+<map id="SearchCommand" name="SearchCommand">
+<area shape="rect" id="node1" title="Lớp đại diện cho lệnh tìm kiếm trong hệ thống." alt="" coords="5,80,139,107"/>
+<area shape="rect" id="node2" href="$classICommand.html" title="Lớp trừu tượng đại diện cho một lệnh trong hệ thống." alt="" coords="25,5,119,32"/>
+</map>

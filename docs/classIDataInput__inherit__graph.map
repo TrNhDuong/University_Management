@@ -1,0 +1,6 @@
+<map id="IDataInput" name="IDataInput">
+<area shape="rect" id="node1" title="Lớp trừu tượng đại diện cho máy nhập dữ liệu." alt="" coords="140,5,231,32"/>
+<area shape="rect" id="node2" href="$classFacultyInput.html" title="Lớp đại diện cho máy nhập dữ liệu khoa." alt="" coords="5,80,107,107"/>
+<area shape="rect" id="node3" href="$classLecturerInput.html" title="Lớp đại diện cho máy nhập dữ liệu giảng viên." alt="" coords="131,80,239,107"/>
+<area shape="rect" id="node4" href="$classStudentInput.html" title="Lớp đại diện cho máy nhập dữ liệu sinh viên." alt="" coords="263,80,369,107"/>
+</map>

@@ -59,6 +59,7 @@ int FacultyDatabase::find(const string& id) const{
         }
     return index;
 }
+
 #pragma endregion
 
 #pragma region getData
